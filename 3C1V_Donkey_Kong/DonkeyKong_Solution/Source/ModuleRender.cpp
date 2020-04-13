@@ -41,12 +41,11 @@ bool ModuleRender::Init()
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
 
-	App->collisions->AddCollider({ 0, 600, 672,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 21, 447, 627,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 45, 357, 579,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 69, 237, 531,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 93, 117, 483,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 165, -3, 339,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 700, 672,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 21, 547, 627,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 45, 457, 579,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 69, 337, 531,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 93, 217, 483,27 }, Collider::Type::plataforma);
 
 	App->collisions->AddCollider({ 21, 501, 99,27 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 309, 501, 99,27 }, Collider::Type::escalera);

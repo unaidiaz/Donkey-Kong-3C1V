@@ -134,6 +134,15 @@ update_status ModulePlayer::Update() {
 	if (jumpact == true) {
 		jump();
 	}
+	//LIMITES LATERALES
+	if (Posicion.x < 0)
+	{
+		Posicion.x = 0;
+	}
+	if (Posicion.x > 635)
+	{
+		Posicion.x = 635;
+	}
 	currentAnimation->Update();
 	collider->SetPos(Posicion.x, Posicion.y);
 
