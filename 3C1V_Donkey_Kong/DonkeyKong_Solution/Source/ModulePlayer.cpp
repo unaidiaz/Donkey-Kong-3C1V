@@ -143,6 +143,11 @@ update_status ModulePlayer::Update() {
 	{
 		Posicion.x = 635;
 	}
+	//LIMITES VERTICALES
+	if (Posicion.y>700)
+	{
+		Posicion.y = 700;
+	}
 	currentAnimation->Update();
 	collider->SetPos(Posicion.x, Posicion.y);
 
