@@ -42,7 +42,12 @@ bool ModuleRender::Init()
 	App->audio->PlayMusic("Assets/stage4");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
-	
+	App->collisions->AddCollider({ 0, 600, 672,24 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 24, 480, 621,21 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 48, 360, 573,21 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 72, 240, 525,21 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 96, 120, 477,21 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 168, 0, 333,21 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ -10,699, 672,27  }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 21,578, 16,200 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 309,578, 16,200 }, Collider::Type::escalera);
