@@ -36,6 +36,8 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
+	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
+
 	// TODO 9: load a texture "Assets/test.png" to test is everything works well
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
