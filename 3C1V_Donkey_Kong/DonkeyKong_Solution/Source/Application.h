@@ -3,14 +3,16 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 4
+#define NUM_MODULES 7
 
 class Module;
+class ModuleCollisions;
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
+class ModuleAudio;
 class ModuleRender;
-
+class ModulePlayer;
 class Application
 {
 
@@ -38,7 +40,11 @@ public:
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+	ModuleCollisions* collisions = nullptr;
+	ModuleAudio* audio = nullptr;
 	ModuleRender* render = nullptr;
+	ModulePlayer* player = nullptr;
+	
 };
 
 // Global var made extern for Application ---

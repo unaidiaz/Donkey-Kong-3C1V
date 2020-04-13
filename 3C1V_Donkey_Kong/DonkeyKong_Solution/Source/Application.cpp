@@ -5,7 +5,9 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-
+#include"ModulePlayer.h"
+#include"ModuleCollisions.h"
+#include "ModuleAudio.h"
 Application::Application()
 {
 	// The order in which the modules are added is very important.
@@ -14,7 +16,11 @@ Application::Application()
 	modules[0] = window = new ModuleWindow();
 	modules[1] = input = new ModuleInput();
 	modules[2] = textures = new ModuleTextures();
-	modules[3] = render = new ModuleRender();
+	modules[3] = audio = new ModuleAudio();
+	modules[4] = collisions = new ModuleCollisions();
+	modules[5] = player = new ModulePlayer();
+	modules[6] = render = new ModuleRender();
+	
 }
 
 Application::~Application()

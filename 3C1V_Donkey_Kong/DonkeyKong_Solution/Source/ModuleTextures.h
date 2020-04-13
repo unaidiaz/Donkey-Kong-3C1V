@@ -29,7 +29,6 @@ public:
 	// Returns nullptr if the texture could not be created
 	SDL_Texture* const Load(const char* path);
 
-public:
 	SDL_Texture* textures[MAX_TEXTURES];
 };
 

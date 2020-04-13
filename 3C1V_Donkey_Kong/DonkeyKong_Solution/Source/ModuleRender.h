@@ -2,7 +2,6 @@
 #define __MODULE_RENDER_H__
 
 #include "Module.h"
-
 struct SDL_Rect;
 struct SDL_Texture;
 struct SDL_Renderer;
@@ -40,12 +39,13 @@ public:
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr);
 
 public:
+	
 	// Rendering context used for any rendering action
 	SDL_Renderer* renderer = nullptr;
 
 private:
+	SDL_Texture* mario = nullptr;
 	SDL_Texture* testTexture = nullptr;
-
 };
 
 #endif //__MODULE_RENDER_H__

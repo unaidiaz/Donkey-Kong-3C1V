@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include "ModuleRender.h"
-
+#include"ModulePlayer.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
@@ -59,7 +59,8 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	// TODO 2: Load an SDL_Surface from a path (must be a png)
 	// and check for errors
 	SDL_Texture* texture = nullptr;
-	SDL_Surface* surface = IMG_Load(path);
+	SDL_Surface* surface = nullptr;
+	surface = IMG_Load(path);
 
 	if (surface == NULL)
 	{

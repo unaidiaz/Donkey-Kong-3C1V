@@ -1,9 +1,10 @@
 #include "ModuleRender.h"
-
+#include"ModulePlayer.h"
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleTextures.h"
-
+#include"ModuleCollisions.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -36,8 +37,14 @@ bool ModuleRender::Init()
 	}
 
 	// TODO 9: load a texture "Assets/test.png" to test is everything works well
-	testTexture = App->textures->Load("Assets/test.png");
-
+	testTexture = App->textures->Load("Assets/lvl4.png");
+	mario = App->textures->Load("Assets/perso.png");
+	
+	App->collisions->AddCollider({ -10,699, 672,27  }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 21,578, 16,200 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 309,578, 16,200 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 621,578, 16,200 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 45,458, 16,100 }, Collider::Type::escalera);
 	return ret;
 }
 
@@ -57,8 +64,11 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::PostUpdate()
 {
 	// TODO 10: Blit our test texture to check functionality
-	Blit(testTexture, 243, 193, nullptr);
-
+	Blit(testTexture, 0, 130, nullptr);
+	//Blit(mario, 50, 50, nullptr);
+	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
+	App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
+	
 	// TODO 8: Display the rendered content to the screen
 
 	//Update the screen
@@ -94,7 +104,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 		//Collect the texture size into rect.w and rect.h variables
 		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
 	}
-
+	rect.w = rect.w * 3;
+	rect.h = rect.h * 3;
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
