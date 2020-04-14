@@ -51,7 +51,7 @@ ModulePlayer::ModulePlayer() {
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;*/
 	Posicion.x = 0;
-	Posicion.y = 682;
+	Posicion.y = 0;
 	
 }
 bool ModulePlayer::Init() {
@@ -61,6 +61,7 @@ bool ModulePlayer::Init() {
 	return true;
 }
 update_status ModulePlayer::Update() {
+
 	Posicion.y += 2;
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
@@ -75,6 +76,7 @@ update_status ModulePlayer::Update() {
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
+
 		tecla = 0;
 		Posicion.x += Posicion.velo;
 		if (currentAnimation != &derecha)
@@ -83,34 +85,44 @@ update_status ModulePlayer::Update() {
 			currentAnimation = &derecha;
 		}
 	}
-	if (escalera == true) {
+	
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
-			Posicion.y -= 3;
-			if (currentAnimation != &arriba)
-			{
-				arriba.Reset();
-				currentAnimation = &arriba;
+			if (escalera == true) {
+				Posicion.y -= 1;
+				if (currentAnimation != &arriba)
+				{
+					arriba.Reset();
+					currentAnimation = &arriba;
+				}
+				escalera = false;
 			}
+			
 		}
-		escalera = false;
-	}
 	
-
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		Posicion.y += Posicion.velo;
-		if (currentAnimation != &abajo)
+	
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
-			abajo.Reset();
-			currentAnimation = &abajo;
-		}
-	}
+			if (escalera == true) {
 
+				Posicion.y += 3;
+				if (currentAnimation != &abajo)
+				{
+					abajo.Reset();
+					currentAnimation = &abajo;
+				}
+				escalera = false;
+			}
+		
+		}
+	
+	
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		if (jumpact == false) {
-			jump();
+		if (escalera == false) {
+			if (jumpact == false) {
+				jump();
+			}
 		}
 	}
 
@@ -124,11 +136,11 @@ update_status ModulePlayer::Update() {
 
 
 
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE&&tecla==0 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE){
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE&&tecla==0 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE&&escalera==false){
 		currentAnimation = &paradoder;
 	
 	}
-	else if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && tecla == 1 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE) {
+	else if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && tecla == 1 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE && escalera == false) {
 		currentAnimation = &paradoizq;
 	}
 	if (jumpact == true) {
@@ -204,7 +216,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		Posicion.y -= 2;
 	}
 	if (c1 == collider && c2->type == Collider::escalera) {
+		Posicion.y -= 2;
 		escalera = true;
+	}
+	else {
+		escalera = false;
 	}
 	
 }

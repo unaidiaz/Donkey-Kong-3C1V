@@ -34,7 +34,6 @@ public:
 	Animation paradoizq;
 	Animation saltarder;
 	Animation saltariz;
-	
 	bool escalera = false;
 	Collider* collider=nullptr;
 	int cont = 0;

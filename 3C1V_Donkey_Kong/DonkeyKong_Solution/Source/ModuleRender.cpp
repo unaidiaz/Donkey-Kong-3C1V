@@ -6,6 +6,8 @@
 #include"ModuleCollisions.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL/libx86/SDL2.lib")
+#pragma comment( lib, "SDL/libx86/SDL2main.lib")
 
 ModuleRender::ModuleRender() : Module()
 {
@@ -43,27 +45,29 @@ bool ModuleRender::Init()
 	//547
 	App->collisions->AddCollider({ 0, 700, 672,27 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 21, 580, 627,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 45, 457, 579,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 69, 337, 531,27 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 93, 217, 483,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 45, 460, 579,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 69, 340, 531,27 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 93, 220, 483,27 }, Collider::Type::plataforma);
 
-	App->collisions->AddCollider({ 21, 601, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 309, 601, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 621, 601, 27,99 }, Collider::Type::escalera);
+	//primer piso
+	App->collisions->AddCollider({ 21, 578, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 309, 578, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 621, 578, 27,140 }, Collider::Type::escalera);
+	
+	//segundo piso
+	App->collisions->AddCollider({ 45, 458, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 213, 458, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 429, 458, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 597, 458, 27,140 }, Collider::Type::escalera);
+	
+	App->collisions->AddCollider({ 69, 338, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 309, 338, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 573, 338, 27,140 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 45, 481, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 213, 481, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 429, 481, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 597, 481, 27,99 }, Collider::Type::escalera);
-
-	App->collisions->AddCollider({ 69, 361, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 309, 361, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 573, 361, 27,99 }, Collider::Type::escalera);
-
-	App->collisions->AddCollider({ 93, 241, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 189, 241, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 453, 241, 27,99 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 549, 241, 27,99 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 93, 218, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 186, 218, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 453, 218, 27,140 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 549, 218, 27,140 }, Collider::Type::escalera);
 	return ret;
 }
 // Called every draw update
