@@ -51,7 +51,7 @@ ModulePlayer::ModulePlayer() {
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;*/
 	Posicion.x = 0;
-	Posicion.y = 0;
+	Posicion.y = 683;
 	
 }
 bool ModulePlayer::Init() {
