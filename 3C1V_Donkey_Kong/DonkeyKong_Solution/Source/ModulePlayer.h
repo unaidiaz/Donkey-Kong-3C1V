@@ -11,7 +11,7 @@ struct SDL_Renderer;
 struct Collider;
 class posicion {
 public:
-	int x, y,velo=1;
+	int x, y;
 };
 class ModulePlayer :public Module {
 public:
@@ -34,9 +34,10 @@ public:
 	Animation paradoizq;
 	Animation saltarder;
 	Animation saltariz;
+	Animation topescalera;
 	bool escalera = false;
-
-	bool plataforma = true;
+	Animation espalda;
+	bool plataforma = false;
 	Collider* collider=nullptr;
 	int cont = 0;
 	bool jumpact = false;
