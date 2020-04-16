@@ -22,6 +22,7 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	posicion Posicion;
+	Animation* lastanimation = nullptr;
 	Animation* currentAnimation = nullptr;
 	int tecla=0;
 	// A set of animations
