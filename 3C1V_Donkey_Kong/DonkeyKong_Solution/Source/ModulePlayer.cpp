@@ -113,7 +113,11 @@ update_status ModulePlayer::Update() {
 					currentAnimation->Update();
 				
 				}
-			}	
+			}
+			else {
+				Posicion.y -= 1;
+
+			}
 		}
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
@@ -180,7 +184,11 @@ update_status ModulePlayer::Update() {
 	{
 		Posicion.y = 700;
 	}
-	plataforma = false;
+	if (plataforma == true) {
+		plataforma = false;
+		//Posicion.y -= 1;
+	}
+	
 	collider->SetPos(Posicion.x, Posicion.y);
 	return update_status::UPDATE_CONTINUE;
 }

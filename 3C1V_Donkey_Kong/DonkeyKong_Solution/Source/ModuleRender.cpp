@@ -43,11 +43,11 @@ bool ModuleRender::Init()
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
 	//547
-	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 21, 579, 627,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 45, 459, 579,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 69, 339, 531,10}, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 93, 219, 483,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 699, 672,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 21, 579, 627,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 45, 459, 579,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 69, 339, 531,8}, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 93, 219, 483,8 }, Collider::Type::plataforma);
 
 	//primer piso
 	App->collisions->AddCollider({ 21, 580, 22,104 }, Collider::Type::escalera);
