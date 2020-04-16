@@ -14,7 +14,7 @@ ModulePlayer::ModulePlayer() {
 	izquierda.PushBack({ 310, 84, 16, 17 });
 	izquierda.PushBack({ 334, 84, 16, 17 });
 	izquierda.loop = true;
-	izquierda.speed = 0.1f;
+	izquierda.speed = 0.3f;
 	
 	paradoder.PushBack({ 161,0,16,17 });
 	paradoizq.PushBack({ 121,0,16,17 });
@@ -22,7 +22,7 @@ ModulePlayer::ModulePlayer() {
 	derecha.PushBack({ 354, 84, 16, 17 });
 	derecha.PushBack({ 378, 84, 16, 17 });
 	derecha.loop = true;
-	derecha.speed = 0.1f;
+	derecha.speed = 0.3f;
 
 	arriba.PushBack({121,39,14,17});
 	arriba.PushBack({160,39,14,17});
@@ -61,17 +61,32 @@ bool ModulePlayer::Init() {
 	return true;
 }
 update_status ModulePlayer::Update() {
+	if (plataforma == false&&jumpact==false) {
+		Posicion.y += 2;
+	}
+	
+ 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	{
+		if (escalera == true &&plataforma==true|| plataforma == true) {
+			plataforma = false;
+			if (jumpact == false) {
+				jump();
+			}
+		}
 
-	Posicion.y += 2;
+	}
+	if (jumpact == true) {
+
+		jump();
+	}
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		tecla = 1;
 		Posicion.x -= Posicion.velo;
-		if (currentAnimation != &izquierda)
-		{
-			izquierda.Reset();
-			currentAnimation = &izquierda;
-		}
+		
+		//izquierda.Reset();
+		currentAnimation = &izquierda;
+		currentAnimation->Update();
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -79,22 +94,21 @@ update_status ModulePlayer::Update() {
 
 		tecla = 0;
 		Posicion.x += Posicion.velo;
-		if (currentAnimation != &derecha)
-		{
-			derecha.Reset();
-			currentAnimation = &derecha;
-		}
+		
+		//derecha.Reset();
+		currentAnimation = &derecha;
+		currentAnimation->Update();
+		
+		
 	}
 	
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
 			if (escalera == true) {
 				Posicion.y -= 1;
-				if (currentAnimation != &arriba)
-				{
-					arriba.Reset();
-					currentAnimation = &arriba;
-				}
+				//arriba.Reset();
+				currentAnimation = &arriba;
+				currentAnimation->Update();
 				escalera = false;
 			}
 			
@@ -106,46 +120,17 @@ update_status ModulePlayer::Update() {
 			if (escalera == true) {
 
 				Posicion.y += 3;
-				if (currentAnimation != &abajo)
-				{
-					abajo.Reset();
-					currentAnimation = &abajo;
-				}
+				//abajo.Reset();
+				currentAnimation = &abajo;
+				currentAnimation->Update();
 				escalera = false;
 			}
 		
 		}
 	
 	
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		if (escalera == false) {
-			if (jumpact == false) {
-				jump();
-			}
-		}
-	}
-
-	/*if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
-	}*/
-
-	// If no up/down movement detected, set the current animation back to idle
-
-
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE&&tecla==0 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE&&escalera==false){
-		currentAnimation = &paradoder;
 	
-	}
-	else if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && tecla == 1 && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE && escalera == false) {
-		currentAnimation = &paradoizq;
-	}
-	if (jumpact == true) {
-		jump();
-	}
+	
 	//LIMITES LATERALES
 	if (Posicion.x < 0)
 	{
@@ -156,30 +141,15 @@ update_status ModulePlayer::Update() {
 		Posicion.x = 635;
 	}
 	//LIMITES VERTICALES
-	if (Posicion.y>700)
+	if (Posicion.y > 700)
 	{
 		Posicion.y = 700;
 	}
-	currentAnimation->Update();
 	collider->SetPos(Posicion.x, Posicion.y);
-
-	//collider->SetPos(position.x, position.y);
-
-	
-
-	/*if (destroyed)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}*/
-
 	return update_status::UPDATE_CONTINUE;
 }
 update_status ModulePlayer::PostUpdate() {
 	//App->render->Blit(marioo, 0, 0, nullptr);
-	
-	
 	
 
 	return update_status::UPDATE_CONTINUE;
@@ -187,37 +157,56 @@ update_status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::jump() {
 	jumpact = true;
-	if (cont < 22) {
-		Posicion.y -= 4;
+	if (cont < 20){
+			Posicion.y -= 2;
 	}
-	else if(cont>=(22*2)) {
-		jumpact = false;
-		cont = -1;
+	else {
+		Posicion.y += 2;
+		if (plataforma == true) {
+			cont = -1;
+			jumpact = false;
+			//currentAnimation = &paradoder;
+		}	
+		
 	}
-
+	
+	cont++;
 	if (currentAnimation != &saltarder || currentAnimation != &saltariz)
 	{
 		if (tecla == 0) {
-			saltarder.Reset();
-			currentAnimation = &saltarder;
+			if (currentAnimation != &saltarder) {
+				saltarder.Reset();
+				currentAnimation = &saltarder;
+			}
+			currentAnimation->Update();
 		}
 		else {
-			saltariz.Reset();
-			currentAnimation = &saltariz;
+			if (currentAnimation != &saltarder) {
+				saltariz.Reset();
+				currentAnimation = &saltariz;
+
+
+			}
+			currentAnimation->Update();
 		}
 
 	}
-	cont++;
+	
 
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider&&c2->type==Collider::plataforma) {
 		Posicion.y -= 2;
+		plataforma = true;
+	
+	}
+	else {
+		plataforma = false;
 	}
 	if (c1 == collider && c2->type == Collider::escalera) {
-		Posicion.y -= 2;
-		escalera = true;
+			Posicion.y -= 2;
+			escalera = true;		
 	}
 	else {
 		escalera = false;

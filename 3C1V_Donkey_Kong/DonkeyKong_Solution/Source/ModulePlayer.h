@@ -35,6 +35,8 @@ public:
 	Animation saltarder;
 	Animation saltariz;
 	bool escalera = false;
+
+	bool plataforma = true;
 	Collider* collider=nullptr;
 	int cont = 0;
 	bool jumpact = false;
