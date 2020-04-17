@@ -90,8 +90,9 @@ update_status ModuleRender::PostUpdate()
 	//Blit(mario, 50, 50, nullptr);
 	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
 	App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
-	Blit(martillo, 200, 200, nullptr);
-	
+	SDL_Rect mart = { 0,4,9,11 };
+	Blit(martillo, 325, 280, &mart);
+	Blit(martillo, 10, 400, &mart);
 	// TODO 8: Display the rendered content to the screen
 
 	//Update the screen
