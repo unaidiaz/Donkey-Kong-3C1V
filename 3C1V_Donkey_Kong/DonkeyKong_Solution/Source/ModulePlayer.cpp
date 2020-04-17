@@ -196,8 +196,6 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		
-		App->audio->PlayFx(salto);
 		if (escalera == true && plataforma == true || plataforma == true) 
 		{
 			plataforma = false;
