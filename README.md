@@ -9,5 +9,4 @@ CREATED BY:
 David Lira, Adrián Aroca, Albert Pou, Unai Díaz de Garayo.
 
 CONTROLS:
-Move Mario by pressing WASD or ⮃⮀.
-dfgsdfgdshfdh
+Move Mario by pressing WASD and jump with SPACEBAR.
