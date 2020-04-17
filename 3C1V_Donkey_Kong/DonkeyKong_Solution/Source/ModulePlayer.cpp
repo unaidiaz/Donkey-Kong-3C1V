@@ -14,7 +14,7 @@ ModulePlayer::ModulePlayer() {
 	izquierda.PushBack({ 310, 84, 16, 17 });
 	izquierda.PushBack({ 334, 84, 16, 17 });
 	izquierda.loop = true;
-	izquierda.speed = 0.3f;
+	izquierda.speed = 0.2f;
 
 
 	espalda.PushBack({ 279,39,16,17 });
@@ -31,7 +31,7 @@ ModulePlayer::ModulePlayer() {
 	derecha.PushBack({ 354, 84, 16, 17 });
 	derecha.PushBack({ 378, 84, 16, 17 });
 	derecha.loop = true;
-	derecha.speed = 0.3f;
+	derecha.speed = 0.2f;
 
 	arriba.PushBack({ 121,39,14,17 });
 	arriba.PushBack({ 160,39,14,17 });
@@ -59,8 +59,8 @@ ModulePlayer::ModulePlayer() {
 	downAnim.PushBack({ 0, 1, 32, 14 });
 	downAnim.loop = false;
 	downAnim.speed = 0.1f;*/
-	Posicion.x = 0;
-	Posicion.y = 0;
+	Posicion.x = 65;
+	Posicion.y = 680;
 
 }
 bool ModulePlayer::Init() {
@@ -192,9 +192,9 @@ update_status ModulePlayer::Update() {
 	{
 		Posicion.x = 0;
 	}
-	if (Posicion.x > 635)
+	if (Posicion.x > 624)
 	{
-		Posicion.x = 635;
+		Posicion.x = 624;
 	}
 	//LIMITES VERTICALES
 	if (Posicion.y > 700)
@@ -270,8 +270,3 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-	
-	
-	
-	
-	
