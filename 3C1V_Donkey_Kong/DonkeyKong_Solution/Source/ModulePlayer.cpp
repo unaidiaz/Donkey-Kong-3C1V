@@ -11,11 +11,20 @@
 #include "SDL/include/SDL_scancode.h"
 
 ModulePlayer::ModulePlayer() {
-	izquierda.PushBack({ 310, 84, 16, 17 });
-	izquierda.PushBack({ 334, 84, 16, 17 });
-	izquierda.loop = true;
-	izquierda.speed = 0.2f;
-
+	mart_iz.PushBack({80,73,16,29});
+	mart_iz.PushBack({35,79,26,17});
+	mart_iz.PushBack({1,72,14,30 });
+	mart_iz.loop = true;
+	mart_iz.speed = 0.2f;
+	//izquierda.PushBack({ 310, 84, 16, 17 });
+	//izquierda.PushBack({ 334, 84, 16, 17 });
+	//izquierda.loop = true;
+	//izquierda.speed = 0.2f;
+	mart_iz.PushBack({ 80,73,16,29 });
+	mart_iz.PushBack({ 35,79,26,17 });
+	mart_iz.PushBack({ 1,72,14,30 });
+	mart_iz.loop = true;
+	mart_iz.speed = 0.2f;
 
 	espalda.PushBack({ 279,39,16,17 });
 
@@ -25,13 +34,15 @@ ModulePlayer::ModulePlayer() {
 	topescalera.loop = true;
 	topescalera.speed = 0.1f;
 
-	paradoder.PushBack({ 161,0,16,17 });
-	paradoizq.PushBack({ 121,0,16,17 });
+	paradoder_mart.PushBack({ 154,79,25,17 });
+	paradoizq_mart.PushBack({ 116,79,24,17 });
+	//paradoder.PushBack({ 161,0,16,17 });
+	//paradoizq.PushBack({ 121,0,16,17 });
 	// move upwards
-	derecha.PushBack({ 354, 84, 16, 17 });
-	derecha.PushBack({ 378, 84, 16, 17 });
-	derecha.loop = true;
-	derecha.speed = 0.2f;
+	//derecha.PushBack({ 354, 84, 16, 17 });
+	//derecha.PushBack({ 378, 84, 16, 17 });
+	//derecha.loop = true;
+	//derecha.speed = 0.2f;
 
 	arriba.PushBack({ 121,39,14,17 });
 	arriba.PushBack({ 160,39,14,17 });
@@ -53,7 +64,7 @@ ModulePlayer::ModulePlayer() {
 	/*saltariz.loop = true;
 	saltariz.speed = 0.1f;*/
 
-	currentAnimation = &paradoder;
+	currentAnimation = &paradoder_mart;
 	// Move down
 	/*downAnim.PushBack({ 33, 1, 32, 14 });
 	downAnim.PushBack({ 0, 1, 32, 14 });
@@ -143,7 +154,7 @@ update_status ModulePlayer::Update() {
 		Posicion.x += 2;
 
 		//derecha.Reset();
-		currentAnimation = &derecha;
+		currentAnimation = &mart_der;
 		currentAnimation->Update();
 		if (escalera == true) {
 			escalera = false;
@@ -160,7 +171,7 @@ update_status ModulePlayer::Update() {
 		Posicion.x -= 2;
 
 		//izquierda.Reset();
-		currentAnimation = &izquierda;
+		currentAnimation = &mart_iz;
 		currentAnimation->Update();
 		if (escalera == true) {
 			escalera = false;

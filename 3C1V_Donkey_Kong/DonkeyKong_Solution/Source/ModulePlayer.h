@@ -26,6 +26,8 @@ public:
 	Animation* currentAnimation = nullptr;
 	int tecla=0;
 	// A set of animations
+	Animation mart_iz;
+	Animation mart_der;
 	Animation derecha;
 	Animation izquierda;
 	Animation arriba;
@@ -33,6 +35,8 @@ public:
 	Animation saltar;
 	Animation paradoder;
 	Animation paradoizq;
+	Animation paradoder_mart;
+	Animation paradoizq_mart;
 	Animation saltarder;
 	Animation saltariz;
 	Animation topescalera;
