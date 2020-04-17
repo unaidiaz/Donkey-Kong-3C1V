@@ -15,21 +15,31 @@ ModuleCollisions::ModuleCollisions()
 	matrix[Collider::Type::plataforma][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::plataforma][Collider::Type::Enemigo] = true;
 	matrix[Collider::Type::plataforma][Collider::Type::escalera] = false;
+	matrix[Collider::Type::plataforma][Collider::Type::martillo] = false;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::plataforma] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::Enemigo] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::escalera] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::martillo] = true;
 
 	matrix[Collider::Type::Enemigo][Collider::Type::plataforma] = true;
 	matrix[Collider::Type::Enemigo][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::Enemigo][Collider::Type::Enemigo] = false;
 	matrix[Collider::Type::Enemigo][Collider::Type::escalera] = true;
+	matrix[Collider::Type::Enemigo][Collider::Type::martillo] = false;
 
 	matrix[Collider::Type::escalera][Collider::Type::plataforma] = false;
 	matrix[Collider::Type::escalera][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::escalera][Collider::Type::Enemigo] = true;
 	matrix[Collider::Type::escalera][Collider::Type::escalera] = false;
+	matrix[Collider::Type::escalera][Collider::Type::martillo] = false;
+
+	matrix[Collider::Type::martillo][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::martillo][Collider::Type::martillo] = false;
+	matrix[Collider::Type::martillo][Collider::Type::escalera] = false;
+	matrix[Collider::Type::martillo][Collider::Type::Enemigo] = false;
+	matrix[Collider::Type::martillo][Collider::Type::plataforma] = false;
 }
 
 // Destructor
