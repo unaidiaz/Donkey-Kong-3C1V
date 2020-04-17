@@ -1,4 +1,4 @@
-#ifndef __PATH_H__
+/*#ifndef __PATH_H__
 #define __PATH_H__
 
 #include "p2Point.h"
@@ -53,4 +53,4 @@ private:
 	uint currentStep = 0;
 };
 
-#endif // __PATH_H__
+#endif // __PATH_H__*/

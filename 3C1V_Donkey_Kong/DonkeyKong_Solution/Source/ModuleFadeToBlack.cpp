@@ -1,4 +1,4 @@
-#include "ModuleFadeToBlack.h"
+/*#include "ModuleFadeToBlack.h"
 
 #include "Application.h"
 #include "ModuleRender.h"
@@ -84,4 +84,4 @@ bool ModuleFadeToBlack::FadeToBlack(Module* moduleToDisable, Module* moduleToEna
 	}
 
 	return ret;
-}
+}*/

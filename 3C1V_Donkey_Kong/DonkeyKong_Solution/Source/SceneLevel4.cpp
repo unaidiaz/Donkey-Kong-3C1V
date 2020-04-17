@@ -1,4 +1,4 @@
-#include "SceneLevel1.h"
+/*#include "SceneLevel1.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -86,4 +86,4 @@ bool SceneLevel1::CleanUp()
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
-}
+}*/

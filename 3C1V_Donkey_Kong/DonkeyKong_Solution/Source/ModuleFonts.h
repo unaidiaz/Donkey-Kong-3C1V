@@ -1,4 +1,4 @@
-#include "Application.h"
+/*#include "Application.h"
 
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -102,3 +102,4 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 		// 4 - Advance the position where we blit the next character
 	}
 }
+*/

@@ -1,4 +1,4 @@
-#ifndef __MODULE_PARTICLES_H__
+/*#ifndef __MODULE_PARTICLES_H__
 #define __MODULE_PARTICLES_H__
 
 #include "Module.h"
@@ -68,4 +68,4 @@ private:
 
 };
 
-#endif // !__MODULEPARTICLES_H__
+#endif // !__MODULEPARTICLES_H__*/

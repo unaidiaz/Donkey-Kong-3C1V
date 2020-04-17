@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #ifndef __ENEMY_H__
 #define __ENEMY_H__
 
@@ -49,4 +49,4 @@ protected:
 	Collider* collider = nullptr;
 };
 
-#endif // __ENEMY_H__
+#endif // __ENEMY_H__*/

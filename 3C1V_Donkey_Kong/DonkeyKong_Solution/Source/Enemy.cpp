@@ -1,4 +1,4 @@
-#include "Enemy.h"
+/*#include "Enemy.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -41,4 +41,4 @@ void Enemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->audio->PlayFx(destroyedFx);
-}
+}*/

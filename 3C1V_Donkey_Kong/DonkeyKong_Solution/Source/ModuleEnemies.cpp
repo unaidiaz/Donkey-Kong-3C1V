@@ -1,4 +1,4 @@
-#include "ModuleEnemies.h"
+/*#include "ModuleEnemies.h"
 
 #include "Application.h"
 
@@ -184,4 +184,4 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
-}
+}*/

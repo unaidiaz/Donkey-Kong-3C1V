@@ -1,4 +1,4 @@
-#include "Particle.h"
+/*#include "Particle.h"
 
 #include "Collider.h"
 
@@ -59,4 +59,4 @@ void Particle::SetToDelete()
 	pendingToDelete = true;
 	if (collider != nullptr)
 		collider->pendingToDelete = true;
-}
+}*/

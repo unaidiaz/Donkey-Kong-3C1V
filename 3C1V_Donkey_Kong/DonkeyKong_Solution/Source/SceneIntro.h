@@ -1,4 +1,4 @@
-#ifndef __SCENE_INTRO_H__
+/*#ifndef __SCENE_INTRO_H__
 #define __SCENE_INTRO_H__
 
 #include "Module.h"
@@ -32,4 +32,4 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 };
 
-#endif
+#endif*/

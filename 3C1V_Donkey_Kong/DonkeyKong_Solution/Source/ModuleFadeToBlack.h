@@ -1,4 +1,4 @@
-#ifndef __MODULEFADETOBLACK_H__
+/*#ifndef __MODULEFADETOBLACK_H__
 #define __MODULEFADETOBLACK_H__
 
 #include "Module.h"
@@ -51,4 +51,4 @@ private:
 	Module* moduleToDisable = nullptr;
 };
 
-#endif //__MODULEFADETOBLACK_H__
+#endif //__MODULEFADETOBLACK_H__*/

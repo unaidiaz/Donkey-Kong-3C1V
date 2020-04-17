@@ -1,4 +1,4 @@
-#include "Path.h"
+/*#include "Path.h"
 
 #include "Animation.h"
 
@@ -44,4 +44,4 @@ void Path::Reset()
 {
 	currentStepFrame = 0;
 	currentStep = 0;
-}
+}*/

@@ -1,4 +1,4 @@
-#include "SceneIntro.h"
+/*#include "SceneIntro.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -50,4 +50,4 @@ Update_Status SceneIntro::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
-}
+}*/

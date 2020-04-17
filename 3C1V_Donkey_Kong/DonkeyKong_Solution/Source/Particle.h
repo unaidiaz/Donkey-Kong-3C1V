@@ -1,4 +1,4 @@
-#ifndef __PARTICLE_H__
+/*#ifndef __PARTICLE_H__
 #define __PARTICLE_H__
 
 #include "Animation.h"
@@ -54,4 +54,4 @@ public:
 	bool pendingToDelete = false;
 };
 
-#endif //__PARTICLE_H__
+#endif //__PARTICLE_H__*/

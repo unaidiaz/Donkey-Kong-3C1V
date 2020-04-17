@@ -39,7 +39,7 @@ bool ModuleRender::Init()
 	}
 
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
-
+	martillo = App->textures->Load("Assets/objetosestaticos.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
 	//547
@@ -90,6 +90,7 @@ update_status ModuleRender::PostUpdate()
 	//Blit(mario, 50, 50, nullptr);
 	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
 	App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
+	Blit(martillo, 200, 200, nullptr);
 	
 	// TODO 8: Display the rendered content to the screen
 

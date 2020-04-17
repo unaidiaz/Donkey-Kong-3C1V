@@ -1,4 +1,4 @@
-#ifndef __MODULE_ENEMIES_H__
+/*#ifndef __MODULE_ENEMIES_H__
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
@@ -82,4 +82,4 @@ private:
 	int enemyDestroyedFx = 0;
 };
 
-#endif // __MODULE_ENEMIES_H__
+#endif // __MODULE_ENEMIES_H__*/
