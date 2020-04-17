@@ -140,7 +140,7 @@ update_status ModulePlayer::Update() {
 	{
 
 		tecla = 0;
-		Posicion.x += 1;
+		Posicion.x += 2;
 
 		//derecha.Reset();
 		currentAnimation = &derecha;
@@ -157,7 +157,7 @@ update_status ModulePlayer::Update() {
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		tecla = 1;
-		Posicion.x -= 1;
+		Posicion.x -= 2;
 
 		//izquierda.Reset();
 		currentAnimation = &izquierda;
