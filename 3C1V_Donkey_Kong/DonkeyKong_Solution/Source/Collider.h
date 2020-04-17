@@ -14,6 +14,7 @@ struct Collider
 		PLAYER,
 		Enemigo,
 		escalera,
+		martillo,
 		MAX
 	};
 
