@@ -66,6 +66,7 @@ ModulePlayer::ModulePlayer() {
 bool ModulePlayer::Init() {
 	collider = App->collisions->AddCollider({ Posicion.x,Posicion.y,16,17 }, Collider::Type::PLAYER, this);
 	//marioo = App->textures->Load("Assets/perso.png");
+	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	lastanimation = &topescalera;
 	return true;
 }
@@ -141,7 +142,7 @@ update_status ModulePlayer::Update() {
 
 		tecla = 0;
 		Posicion.x += 2;
-
+		contador++;
 		//derecha.Reset();
 		currentAnimation = &derecha;
 		currentAnimation->Update();
@@ -158,7 +159,7 @@ update_status ModulePlayer::Update() {
 	{
 		tecla = 1;
 		Posicion.x -= 2;
-
+		contador++;
 		//izquierda.Reset();
 		currentAnimation = &izquierda;
 		currentAnimation->Update();
@@ -183,7 +184,12 @@ update_status ModulePlayer::Update() {
 
 		jump();
 	}
-
+	if (contador == 30 || contador == 60 || contador == 15 || contador == 45) {
+		App->audio->PlayFx(paso);
+	}
+	if (contador > 60) {
+		contador = 0;
+	}
 
 
 

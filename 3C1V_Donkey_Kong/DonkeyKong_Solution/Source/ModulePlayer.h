@@ -42,6 +42,8 @@ public:
 	Collider* collider=nullptr;
 	int cont = 0;
 	bool jumpact = false;
+	int paso;
+	int contador = 0;
 private:
 	SDL_Texture* marioo=nullptr;
 };
