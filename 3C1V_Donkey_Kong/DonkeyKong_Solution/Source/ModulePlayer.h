@@ -46,7 +46,9 @@ public:
 	Collider* collider=nullptr;
 	int cont = 0;
 	bool jumpact = false;
+	bool canAudioJump = true;
 	int paso;
+	int salto;
 	int contador = 0;
 private:
 	SDL_Texture* marioo=nullptr;

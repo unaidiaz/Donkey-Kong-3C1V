@@ -11,21 +11,23 @@
 #include "SDL/include/SDL_scancode.h"
 
 ModulePlayer::ModulePlayer() {
+	/*
 	mart_iz.PushBack({80,73,16,29});
 	mart_iz.PushBack({35,79,26,17});
 	mart_iz.PushBack({1,72,14,30 });
 	mart_iz.loop = true;
 	mart_iz.speed = 0.2f;
-	//izquierda.PushBack({ 310, 84, 16, 17 });
-	//izquierda.PushBack({ 334, 84, 16, 17 });
-	//izquierda.loop = true;
-	//izquierda.speed = 0.2f;
+	
 	mart_iz.PushBack({ 80,73,16,29 });
 	mart_iz.PushBack({ 35,79,26,17 });
 	mart_iz.PushBack({ 1,72,14,30 });
 	mart_iz.loop = true;
 	mart_iz.speed = 0.2f;
-
+	*/
+    izquierda.PushBack({ 310, 84, 16, 17 });
+	izquierda.PushBack({ 334, 84, 16, 17 });
+	izquierda.loop = true;
+	izquierda.speed = 0.2f;
 	espalda.PushBack({ 279,39,16,17 });
 
 
@@ -34,15 +36,15 @@ ModulePlayer::ModulePlayer() {
 	topescalera.loop = true;
 	topescalera.speed = 0.1f;
 
-	paradoder_mart.PushBack({ 154,79,25,17 });
-	paradoizq_mart.PushBack({ 116,79,24,17 });
-	//paradoder.PushBack({ 161,0,16,17 });
-	//paradoizq.PushBack({ 121,0,16,17 });
+	//paradoder_mart.PushBack({ 154,79,25,17 });
+	//paradoizq_mart.PushBack({ 116,79,24,17 });
+	paradoder.PushBack({ 161,0,16,17 });
+	paradoizq.PushBack({ 121,0,16,17 });
 	// move upwards
-	//derecha.PushBack({ 354, 84, 16, 17 });
-	//derecha.PushBack({ 378, 84, 16, 17 });
-	//derecha.loop = true;
-	//derecha.speed = 0.2f;
+	derecha.PushBack({ 354, 84, 16, 17 });
+	derecha.PushBack({ 378, 84, 16, 17 });
+	derecha.loop = true;
+	derecha.speed = 0.2f;
 
 	arriba.PushBack({ 121,39,14,17 });
 	arriba.PushBack({ 160,39,14,17 });
@@ -64,7 +66,7 @@ ModulePlayer::ModulePlayer() {
 	/*saltariz.loop = true;
 	saltariz.speed = 0.1f;*/
 
-	currentAnimation = &paradoder_mart;
+	currentAnimation = &derecha;
 	// Move down
 	/*downAnim.PushBack({ 33, 1, 32, 14 });
 	downAnim.PushBack({ 0, 1, 32, 14 });
@@ -78,14 +80,18 @@ bool ModulePlayer::Init() {
 	collider = App->collisions->AddCollider({ Posicion.x,Posicion.y,16,17 }, Collider::Type::PLAYER, this);
 	//marioo = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
+	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	lastanimation = &topescalera;
 	return true;
 }
-update_status ModulePlayer::Update() {
-	if (jumpact == false) {
+update_status ModulePlayer::Update() 
+{
+	if (jumpact == false) 
+	{
 		Posicion.y += 2;
 	}
-	if (plataforma == true && escalera == true) {
+	if (plataforma == true && escalera == true) 
+	{
 		Posicion.y += 2;
 	}
 	//plataforma == false &&
@@ -123,16 +129,20 @@ update_status ModulePlayer::Update() {
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (escalera == true) {
-			if (plataforma == true) {
+		if (escalera == true) 
+		{
+			if (plataforma == true) 
+			{
 				Posicion.y += 3;
 				//abajo.Reset();
-				if (lastanimation == &topescalera) {
+				if (lastanimation == &topescalera) 
+				{
 					currentAnimation = &espalda;
 					currentAnimation->Update();
 					lastanimation = &espalda;
 				}
-				else {
+				else 
+				{
 					currentAnimation = &topescalera;
 					currentAnimation->Update();
 
@@ -140,7 +150,8 @@ update_status ModulePlayer::Update() {
 
 				escalera = false;
 			}
-			else {
+			else 
+			{
 				Posicion.y += 1;
 				currentAnimation = &abajo;
 				currentAnimation->Update();
@@ -155,12 +166,14 @@ update_status ModulePlayer::Update() {
 		Posicion.x += 2;
 		contador++;
 		//derecha.Reset();
-		currentAnimation = &mart_der;
+		currentAnimation = &derecha;
 		currentAnimation->Update();
-		if (escalera == true) {
+		if (escalera == true) 
+		{
 			escalera = false;
 		}
-		if (plataforma == true) {
+		if (plataforma == true) 
+		{
 			Posicion.y -= 1;
 		}
 
@@ -172,7 +185,7 @@ update_status ModulePlayer::Update() {
 		Posicion.x -= 2;
 		contador++;
 		//izquierda.Reset();
-		currentAnimation = &mart_iz;
+		currentAnimation = &izquierda;
 		currentAnimation->Update();
 		if (escalera == true) {
 			escalera = false;
@@ -183,16 +196,24 @@ update_status ModulePlayer::Update() {
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		if (escalera == true && plataforma == true || plataforma == true) {
+		
+		App->audio->PlayFx(salto);
+		if (escalera == true && plataforma == true || plataforma == true) 
+		{
 			plataforma = false;
-			if (jumpact == false) {
+			if (jumpact == false) 
+			{
+				if (canAudioJump)
+				{
+					App->audio->PlayFx(salto);
+					canAudioJump = false;
+				}				
 				jump();
 			}
 		}
-
 	}
-	if (jumpact == true) {
-
+	if (jumpact == true) 
+	{
 		jump();
 	}
 	if (contador == 30 || contador == 60 || contador == 15 || contador == 45) {
@@ -229,16 +250,22 @@ update_status ModulePlayer::PostUpdate() {
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModulePlayer::jump() {
+void ModulePlayer::jump() 
+{	
 	jumpact = true;
-	if (cont < 20) {
+	
+	if (cont < 20) 
+	{
 		Posicion.y -= 2;
 	}
-	else {
+	else 
+	{
 		Posicion.y += 2;
-		if (plataforma == true) {
+		if (plataforma == true) 
+		{
 			cont = -1;
 			jumpact = false;
+			canAudioJump = true;
 			//currentAnimation = &paradoder;
 		}
 
@@ -252,7 +279,6 @@ void ModulePlayer::jump() {
 				//saltarder.Reset();
 				currentAnimation = &saltarder;
 			}
-
 		}
 		else {
 			if (currentAnimation != &saltarder) {
@@ -261,9 +287,7 @@ void ModulePlayer::jump() {
 
 
 			}
-
 		}
-
 	}
 	currentAnimation->Update();
 

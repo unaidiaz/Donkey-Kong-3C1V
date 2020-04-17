@@ -69,8 +69,8 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 443, 220, 22,104 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 539, 220, 22,104 }, Collider::Type::escalera);
 	//Martillo
-	App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
-	App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
+	// App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
+	// App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
 	return ret;
 }
 // Called every draw update
