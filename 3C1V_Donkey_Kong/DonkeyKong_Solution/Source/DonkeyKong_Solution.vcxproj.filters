@@ -11,6 +11,21 @@
     <Filter Include="Source Files\Modules">
       <UniqueIdentifier>{d16ab9db-9938-4f11-8105-beb05718b15a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{3c8817a1-2269-4bf6-8b9d-b6c33aff03e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Enemies">
+      <UniqueIdentifier>{a8796ba6-3796-44a7-a513-80976bcfbbde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{e8f08f76-56a2-4ce8-b02a-f52d9dc42131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Core">
+      <UniqueIdentifier>{b186ead1-e270-452e-9f63-7ca25b6ffb28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Gameplay">
+      <UniqueIdentifier>{32109128-7d5e-48cd-89b3-981010c3e231}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -25,32 +40,62 @@
     <ClInclude Include="MemLeaks.h">
       <Filter>Source Files\Application</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleWindow.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRender.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleTextures.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Source Files\Modules</Filter>
+    <ClInclude Include="Collider.h">
+      <Filter>Source Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
     <ClInclude Include="ModuleCollisions.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Source Files\Modules</Filter>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIntro.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLevel4.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,32 +108,59 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files\Application</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files\Application</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Source Files\Modules</Filter>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Source Files\Modules</Filter>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Source Files\Modules</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCollisions.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Source Files\Modules</Filter>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIntro.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevel4.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
