@@ -44,30 +44,30 @@ bool ModuleRender::Init()
 	mario = App->textures->Load("Assets/perso.png");
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 21, 579, 627,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 45, 459, 579,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 69, 339, 531,8}, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 93, 219, 483,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 11, 579, 627,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 35, 459, 579,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 59, 339, 531,8}, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 83, 219, 483,8 }, Collider::Type::plataforma);
 
 	//primer piso
-	App->collisions->AddCollider({ 21, 580, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 309, 580, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 621, 580, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 11, 580, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 299, 580, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 611, 580, 22,104 }, Collider::Type::escalera);
 	
 	//segundo piso
-	App->collisions->AddCollider({ 45, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 213, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 429, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 597, 460, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 35, 460, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 203, 460, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 419, 460, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 587, 460, 22,104 }, Collider::Type::escalera);
 	
-	App->collisions->AddCollider({ 69, 340, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 309, 340, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 573, 340, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 59, 340, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 299, 340, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 563, 340, 22,104 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 93, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 186, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 453, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 549, 220, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 83, 220, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 176, 220, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 443, 220, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 539, 220, 22,104 }, Collider::Type::escalera);
 	return ret;
 }
 // Called every draw update
