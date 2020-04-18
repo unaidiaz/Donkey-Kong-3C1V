@@ -92,7 +92,15 @@ update_status ModuleRender::PostUpdate()
 	Blit(testTexture, 0, 130, nullptr);
 	//Blit(mario, 50, 50, nullptr);
 	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
-	App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
+	if ((rect.x==199&& rect.y==73&&rect.w==16 && rect.h==29)|| (rect.x == 80 && rect.y == 73 && rect.w == 16 && rect.h == 29)) {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y-36, &rect);
+	}
+	else if ((rect.x == 35 && rect.y == 79 && rect.w == 26 && rect.h == 17)){
+		App->render->Blit(mario, App->player->Posicion.x-20, App->player->Posicion.y, &rect);
+	}else {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
+	}
+	
 	SDL_Rect mart = { 0,4,9,11 };
 	Blit(martillo, 325, 280, &mart);
 	Blit(martillo, 10, 400, &mart);
