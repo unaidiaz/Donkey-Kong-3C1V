@@ -11,24 +11,22 @@
 #include "SDL/include/SDL_scancode.h"
 
 ModulePlayer::ModulePlayer() {
-	/*
+	
 	mart_iz.PushBack({80,73,16,29});
 	mart_iz.PushBack({35,79,26,17});
-	mart_iz.PushBack({1,72,14,30 });
 	mart_iz.loop = true;
-	mart_iz.speed = 0.2f;
+	mart_iz.speed = 0.1f;
 	
-	mart_iz.PushBack({ 80,73,16,29 });
-	mart_iz.PushBack({ 35,79,26,17 });
-	mart_iz.PushBack({ 1,72,14,30 });
-	mart_iz.loop = true;
-	mart_iz.speed = 0.2f;
-	*/
-    izquierda.PushBack({ 310, 84, 16, 17 });
+	mart_der.PushBack({ 199,73,16,29 });
+	mart_der.PushBack({ 234,79,26,16 });
+	mart_der.loop = true;
+	mart_der.speed = 0.1f;
+	
+    /*izquierda.PushBack({ 310, 84, 16, 17 });
 	izquierda.PushBack({ 334, 84, 16, 17 });
 	izquierda.loop = true;
 	izquierda.speed = 0.2f;
-	espalda.PushBack({ 279,39,16,17 });
+	espalda.PushBack({ 279,39,16,17 });*/
 
 
 	topescalera.PushBack({ 200,39,15,15 });
@@ -41,10 +39,10 @@ ModulePlayer::ModulePlayer() {
 	paradoder.PushBack({ 161,0,16,17 });
 	paradoizq.PushBack({ 121,0,16,17 });
 	// move upwards
-	derecha.PushBack({ 354, 84, 16, 17 });
+	/*derecha.PushBack({ 354, 84, 16, 17 });
 	derecha.PushBack({ 378, 84, 16, 17 });
 	derecha.loop = true;
-	derecha.speed = 0.2f;
+	derecha.speed = 0.2f;*/
 
 	arriba.PushBack({ 121,39,14,17 });
 	arriba.PushBack({ 160,39,14,17 });
@@ -66,7 +64,7 @@ ModulePlayer::ModulePlayer() {
 	/*saltariz.loop = true;
 	saltariz.speed = 0.1f;*/
 
-	currentAnimation = &derecha;
+	currentAnimation = &mart_der;
 	// Move down
 	/*downAnim.PushBack({ 33, 1, 32, 14 });
 	downAnim.PushBack({ 0, 1, 32, 14 });
@@ -166,7 +164,7 @@ update_status ModulePlayer::Update()
 		Posicion.x += 2;
 		contador++;
 		//derecha.Reset();
-		currentAnimation = &derecha;
+		currentAnimation = &mart_der;
 		currentAnimation->Update();
 		if (escalera == true) 
 		{
@@ -185,7 +183,7 @@ update_status ModulePlayer::Update()
 		Posicion.x -= 2;
 		contador++;
 		//izquierda.Reset();
-		currentAnimation = &izquierda;
+		currentAnimation = &mart_iz;
 		currentAnimation->Update();
 		if (escalera == true) {
 			escalera = false;
