@@ -8,6 +8,7 @@
 #include"ModulePlayer.h"
 #include"ModuleCollisions.h"
 #include "ModuleAudio.h"
+#include"ModuleObjects.h"
 Application::Application()
 {
 	// The order in which the modules are added is very important.

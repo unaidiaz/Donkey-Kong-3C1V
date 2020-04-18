@@ -97,6 +97,12 @@
     <ClInclude Include="Path.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleObjects.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="martillo.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -161,6 +167,12 @@
     </ClCompile>
     <ClCompile Include="Path.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleObjects.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="martillo.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

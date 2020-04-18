@@ -35,8 +35,9 @@ public:
 	// Adds a new collider to the list
 	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener = nullptr);
 
+	void DebugDraw();
 	// Draws all existing colliders with some transparency
-	
+	bool debug = false;
 
 private:
 	// All existing colliders in the scene
@@ -47,7 +48,7 @@ private:
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
 	// Simple debugging flag to draw all colliders
-	bool debug = false;
+	
 };
 
 #endif // __MODULE_COLLISIONS_H__

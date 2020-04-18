@@ -1,6 +1,6 @@
 #ifndef __MODULE_RENDER_H__
 #define __MODULE_RENDER_H__
-
+#include"ModuleCollisions.h"
 #include "Module.h"
 struct SDL_Rect;
 struct SDL_Texture;
@@ -31,6 +31,7 @@ public:
 	// Called on application exit.
 	// Destroys the rendering context
 	bool CleanUp() override;
+	bool DrawQuad(const SDL_Rect& rect, int r, int g, int b, int a, float speed = 1.0f);
 
 	// Prints a texture to the rendering context.
 	// Param texture	- A valid SDL Texture, validation checks are not performed

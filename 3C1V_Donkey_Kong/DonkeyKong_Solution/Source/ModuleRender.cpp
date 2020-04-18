@@ -97,7 +97,9 @@ update_status ModuleRender::PostUpdate()
 	Blit(martillo, 325, 280, &mart);
 	Blit(martillo, 10, 400, &mart);
 	// TODO 8: Display the rendered content to the screen
-
+	if (App->collisions->debug == true) {
+		App->collisions->DebugDraw();
+	}
 	//Update the screen
 	SDL_RenderPresent(renderer);
 
@@ -136,6 +138,27 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+		ret = false;
+	}
+
+	return ret;
+}
+bool ModuleRender::DrawQuad(const SDL_Rect& rect, int r, int g, int b, int a, float speed)
+{
+	bool ret = true;
+
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+
+	SDL_Rect dstRect{
+		rect.x+13 ,
+		rect.y+30 ,
+		rect.w , 
+		rect.h };
+
+	if (SDL_RenderFillRect(renderer, &dstRect) != 0)
+	{
+		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
 		ret = false;
 	}
 

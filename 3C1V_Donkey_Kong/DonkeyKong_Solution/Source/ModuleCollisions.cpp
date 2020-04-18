@@ -96,7 +96,7 @@ update_status ModuleCollisions::PreUpdate()
 
 update_status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_DOWN)
 		debug = !debug;
 
 	return update_status::UPDATE_CONTINUE;
@@ -104,9 +104,7 @@ update_status ModuleCollisions::Update()
 
 update_status ModuleCollisions::PostUpdate()
 {
-	/*if (debug)
-		DebugDraw();*/
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -142,4 +140,35 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 	}
 
 	return ret;
+}
+void ModuleCollisions::DebugDraw()
+{
+	Uint8 alpha = 80;
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if (colliders[i] == nullptr)
+			continue;
+
+		switch (colliders[i]->type)
+		{
+		case Collider::Type::NONE: // white
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+			break;
+		case Collider::Type::plataforma: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
+			break;
+		case Collider::Type::PLAYER: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case Collider::Type::escalera: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+		case Collider::Type::Enemigo: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+		//case Collider::Type::ENEMY_SHOT: // magenta
+		//	App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+		//	break;
+		}
+	}
 }
