@@ -171,7 +171,9 @@ update_status ModulePlayer::Update()
 
 		tecla = 0;
 		Posicion.x += 2;
-		contador++;
+		if (jumpact == false) {
+			contador++;
+		}
 		//derecha.Reset();
 		currentAnimation = &mart_der;
 		currentAnimation->Update();
@@ -190,7 +192,9 @@ update_status ModulePlayer::Update()
 	{
 		tecla = 1;
 		Posicion.x -= 2;
-		contador++;
+		if (jumpact == false) {
+			contador++;
+		}
 		//izquierda.Reset();
 		currentAnimation = &mart_iz;
 		currentAnimation->Update();

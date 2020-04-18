@@ -44,11 +44,11 @@ bool ModuleRender::Init()
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
 	//547
-	App->collisions->AddCollider({ 0, 699, 672,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 11, 579, 627,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 35, 459, 579,8 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 59, 339, 531,8}, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 83, 219, 483,8 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 11, 579, 627,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 35, 459, 579,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 59, 339, 531,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 83, 219, 483,10 }, Collider::Type::plataforma);
 
 	//primer piso
 	App->collisions->AddCollider({ 18, 580, 10,82 }, Collider::Type::escalera);
@@ -93,13 +93,18 @@ update_status ModuleRender::PostUpdate()
 	Blit(testTexture, 0, 130, nullptr);
 	//Blit(mario, 50, 50, nullptr);
 	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
-	if ((rect.x==199&& rect.y==73&&rect.w==16 && rect.h==29)|| (rect.x == 80 && rect.y == 73 && rect.w == 16 && rect.h == 29)) {
-		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y-36, &rect);
+	if ((rect.x == 199 && rect.y == 73 && rect.w == 16 && rect.h == 29) || (rect.x == 80 && rect.y == 73 && rect.w == 16 && rect.h == 29)) {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y - 36, &rect);
 	}
-	else if ((rect.x == 35 && rect.y == 79 && rect.w == 26 && rect.h == 17)){
-		App->render->Blit(mario, App->player->Posicion.x-20, App->player->Posicion.y, &rect);
-	}else {
+	else if ((rect.x == 35 && rect.y == 79 && rect.w == 26 && rect.h == 17)) {
+		App->render->Blit(mario, App->player->Posicion.x - 20, App->player->Posicion.y, &rect);
+	}
+	else if ((rect.x == 200 && rect.y == 39 && rect.w == 15 && rect.h == 15) || (rect.x == 239 && rect.y == 41 && rect.w == 15 && rect.h == 13)) {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y + 25, &rect);
+	}
+	else {
 		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
+
 	}
 	SDL_Rect dkong = {51,155,40,33};
 	Blit(kong, 280, 153, &dkong);
