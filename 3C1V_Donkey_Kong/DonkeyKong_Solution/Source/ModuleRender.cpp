@@ -40,6 +40,7 @@ bool ModuleRender::Init()
 
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
 	martillo = App->textures->Load("Assets/objetosestaticos.png");
+	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
 	//547
@@ -69,8 +70,8 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 450, 220, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 546, 220, 10,82 }, Collider::Type::escalera);
 	//Martillo
-	// App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
-	// App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
+	App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
+	App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
 	return ret;
 }
 // Called every draw update
@@ -100,7 +101,8 @@ update_status ModuleRender::PostUpdate()
 	}else {
 		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
 	}
-	
+	SDL_Rect dkong = {51,155,40,33};
+	Blit(kong, 280, 153, &dkong);
 	SDL_Rect mart = { 0,4,9,11 };
 	Blit(martillo, 325, 280, &mart);
 	Blit(martillo, 10, 400, &mart);

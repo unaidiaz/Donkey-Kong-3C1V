@@ -48,6 +48,7 @@ private:
 	SDL_Texture* mario = nullptr;
 	SDL_Texture* testTexture = nullptr;
 	SDL_Texture* martillo = nullptr;
+	SDL_Texture* kong = nullptr;
 };
 
 #endif //__MODULE_RENDER_H__
