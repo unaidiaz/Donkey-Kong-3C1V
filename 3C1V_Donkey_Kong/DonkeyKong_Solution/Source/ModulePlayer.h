@@ -47,6 +47,7 @@ public:
 	int cont = 0;
 	bool jumpact = false;
 	bool canAudioJump = true;
+	bool canLateralMov = true;
 	int paso;
 	int salto;
 	int contador = 0;

@@ -95,24 +95,30 @@ update_status ModulePlayer::Update()
 	//plataforma == false &&
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (escalera == true) {
-			if (plataforma == false) {
+		if (escalera == true) 
+		{
+			if (plataforma == false) 
+			{
+				canLateralMov = false;
 				Posicion.y -= 1;
 				//arriba.Reset();
-				if (lastanimation == &topescalera) {
+				if (lastanimation == &topescalera) 
+				{
+					canLateralMov = true;
 					currentAnimation = &espalda;
 					lastanimation = &espalda;
 				}
-				else {
+				else 
+				{
 					currentAnimation = &arriba;
 					currentAnimation->Update();
-
 				}
-
 				escalera = false;
 
 			}
-			else {
+			else
+			{
+				canLateralMov = true;
 				Posicion.y -= 3;
 				currentAnimation = &topescalera;
 				lastanimation = &topescalera;
@@ -131,10 +137,12 @@ update_status ModulePlayer::Update()
 		{
 			if (plataforma == true) 
 			{
+				canLateralMov = true;
 				Posicion.y += 3;
 				//abajo.Reset();
 				if (lastanimation == &topescalera) 
 				{
+					canLateralMov = true;
 					currentAnimation = &espalda;
 					currentAnimation->Update();
 					lastanimation = &espalda;
@@ -150,6 +158,7 @@ update_status ModulePlayer::Update()
 			}
 			else 
 			{
+				canLateralMov = false;
 				Posicion.y += 1;
 				currentAnimation = &abajo;
 				currentAnimation->Update();
@@ -157,7 +166,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
 
 		tecla = 0;
@@ -177,7 +186,7 @@ update_status ModulePlayer::Update()
 
 
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
 		tecla = 1;
 		Posicion.x -= 2;
