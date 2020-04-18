@@ -77,7 +77,7 @@ ModulePlayer::ModulePlayer() {
 
 }
 bool ModulePlayer::Init() {
-	collider = App->collisions->AddCollider({ Posicion.x,Posicion.y,16,17 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
 	//marioo = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
@@ -238,7 +238,7 @@ update_status ModulePlayer::Update()
 		Posicion.y = 700;
 	}
 	plataforma = false;
-	collider->SetPos(Posicion.x, Posicion.y);
+	collider->SetPos(Posicion.x+4, Posicion.y-20);
 	return update_status::UPDATE_CONTINUE;
 }
 update_status ModulePlayer::PostUpdate() {

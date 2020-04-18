@@ -50,24 +50,24 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 83, 219, 483,8 }, Collider::Type::plataforma);
 
 	//primer piso
-	App->collisions->AddCollider({ 11, 580, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 299, 580, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 611, 580, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 18, 580, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 306, 580, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 618, 580, 10,82 }, Collider::Type::escalera);
 	
 	//segundo piso
-	App->collisions->AddCollider({ 35, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 203, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 419, 460, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 587, 460, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 42, 460, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 210, 460, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 426, 460, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 594, 460, 10,82 }, Collider::Type::escalera);
 	
-	App->collisions->AddCollider({ 59, 340, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 299, 340, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 563, 340, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 66, 340, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 306, 340, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 570, 340, 10,82 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 83, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 176, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 443, 220, 22,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 539, 220, 22,104 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 90, 220, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 186, 220, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 450, 220, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 546, 220, 10,82 }, Collider::Type::escalera);
 	//Martillo
 	// App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
 	// App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
