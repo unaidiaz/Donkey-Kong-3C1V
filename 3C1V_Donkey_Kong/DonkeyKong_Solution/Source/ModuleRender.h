@@ -38,6 +38,8 @@ public:
 	// Param section	- The portion of the texture we want to copy. nullptr for the entire texture
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr);
 
+	bool DrawQuad(const SDL_Rect& rect, int r, int g, int b, int a, float speed = 1.0f);
+
 public:
 	
 	// Rendering context used for any rendering action

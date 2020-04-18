@@ -36,6 +36,7 @@ public:
 	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener = nullptr);
 
 	// Draws all existing colliders with some transparency
+	void DebugDraw();
 	
 
 private:

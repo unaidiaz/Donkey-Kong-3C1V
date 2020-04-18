@@ -222,7 +222,6 @@ update_status ModulePlayer::Update()
 	}
 
 
-
 	//LIMITES LATERALES
 	if (Posicion.x < 0)
 	{
