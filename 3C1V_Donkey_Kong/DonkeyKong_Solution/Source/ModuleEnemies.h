@@ -1,4 +1,4 @@
-/*#ifndef __MODULE_ENEMIES_H__
+#ifndef __MODULE_ENEMIES_H__
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
@@ -8,9 +8,7 @@
 enum class Enemy_Type
 {
 	NO_TYPE,
-	REDBIRD,
-	BROWNSHIP,
-	MECH,
+	LLAMA,
 };
 
 struct EnemySpawnpoint
@@ -82,4 +80,4 @@ private:
 	int enemyDestroyedFx = 0;
 };
 
-#endif // __MODULE_ENEMIES_H__*/
+#endif // __MODULE_ENEMIES_H__

@@ -1,4 +1,4 @@
-/*#include "ModuleEnemies.h"
+#include "ModuleEnemies.h"
 
 #include "Application.h"
 
@@ -7,14 +7,12 @@
 #include "ModuleAudio.h"
 
 #include "Enemy.h"
-#include "Enemy_RedBird.h"
-#include "Enemy_BrownShip.h"
-#include "Enemy_Mech.h"
+#include "Enemy_Llama.h"
 
 #define SPAWN_MARGIN 50
 
 
-ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module startEnabled)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
@@ -34,7 +32,7 @@ bool ModuleEnemies::Start()
 }
 
 
-Update_Status ModuleEnemies::PreUpdate()
+update_status ModuleEnemies::PreUpdate()
 {
 	// Remove all enemies scheduled for deletion
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
@@ -46,10 +44,10 @@ Update_Status ModuleEnemies::PreUpdate()
 		}
 	}
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleEnemies::Update()
+update_status ModuleEnemies::Update()
 {
 	HandleEnemiesSpawn();
 
@@ -61,10 +59,10 @@ Update_Status ModuleEnemies::Update()
 
 	HandleEnemiesDespawn();
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleEnemies::PostUpdate()
+update_status ModuleEnemies::PostUpdate()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -119,7 +117,7 @@ void ModuleEnemies::HandleEnemiesSpawn()
 		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
 		{
 			// Spawn a new enemy if the screen has reached a spawn position
-			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if (spawnQueue[i].x * 3 < App->render->camera.x + (App->render->camera.w * 3) + SPAWN_MARGIN)
 			{
 				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
 
@@ -138,11 +136,12 @@ void ModuleEnemies::HandleEnemiesDespawn()
 		if (enemies[i] != nullptr)
 		{
 			// Delete the enemy when it has reached the end of the screen
-			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if (enemies[i]->position.x * 3 < (App->render->camera.x) - SPAWN_MARGIN)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 
-				enemies[i]->SetToDelete();
+				delete enemies[i];
+				enemies[i] = nullptr;
 			}
 		}
 	}
@@ -157,16 +156,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			case Enemy_Type::REDBIRD:
-				enemies[i] = new Enemy_RedBird(info.x, info.y);
+			case Enemy_Type::LLAMA:
+				enemies[i] = new Enemy_Llama(info.x, info.y);
 				break;
-			case Enemy_Type::BROWNSHIP:
-				enemies[i] = new Enemy_BrownShip(info.x, info.y);
-				break;
-			case Enemy_Type::MECH:
-				enemies[i] = new Enemy_Mech(info.x, info.y);
-				break;
-			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
@@ -184,4 +176,4 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
-}*/
+}
