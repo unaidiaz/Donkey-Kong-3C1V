@@ -143,13 +143,13 @@ update_status ModulePlayer::Update()
 				if (lastanimation == &topescalera)
 				{
 					canLateralMov = true;
-					currentAnimation = &espalda;
+					currentAnimation = &arriba;
 					currentAnimation->Update();
-					lastanimation = &espalda;
+					lastanimation = &arriba;
 				}
 				else
 				{
-					currentAnimation = &topescalera;
+					currentAnimation = &arriba;
 					currentAnimation->Update();
 
 				}
