@@ -17,7 +17,7 @@ Enemy_Llama::Enemy_Llama(int x, int y) : Enemy(x, y)
 
 	currentAnim = &flyAnim;
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::Enemigo, (Module*)App->enemies);
 }
 
 void Enemy_Llama::Update()

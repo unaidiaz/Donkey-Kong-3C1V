@@ -8,11 +8,14 @@
 
 #include "Enemy.h"
 #include "Enemy_Llama.h"
+#include "SDL/include/SDL.h"
+#include "SDL_image/include/SDL_image.h"
+#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
 #define SPAWN_MARGIN 50
 
 
-ModuleEnemies::ModuleEnemies(bool startEnabled) : Module startEnabled)
+ModuleEnemies::ModuleEnemies()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
@@ -25,14 +28,14 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Init()
 {
-	texture = App->textures->Load("Assets/Sprites/enemies.png");
+	texture = App->textures->Load("Assets/objetosanimados.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
 }
 
-
-update_status ModuleEnemies::PreUpdate()
+// PreUpdate
+/*update_status ModuleEnemies::PreUpdate()
 {
 	// Remove all enemies scheduled for deletion
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
@@ -45,7 +48,7 @@ update_status ModuleEnemies::PreUpdate()
 	}
 
 	return update_status::UPDATE_CONTINUE;
-}
+}*/ 
 
 update_status ModuleEnemies::Update()
 {
@@ -116,14 +119,8 @@ void ModuleEnemies::HandleEnemiesSpawn()
 	{
 		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
 		{
-			// Spawn a new enemy if the screen has reached a spawn position
-			if (spawnQueue[i].x * 3 < App->render->camera.x + (App->render->camera.w * 3) + SPAWN_MARGIN)
-			{
-				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
-
-				SpawnEnemy(spawnQueue[i]);
-				spawnQueue[i].type = Enemy_Type::NO_TYPE; // Removing the newly spawned enemy from the queue
-			}
+			SpawnEnemy(spawnQueue[i]);
+			spawnQueue[i].type = Enemy_Type::NO_TYPE; // Removing the newly spawned enemy from the queue
 		}
 	}
 }
@@ -135,14 +132,8 @@ void ModuleEnemies::HandleEnemiesDespawn()
 	{
 		if (enemies[i] != nullptr)
 		{
-			// Delete the enemy when it has reached the end of the screen
-			if (enemies[i]->position.x * 3 < (App->render->camera.x) - SPAWN_MARGIN)
-			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
-
-				delete enemies[i];
-				enemies[i] = nullptr;
-			}
+			delete enemies[i];
+			enemies[i] = nullptr;
 		}
 	}
 }
@@ -162,6 +153,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
+			}
 		}
 	}
 }

@@ -33,7 +33,8 @@ public:
 	virtual void OnCollision(Collider* collider);
 
 public:
-
+	// Current Position in the world
+	iPoint position;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
@@ -47,6 +48,9 @@ protected:
 
 	// The enemy's collider
 	Collider* collider = nullptr;
+
+	// Original spawn position
+	iPoint spawnPos;
 };
 
 #endif // __ENEMY_H__*/
