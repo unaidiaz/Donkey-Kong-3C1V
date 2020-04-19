@@ -16,7 +16,7 @@ public:
 class ModulePlayer :public Module {
 public:
 	ModulePlayer();
-	bool Init();
+	bool Start();
 	void jump();
 	void OnCollision(Collider* c1, Collider* c2);
 	update_status Update();
@@ -44,6 +44,7 @@ public:
 	Animation espalda;
 	bool plataforma = false;
 	Collider* collider=nullptr;
+	SDL_Texture* mario = nullptr;
 	int cont = 0;
 	bool jumpact = false;
 	bool canAudioJump = true;

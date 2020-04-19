@@ -68,6 +68,8 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 	else
 	{
+		 
+
 		// TODO 3: Once your have the surface, create a texture from it (check for errors again)
 		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
 
@@ -93,4 +95,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 
 	return texture;
+}
+SDL_Texture* ModuleTextures::load(const char* palabra) {
+	SDL_Texture* textura;
+	textura = App->textures->Load(palabra);
+	return textura;
 }

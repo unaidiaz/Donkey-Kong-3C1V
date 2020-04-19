@@ -47,6 +47,8 @@ bool Application::Init()
 	{
 		modules[i]->Init();
 	}
+	for (int i = 0; i < NUM_MODULES; ++i)
+		modules[i]->Start();
 
 	return true;
 }

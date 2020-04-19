@@ -8,7 +8,7 @@ class Module
 public:
 	//Called at the beginning of the application execution
 	virtual bool Init();
-
+	virtual bool Start();
 	//Called at the beginning of each application loop
 	virtual update_status PreUpdate();
 

@@ -6,7 +6,7 @@
 //object::~object() {
 //
 //}
-//bool object::Init() {
+//bool object::Start() {
 //	
 //}
 //update_status object::Update() {

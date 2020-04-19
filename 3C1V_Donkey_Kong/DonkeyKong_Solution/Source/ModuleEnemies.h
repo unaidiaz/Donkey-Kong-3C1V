@@ -31,7 +31,7 @@ public:
 
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
-	bool Init() override;
+	bool Start() override;
 
 	// Called at the beginning of the application loop
 	// Removes all enemies pending to delete

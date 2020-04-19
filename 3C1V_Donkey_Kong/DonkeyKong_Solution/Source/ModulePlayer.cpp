@@ -74,9 +74,9 @@ ModulePlayer::ModulePlayer() {
 	Posicion.y = 680;
 
 }
-bool ModulePlayer::Init() {
+bool ModulePlayer::Start() {
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
-	//marioo = App->textures->Load("Assets/perso.png");
+	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	lastanimation = &topescalera;
@@ -254,7 +254,20 @@ update_status ModulePlayer::Update()
 }
 update_status ModulePlayer::PostUpdate() {
 	//App->render->Blit(marioo, 0, 0, nullptr);
+	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
+	if ((rect.x == 199 && rect.y == 73 && rect.w == 16 && rect.h == 29) || (rect.x == 80 && rect.y == 73 && rect.w == 16 && rect.h == 29)) {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y - 36, &rect);
+	}
+	else if ((rect.x == 35 && rect.y == 79 && rect.w == 26 && rect.h == 17)) {
+		App->render->Blit(mario, App->player->Posicion.x - 20, App->player->Posicion.y, &rect);
+	}
+	else if ((rect.x == 200 && rect.y == 39 && rect.w == 15 && rect.h == 15) || (rect.x == 239 && rect.y == 41 && rect.w == 15 && rect.h == 13)) {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y + 25, &rect);
+	}
+	else {
+		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
 
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -2,6 +2,7 @@
 #define __MODULE_RENDER_H__
 #include"ModuleCollisions.h"
 #include "Module.h"
+
 struct SDL_Rect;
 struct SDL_Texture;
 struct SDL_Renderer;
@@ -45,9 +46,10 @@ public:
 	SDL_Renderer* renderer = nullptr;
 
 private:
-	SDL_Texture* mario = nullptr;
+	
 	SDL_Texture* testTexture = nullptr;
-	SDL_Texture* martillo = nullptr; SDL_Texture* martillo2 = nullptr;
+	 SDL_Texture* martillo2 = nullptr;
+	SDL_Texture* martillo = nullptr;
 	SDL_Texture* kong = nullptr;
 	SDL_Texture* placas = nullptr; SDL_Texture* placas2 = nullptr; SDL_Texture* placas3 = nullptr; SDL_Texture* placas4 = nullptr; SDL_Texture* placas5 = nullptr;
 	SDL_Texture* placas6 = nullptr; SDL_Texture* placas7 = nullptr; SDL_Texture* placas8 = nullptr; SDL_Texture* placas9 = nullptr;

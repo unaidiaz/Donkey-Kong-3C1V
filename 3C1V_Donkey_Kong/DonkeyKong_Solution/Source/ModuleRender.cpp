@@ -42,7 +42,7 @@ bool ModuleRender::Init()
 	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
-	mario = App->textures->Load("Assets/perso.png");
+	
 	placas = App->textures->Load("Assets/taco.png"); placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");
 	placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
 	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");
@@ -112,20 +112,7 @@ update_status ModuleRender::PostUpdate()
 	// TODO 10: Blit our test texture to check functionality
 	Blit(testTexture, 0, 130, nullptr);
 	//Blit(mario, 50, 50, nullptr);
-	SDL_Rect rect = App->player->currentAnimation->GetCurrentFrame();
-	if ((rect.x == 199 && rect.y == 73 && rect.w == 16 && rect.h == 29) || (rect.x == 80 && rect.y == 73 && rect.w == 16 && rect.h == 29)) {
-		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y - 36, &rect);
-	}
-	else if ((rect.x == 35 && rect.y == 79 && rect.w == 26 && rect.h == 17)) {
-		App->render->Blit(mario, App->player->Posicion.x - 20, App->player->Posicion.y, &rect);
-	}
-	else if ((rect.x == 200 && rect.y == 39 && rect.w == 15 && rect.h == 15) || (rect.x == 239 && rect.y == 41 && rect.w == 15 && rect.h == 13)) {
-		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y + 25, &rect);
-	}
-	else {
-		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
-
-	}
+	
 	SDL_Rect dkong = { 51,155,40,33 };
 	Blit(kong, 280, 153, &dkong);
 	SDL_Rect mart = { 0,4,9,11 };

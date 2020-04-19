@@ -11,9 +11,9 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
-class ModuleRender;
 class ModulePlayer;
 class ModuleEnemies;
+class ModuleRender;
 
 class Application
 {

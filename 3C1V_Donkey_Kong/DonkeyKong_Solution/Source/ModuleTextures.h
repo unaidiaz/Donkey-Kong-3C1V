@@ -14,7 +14,7 @@ public:
 	ModuleTextures();
 	//Destructor
 	~ModuleTextures();
-
+	SDL_Texture* load(const char* nombre);
 	// Called on application start.
 	// Initializes the SDL_Image library
 	bool Init() override;

@@ -13,7 +13,7 @@
 //public:
 //	object();
 //	~object();
-//	bool Init();
+//	bool Start();
 //	update_status Update();
 //	update_status PostUpdate();
 //	bool CleanUp();
