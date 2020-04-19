@@ -1,6 +1,6 @@
 # Donkey-Kong-3C1V
 
-Github: https://unaidiaz.github.io/proyecto1/
+Github: https://github.com/unaidiaz/Donkey-Kong-3C1V
 
 Our project is the recreation of the arcade classic Donkey Kong!
 Climb the ladders in order to rescue the princess! 
