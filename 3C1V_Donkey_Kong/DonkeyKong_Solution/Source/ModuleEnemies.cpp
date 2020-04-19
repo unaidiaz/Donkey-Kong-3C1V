@@ -23,7 +23,7 @@ ModuleEnemies::~ModuleEnemies()
 
 }
 
-bool ModuleEnemies::Start()
+bool ModuleEnemies::Init()
 {
 	texture = App->textures->Load("Assets/Sprites/enemies.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
@@ -70,7 +70,7 @@ update_status ModuleEnemies::PostUpdate()
 			enemies[i]->Draw();
 	}
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
 // Called before quitting

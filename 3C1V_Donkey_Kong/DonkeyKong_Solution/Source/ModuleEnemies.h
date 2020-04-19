@@ -31,19 +31,19 @@ public:
 
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
-	bool Start() override;
+	bool Init() override;
 
 	// Called at the beginning of the application loop
 	// Removes all enemies pending to delete
-	Update_Status PreUpdate() override;
+	update_status PreUpdate() override;
 
 	// Called at the middle of the application loop
 	// Handles all enemies logic and spawning/despawning
-	Update_Status Update() override;
+	update_status Update() override;
 
 	// Called at the end of the application loop
 	// Iterates all the enemies and draws them
-	Update_Status PostUpdate() override;
+	update_status PostUpdate() override;
 
 	// Called on application exit
 	// Destroys all active enemies left in the array
