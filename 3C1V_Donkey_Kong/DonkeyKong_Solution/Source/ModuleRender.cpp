@@ -39,10 +39,17 @@ bool ModuleRender::Init()
 	}
 
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
-	martillo = App->textures->Load("Assets/objetosestaticos.png");
+	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	mario = App->textures->Load("Assets/perso.png");
+	placas = App->textures->Load("Assets/taco.png"); placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");
+	placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
+	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");
+	_bolso = App->textures->Load("Assets/objetosestaticos.png");
+	_tanque = App->textures->Load("Assets/objetosestaticos.png");
+	_paraguas = App->textures->Load("Assets/objetosestaticos.png");
+
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 11, 579, 627,10 }, Collider::Type::plataforma);
@@ -54,13 +61,13 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 18, 580, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 306, 580, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 618, 580, 10,82 }, Collider::Type::escalera);
-	
+
 	//segundo piso
 	App->collisions->AddCollider({ 42, 460, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 210, 460, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 426, 460, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 594, 460, 10,82 }, Collider::Type::escalera);
-	
+
 	App->collisions->AddCollider({ 66, 340, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 306, 340, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 570, 340, 10,82 }, Collider::Type::escalera);
@@ -70,8 +77,21 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 450, 220, 10,82 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 546, 220, 10,82 }, Collider::Type::escalera);
 	//Martillo
-	App->collisions->AddCollider({ 325, 280, 9,11 }, Collider::Type::martillo);
-	App->collisions->AddCollider({ 10, 400, 9,11 }, Collider::Type::martillo);
+	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
+	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
+	//Placas
+	App->collisions->AddCollider({ 157,500,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 469,500,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 158,377,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 468,377,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 158,257,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 468,257,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 158,137,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 468,137,20,90 }, Collider::Type::placas);
+	//"Power-Up"
+	App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
+	App->collisions->AddCollider({ 70, 170,50,40 }, Collider::Type::paraguas);
+	App->collisions->AddCollider({ 580, 553,50,20 }, Collider::Type::tanque);
 	return ret;
 }
 // Called every draw update
@@ -106,11 +126,26 @@ update_status ModuleRender::PostUpdate()
 		App->render->Blit(mario, App->player->Posicion.x, App->player->Posicion.y, &rect);
 
 	}
-	SDL_Rect dkong = {51,155,40,33};
+	SDL_Rect dkong = { 51,155,40,33 };
 	Blit(kong, 280, 153, &dkong);
 	SDL_Rect mart = { 0,4,9,11 };
 	Blit(martillo, 325, 280, &mart);
-	Blit(martillo, 10, 400, &mart);
+	Blit(martillo2, 10, 400, &mart);
+	SDL_Rect taco = { 0,0,8,9 };
+	Blit(placas, 480, 610, &taco);
+	Blit(placas2, 170, 610, &taco);
+	Blit(placas3, 480, 487, &taco);
+	Blit(placas4, 168, 490, &taco);
+	Blit(placas5, 480, 367, &taco);
+	Blit(placas6, 168, 367, &taco);
+	Blit(placas7, 480, 247, &taco);
+	Blit(placas8, 168, 247, &taco);
+	SDL_Rect paraguas_ = { 50,0,17,15 };
+	Blit(_paraguas, 80, 200, &paraguas_);
+	SDL_Rect bolso_ = { 14,5,10,10 };
+	Blit(_bolso, 400, 700, &bolso_);
+	SDL_Rect tanque_ = { 30,6,16,9 };
+	Blit(_tanque, 590, 583, &tanque_);
 	// TODO 8: Display the rendered content to the screen
 	if (App->collisions->debug == true) {
 		App->collisions->DebugDraw();
@@ -137,7 +172,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 {
 	bool ret = true;
 	SDL_Rect rect{ x, y, 0, 0 };
-	
+
 	if (section != nullptr)
 	{
 		rect.w = section->w;
@@ -166,9 +201,9 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, int r, int g, int b, int a, fl
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
 	SDL_Rect dstRect{
-		rect.x+13 ,
-		rect.y+30 ,
-		rect.w , 
+		rect.x + 13 ,
+		rect.y + 30 ,
+		rect.w ,
 		rect.h };
 
 	if (SDL_RenderFillRect(renderer, &dstRect) != 0)

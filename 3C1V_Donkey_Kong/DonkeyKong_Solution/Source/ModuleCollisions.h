@@ -1,7 +1,7 @@
 #ifndef __MODULE_COLLISIONS_H__
 #define __MODULE_COLLISIONS_H__
 
-#define MAX_COLLIDERS 36
+#define MAX_COLLIDERS 50
 
 #include "Module.h"
 #include "Collider.h"
@@ -48,7 +48,7 @@ private:
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 
 	// Simple debugging flag to draw all colliders
-	
+
 };
 
 #endif // __MODULE_COLLISIONS_H__

@@ -15,6 +15,10 @@ struct Collider
 		Enemigo,
 		escalera,
 		martillo,
+		placas,
+		tanque,
+		bolso,
+		paraguas,
 		MAX
 	};
 
