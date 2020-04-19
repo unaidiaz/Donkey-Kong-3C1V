@@ -140,14 +140,14 @@ update_status ModulePlayer::Update()
 				canLateralMov = true;
 				Posicion.y += 3;
 				//abajo.Reset();
-				if (lastanimation == &topescalera) 
+				if (lastanimation == &topescalera)
 				{
 					canLateralMov = true;
 					currentAnimation = &espalda;
 					currentAnimation->Update();
 					lastanimation = &espalda;
 				}
-				else 
+				else
 				{
 					currentAnimation = &topescalera;
 					currentAnimation->Update();

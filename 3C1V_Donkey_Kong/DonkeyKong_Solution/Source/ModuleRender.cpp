@@ -80,18 +80,18 @@ bool ModuleRender::Init()
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
 	//Placas
-	App->collisions->AddCollider({ 157,500,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 469,500,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 158,377,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 468,377,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 158,257,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 468,257,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 158,137,20,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 468,137,20,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 163,500,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 473,500,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 163,377,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 473,377,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 163,257,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 473,257,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 163,137,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 473,137,5,90 }, Collider::Type::placas);
 	//"Power-Up"
 	App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
-	App->collisions->AddCollider({ 70, 170,50,40 }, Collider::Type::paraguas);
-	App->collisions->AddCollider({ 580, 553,50,20 }, Collider::Type::tanque);
+	App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
+	App->collisions->AddCollider({ 530, 553,50,20 }, Collider::Type::tanque);
 	return ret;
 }
 // Called every draw update
@@ -141,11 +141,11 @@ update_status ModuleRender::PostUpdate()
 	Blit(placas7, 480, 247, &taco);
 	Blit(placas8, 168, 247, &taco);
 	SDL_Rect paraguas_ = { 50,0,17,15 };
-	Blit(_paraguas, 80, 200, &paraguas_);
+	Blit(_paraguas, 120, 200, &paraguas_);
 	SDL_Rect bolso_ = { 14,5,10,10 };
 	Blit(_bolso, 400, 700, &bolso_);
 	SDL_Rect tanque_ = { 30,6,16,9 };
-	Blit(_tanque, 590, 583, &tanque_);
+	Blit(_tanque, 540, 583, &tanque_);
 	// TODO 8: Display the rendered content to the screen
 	if (App->collisions->debug == true) {
 		App->collisions->DebugDraw();
