@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "SceneLevel4.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
@@ -21,12 +22,13 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures();
 	modules[3] = audio = new ModuleAudio();
 
-	modules[4] = player = new ModulePlayer();
-	modules[5] = enemies = new ModuleEnemies();
+	modules[4] = scene4 = new SceneLevel4();
+	modules[5] = player = new ModulePlayer();
+	modules[6] = enemies = new ModuleEnemies();
 
-	modules[6] = collisions = new ModuleCollisions();
+	modules[7] = collisions = new ModuleCollisions();
 	
-	modules[7] = render = new ModuleRender();
+	modules[8] = render = new ModuleRender();
 	
 }
 

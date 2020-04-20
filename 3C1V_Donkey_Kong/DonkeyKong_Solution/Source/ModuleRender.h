@@ -38,24 +38,9 @@ public:
 	// Param texture	- A valid SDL Texture, validation checks are not performed
 	// Param x,y		- Position x,y in the screen (upper left axis)
 	// Param section	- The portion of the texture we want to copy. nullptr for the entire texture
-	bool Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section = nullptr);
+	bool Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section = nullptr);	
 
-public:
-
-	// Rendering context used for any rendering action
 	SDL_Renderer* renderer = nullptr;
-
-private:
-	
-	SDL_Texture* testTexture = nullptr;
-	 SDL_Texture* martillo2 = nullptr;
-	SDL_Texture* martillo = nullptr;
-	SDL_Texture* kong = nullptr;
-	SDL_Texture* placas = nullptr; SDL_Texture* placas2 = nullptr; SDL_Texture* placas3 = nullptr; SDL_Texture* placas4 = nullptr; SDL_Texture* placas5 = nullptr;
-	SDL_Texture* placas6 = nullptr; SDL_Texture* placas7 = nullptr; SDL_Texture* placas8 = nullptr; SDL_Texture* placas9 = nullptr;
-	SDL_Texture* _tanque = nullptr;
-	SDL_Texture* _bolso = nullptr;
-	SDL_Texture* _paraguas = nullptr;
 };
 
 #endif //__MODULE_RENDER_H__
