@@ -83,7 +83,7 @@ bool SceneLevel4::Start()
 	//"Power-Up"
 	App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
-	App->collisions->AddCollider({ 530, 553,50,20 }, Collider::Type::tanque);
+	App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);
 	//MARTILLO ATAQUE
 	
 	App->enemies->AddEnemy(Enemy_Type::LLAMA, 360, 565);
