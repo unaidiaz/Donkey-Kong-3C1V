@@ -29,7 +29,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	enemigos = App->textures->Load("Assets/objetosanimados.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
+	enemyDestroyedFx = App->audio->LoadFx("Assets/SFX (Kill).wav");
 
 	return true;
 }
@@ -166,6 +166,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (c1->type==c1->Enemigo&&c2->type == c2->martillo) {
 				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 				delete enemies[i];
+				SDL_DestroyTexture(enemigos);
 				enemies[i] = nullptr;
 				break;
 

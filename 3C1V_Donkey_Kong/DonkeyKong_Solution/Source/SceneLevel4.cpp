@@ -86,7 +86,7 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);
 	//MARTILLO ATAQUE
 	
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 360, 565);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 370, 320);
 	return ret;
 }
 

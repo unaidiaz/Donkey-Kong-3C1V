@@ -252,7 +252,7 @@ update_status ModulePlayer::Update()
 	}
 	plataforma = false;
 	collider->SetPos(Posicion.x+4, Posicion.y-20);
-	mart->SetPos(Posicion.x + 50, Posicion.y );
+	mart->SetPos(Posicion.x + 45, Posicion.y );
 	mart2->SetPos(Posicion.x - 30, Posicion.y);
 	return update_status::UPDATE_CONTINUE;
 }
