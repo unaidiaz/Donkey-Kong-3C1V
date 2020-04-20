@@ -5,9 +5,11 @@
 
 Enemy_Llama::Enemy_Llama(int x, int y) : Enemy(x, y)
 {
-	llama.PushBack({ 0,0,200,200 });
-	llama.PushBack({ 38, 6, 24, 24 });
+	llama.PushBack({ 0,63,15,17 });
+	llama.PushBack({ 17, 64, 14, 16 });
+	llama.PushBack({ 34, 66, 16, 13 });
 	llama.loop = true;
+	llama.speed = 0.1f;
 
 	currentAnim = &llama;
 
@@ -20,3 +22,4 @@ void Enemy_Llama::Update()
 	// It will update the collider depending on the position
 	Enemy::Update();
 }
+

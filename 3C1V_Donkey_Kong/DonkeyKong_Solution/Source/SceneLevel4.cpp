@@ -79,7 +79,7 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
 	App->collisions->AddCollider({ 530, 553,50,20 }, Collider::Type::tanque);
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 50, 50);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 360, 565);
 	return ret;
 }
 
