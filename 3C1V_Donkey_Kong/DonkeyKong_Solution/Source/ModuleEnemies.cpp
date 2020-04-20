@@ -28,7 +28,7 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/objetosanimados.png");
+	enemigos = App->textures->Load("Assets/objetosanimados.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	return true;
@@ -130,7 +130,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 	// Iterate existing enemies
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if (enemies[i] != nullptr&&enemies[i]->pendientedeelim==true)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -149,9 +149,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			{
 			case Enemy_Type::LLAMA:
 				enemies[i] = new Enemy_Llama(info.x, info.y);
-				break;
-			enemies[i]->texture = texture;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
+				enemies[i]->enemigo = enemigos;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 			}
 		}

@@ -35,9 +35,9 @@ public:
 public:
 	// Current Position in the world
 	iPoint position;
-
+	bool pendientedeelim = false;
 	// The enemy's texture
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* enemigo = nullptr;
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;

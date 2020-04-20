@@ -1,5 +1,5 @@
 #include "Enemy.h"
-
+#include"ModuleTextures.h"
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
@@ -34,7 +34,7 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	if (currentAnim != nullptr)
-		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		App->render->Blit(enemigo, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
 void Enemy::OnCollision(Collider* collider)

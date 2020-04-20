@@ -28,7 +28,7 @@ private:
 	int waveHeight = 15;
 
 	// The enemy animation
-	Animation flyAnim;
+	Animation llama;
 };
 
 #endif // __ENEMY_REDBIRD_H__
