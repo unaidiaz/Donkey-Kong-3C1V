@@ -29,7 +29,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	enemigos = App->textures->Load("Assets/objetosanimados.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/SFX (Kill).wav");
+	enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
 }
