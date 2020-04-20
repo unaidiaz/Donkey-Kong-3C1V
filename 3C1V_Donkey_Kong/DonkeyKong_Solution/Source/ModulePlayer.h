@@ -44,6 +44,7 @@ public:
 	Animation espalda;
 	bool plataforma = false;
 	Collider* collider=nullptr;
+	Collider* mart = nullptr;
 	SDL_Texture* mario = nullptr;
 	int cont = 0;
 	bool jumpact = false;

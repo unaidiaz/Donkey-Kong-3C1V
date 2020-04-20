@@ -29,7 +29,6 @@ public:
 
 	// Disables the player and the enemies
 	bool CleanUp();
-
 private:
 
 	SDL_Texture* testTexture = nullptr;

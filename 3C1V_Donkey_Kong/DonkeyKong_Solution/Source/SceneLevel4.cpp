@@ -1,5 +1,8 @@
 #include "SceneLevel4.h"
 
+#include"ModuleInput.h"
+#include"Globals.h"
+#include"Module.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -7,6 +10,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include"Animation.h"
+#include "SDL/include/SDL_scancode.h"
 
 SceneLevel4::SceneLevel4()
 {
@@ -67,18 +72,20 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
 	//Placas
-	App->collisions->AddCollider({ 163,500,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 473,500,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 163,377,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 473,377,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 167,500,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 477,500,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 167,377,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 477,377,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 163,257,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 473,257,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 477,257,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 163,137,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 473,137,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 477,137,5,90 }, Collider::Type::placas);
 	//"Power-Up"
 	App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
 	App->collisions->AddCollider({ 530, 553,50,20 }, Collider::Type::tanque);
+	//MARTILLO ATAQUE
+	
 	App->enemies->AddEnemy(Enemy_Type::LLAMA, 360, 565);
 	return ret;
 }
