@@ -37,7 +37,7 @@ bool SceneLevel4::Start()
 	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
-
+	
 	placas = App->textures->Load("Assets/taco.png"); placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");
 	placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
 	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");
@@ -126,7 +126,7 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(_bolso, 400, 700, &bolso_);
 	SDL_Rect tanque_ = { 30,6,16,9 };
 	App->render->Blit(_tanque, 540, 583, &tanque_);
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

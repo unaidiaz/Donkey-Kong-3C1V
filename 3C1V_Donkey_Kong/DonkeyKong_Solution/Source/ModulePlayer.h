@@ -48,6 +48,8 @@ public:
 	Collider* collider=nullptr;
 	Collider* mart = nullptr; Collider* mart2 = nullptr;
 	SDL_Texture* mario = nullptr;
+	SDL_Texture* win = nullptr;
+	SDL_Texture* lose = nullptr;
 	int cont = 0;
 	bool jumpact = false;
 	bool canAudioJump = true;
@@ -56,6 +58,8 @@ public:
 	int salto;
 	int contador = 0;
 	int cont_muerte = 0;
+	bool _win = false;
+	bool _lose = false;
 private:
 	SDL_Texture* marioo=nullptr;
 };

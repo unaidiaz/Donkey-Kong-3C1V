@@ -108,6 +108,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 }
 bool ModulePlayer::Start() {
 	cont_muerte = 0;
+	win = App->textures->Load("Assets/YOU_WIN.png");
+	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
 	mart = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
@@ -125,12 +127,14 @@ update_status ModulePlayer::Update()
 		currentAnimation = &dead_mario_l;
 		currentAnimation->Update();
 		canLateralMov = false;
+		_lose = true;
 	}
 	else if ((cont_muerte >= 5714) &&( lastanimation == &topescalera||lastanimation==&arriba|| lastanimation == &abajo|| lastanimation == &saltarder|| lastanimation == &paradoder|| lastanimation == &mart_der))
 	{
 		currentAnimation = &dead_mario_r;
 		currentAnimation->Update();
 		canLateralMov = false;
+		_lose = true;
 	}
 
 	if (jumpact == false) 
@@ -321,6 +325,16 @@ update_status ModulePlayer::PostUpdate() {
 
 	}
 
+	SDL_Rect win_lose = { 0,0,98,20 };
+	if (_win == true)
+	{
+		App->render->Blit(win, 200, 400, &win_lose);
+	}
+	else if (_lose == true)
+	{
+		App->render->Blit(lose, 200, 400, &win_lose);
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -387,5 +401,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			plataforma = false;
 		}
+	}
+	if (c1->type == Collider::martillo && c2->type == Collider::Enemigo)
+	{
+		_win = true;
+		canLateralMov = false;
 	}
 }
