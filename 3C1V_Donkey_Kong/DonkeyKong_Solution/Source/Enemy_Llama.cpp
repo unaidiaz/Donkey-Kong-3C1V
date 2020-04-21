@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 Enemy_Llama::Enemy_Llama(int x, int y) : Enemy(x, y)
 {
@@ -20,6 +21,6 @@ void Enemy_Llama::Update()
 {
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
-	Enemy::Update();
+	Enemy::Update();	
 }
 

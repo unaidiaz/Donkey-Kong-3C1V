@@ -1,11 +1,12 @@
-#include"ModulePlayer.h"
 #include"Application.h"
+#include"ModulePlayer.h"
 #include"ModuleRender.h"
 #include"ModuleTextures.h"
 #include"Module.h"
 #include"Globals.h"
 #include"ModuleCollisions.h"
 #include"ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 #include"Animation.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_scancode.h"
@@ -104,7 +105,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	downAnim.speed = 0.1f;*/
 	Posicion.x = 65;
 	Posicion.y = 680;
-
 }
 bool ModulePlayer::Start() {
 	cont_muerte = 0;
@@ -115,28 +115,49 @@ bool ModulePlayer::Start() {
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
-	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
+	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");	
+	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");	
 	lastanimation = &topescalera;
+
+	destroyed = false;
+	//collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
+
 	return true;
 }
 update_status ModulePlayer::Update() 
 {
 	cont_muerte += 3;
 	if ((cont_muerte >= 5714) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz))
-	{
+	{	
+		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_l;
 		currentAnimation->Update();
 		canLateralMov = false;
 		_lose = true;
+
+		destroyed = true;
 	}
 	else if ((cont_muerte >= 5714) &&( lastanimation == &topescalera||lastanimation==&arriba|| lastanimation == &abajo|| lastanimation == &saltarder|| lastanimation == &paradoder|| lastanimation == &mart_der))
 	{
+		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_r;
 		currentAnimation->Update();
 		canLateralMov = false;
 		_lose = true;
+	}	
+	if (cont_muerte >= 4235 && cont_muerte <= 4238)
+	{
+		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
 	}
-
+	if (_lose == true || _win == true)
+	{
+		contToFade += 3;
+		if (contToFade >= 200)
+		{
+			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
+			
+		}
+	}
 	if (jumpact == false) 
 	{
 		Posicion.y += 2;

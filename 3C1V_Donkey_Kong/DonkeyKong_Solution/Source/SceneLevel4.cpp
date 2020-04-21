@@ -132,10 +132,22 @@ update_status SceneLevel4::PostUpdate()
 
 bool SceneLevel4::CleanUp()
 {
-	//App->player->Disable();
-	//App->enemies->Disable();
-
-	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+	App->player->Disable();
+	App->enemies->Disable();
+	App->player->_lose = false;
+	App->player->_win = false;
+	App->player->canLateralMov = true;
+	App->player->cont_muerte = 0;
+	App->player->contToFade = 0;
+	App->player->Posicion.x = 65;
+	App->player->Posicion.y = 680;
+	
+	App->textures->CleanUp();
+	App->collisions->CleanUp();
+	
+	//delete App->player->collider;
+	//delete App->player->mart;
+	//delete App->player->mart2;
 
 	return true;
 }

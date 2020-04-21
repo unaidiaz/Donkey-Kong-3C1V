@@ -56,10 +56,13 @@ public:
 	bool canLateralMov = true;
 	int paso;
 	int salto;
+	int muerteMario = 0;
 	int contador = 0;
 	int cont_muerte = 0;
+	int contToFade = 0;
 	bool _win = false;
 	bool _lose = false;
+	bool destroyed = false;
 private:
 	SDL_Texture* marioo=nullptr;
 };
