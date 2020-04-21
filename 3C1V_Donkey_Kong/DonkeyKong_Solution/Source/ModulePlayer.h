@@ -26,6 +26,8 @@ public:
 	Animation* currentAnimation = nullptr;
 	int tecla=0;
 	// A set of animations
+	Animation dead_mario_l;
+	Animation dead_mario_r;
 	Animation mart_iz;
 	Animation mart_der;
 	Animation derecha;
@@ -48,11 +50,13 @@ public:
 	SDL_Texture* mario = nullptr;
 	int cont = 0;
 	bool jumpact = false;
+	bool canJump = true;
 	bool canAudioJump = true;
 	bool canLateralMov = true;
 	int paso;
 	int salto;
 	int contador = 0;
+	int cont_muerte = 0;
 private:
 	SDL_Texture* marioo=nullptr;
 };

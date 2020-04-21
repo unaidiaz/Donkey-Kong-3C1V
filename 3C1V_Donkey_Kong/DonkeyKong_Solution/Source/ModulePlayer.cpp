@@ -12,6 +12,37 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
+	dead_mario_l.PushBack({ 79,119,17,17 });
+	dead_mario_l.PushBack({ 119,119,17,17 });
+	dead_mario_l.PushBack({ -1,119,17,17 });
+	dead_mario_l.PushBack({ 39,119,17,17 });
+	dead_mario_l.PushBack({ 79,119,17,17 });
+	dead_mario_l.PushBack({ 119,119,17,17 });
+	dead_mario_l.PushBack({ -1,119,17,17 });
+	dead_mario_l.PushBack({ 39,119,17,17 });
+	dead_mario_l.PushBack({ 79,119,17,17 });
+	dead_mario_l.PushBack({ 119,119,17,17 });
+	dead_mario_l.PushBack({ -1,119,17,17 });
+	dead_mario_l.PushBack({ 39,119,17,17 });
+	dead_mario_l.PushBack({ -1,-1,17,17 });
+	dead_mario_l.loop = false;
+	dead_mario_l.speed = 0.1f;
+
+	dead_mario_r.PushBack({ 79,119,17,17 });
+	dead_mario_r.PushBack({ 119,119,17,17 });
+	dead_mario_r.PushBack({ -1,119,17,17 });
+	dead_mario_r.PushBack({ 39,119,17,17 });
+	dead_mario_r.PushBack({ 79,119,17,17 });
+	dead_mario_r.PushBack({ 119,119,17,17 });
+	dead_mario_r.PushBack({ -1,119,17,17 });
+	dead_mario_r.PushBack({ 39,119,17,17 });
+	dead_mario_r.PushBack({ 79,119,17,17 });
+	dead_mario_r.PushBack({ 119,119,17,17 });
+	dead_mario_r.PushBack({ -1,119,17,17 });
+	dead_mario_r.PushBack({ 39,119,17,17 });
+	dead_mario_r.PushBack({ 279,-1,17,17 });
+	dead_mario_r.loop = false;
+	dead_mario_r.speed = 0.1f;
 	
 	mart_iz.PushBack({80,73,16,29});
 	mart_iz.PushBack({35,79,26,17});
@@ -76,6 +107,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 }
 bool ModulePlayer::Start() {
+	cont_muerte = 0;
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
 	mart = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
@@ -87,6 +119,22 @@ bool ModulePlayer::Start() {
 }
 update_status ModulePlayer::Update() 
 {
+	cont_muerte += 3;
+	if (cont_muerte >= 5714 && lastanimation == &mart_iz)
+	{
+		currentAnimation = &dead_mario_l;
+		currentAnimation->Update();
+		canLateralMov = false;
+		canJump = false;
+	}
+	else if (cont_muerte >= 5714 && lastanimation == &mart_der)
+	{
+		currentAnimation = &dead_mario_r;
+		currentAnimation->Update();
+		canLateralMov = false;
+		canJump = false;
+	}
+
 	if (jumpact == false) 
 	{
 		Posicion.y += 2;
@@ -171,7 +219,7 @@ update_status ModulePlayer::Update()
 	}
 	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
-
+		lastanimation = &mart_der;
 		tecla = 0;
 		Posicion.x += 2;
 		if (jumpact == false) {
@@ -193,6 +241,7 @@ update_status ModulePlayer::Update()
 	}
 	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
+		lastanimation = &mart_iz;
 		tecla = 1;
 		Posicion.x -= 2;
 		if (jumpact == false) {
