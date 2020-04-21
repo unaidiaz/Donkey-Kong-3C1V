@@ -1,19 +1,19 @@
 #include "SceneLevel4.h"
 
-#include"ModuleInput.h"
-#include"Globals.h"
-#include"Module.h"
 #include "Application.h"
+#include "ModuleInput.h"
+#include "Globals.h"
+#include "Module.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
-#include"Animation.h"
+#include "Animation.h"
 #include "SDL/include/SDL_scancode.h"
 
-SceneLevel4::SceneLevel4()
+SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 {
 
 }
@@ -29,6 +29,9 @@ bool SceneLevel4::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+
+	App->enemies->Enable();
+	App->player->Enable();
 
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
 	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");

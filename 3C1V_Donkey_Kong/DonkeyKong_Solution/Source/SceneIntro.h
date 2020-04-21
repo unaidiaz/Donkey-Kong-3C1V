@@ -1,4 +1,4 @@
-/*#ifndef __SCENE_INTRO_H__
+#ifndef __SCENE_INTRO_H__
 #define __SCENE_INTRO_H__
 
 #include "Module.h"
@@ -21,15 +21,14 @@ public:
 
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
-	Update_Status Update() override;
+	update_status Update() override;
 
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
-	Update_Status PostUpdate() override;
+	update_status PostUpdate() override;
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
-	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* IntroTexture = nullptr;
 };
-
-#endif*/
+#endif

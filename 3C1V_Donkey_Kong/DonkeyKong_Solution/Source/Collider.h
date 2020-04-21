@@ -35,6 +35,4 @@ struct Collider
 	Type type;
 	Module* listener = nullptr;
 };
-
-
 #endif // !__COLLIDER_H__

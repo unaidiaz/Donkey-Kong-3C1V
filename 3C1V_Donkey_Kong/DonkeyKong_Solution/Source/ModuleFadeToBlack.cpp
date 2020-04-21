@@ -1,4 +1,4 @@
-/*#include "ModuleFadeToBlack.h"
+#include "ModuleFadeToBlack.h"
 
 #include "Application.h"
 #include "ModuleRender.h"
@@ -7,7 +7,7 @@
 
 ModuleFadeToBlack::ModuleFadeToBlack(bool startEnabled) : Module(startEnabled)
 {
-	screenRect = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };
+	screenRect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
 }
 
 ModuleFadeToBlack::~ModuleFadeToBlack()
@@ -24,20 +24,21 @@ bool ModuleFadeToBlack::Start()
 	return true;
 }
 
-Update_Status ModuleFadeToBlack::Update()
+update_status ModuleFadeToBlack::Update()
 {
 	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return Update_Status::UPDATE_CONTINUE;
+	if (currentStep == Fade_Step::NONE) return update_status::UPDATE_CONTINUE;
 
 	if (currentStep == Fade_Step::TO_BLACK)
 	{
 		++frameCount;
 		if (frameCount >= maxFadeFrames)
 		{
+			// TODO 1: Enable / Disable the modules received when FadeToBlacks(...) gets called
+			currentStep = Fade_Step::FROM_BLACK;
+
 			moduleToDisable->Disable();
 			moduleToEnable->Enable();
-
-			currentStep = Fade_Step::FROM_BLACK;
 		}
 	}
 	else
@@ -49,13 +50,13 @@ Update_Status ModuleFadeToBlack::Update()
 		}
 	}
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleFadeToBlack::PostUpdate()
+update_status ModuleFadeToBlack::PostUpdate()
 {
 	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return Update_Status::UPDATE_CONTINUE;
+	if (currentStep == Fade_Step::NONE) return update_status::UPDATE_CONTINUE;
 
 	float fadeRatio = (float)frameCount / (float)maxFadeFrames;
 
@@ -63,7 +64,7 @@ Update_Status ModuleFadeToBlack::PostUpdate()
 	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, (Uint8)(fadeRatio * 255.0f));
 	SDL_RenderFillRect(App->render->renderer, &screenRect);
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
 bool ModuleFadeToBlack::FadeToBlack(Module* moduleToDisable, Module* moduleToEnable, float frames)
@@ -77,6 +78,7 @@ bool ModuleFadeToBlack::FadeToBlack(Module* moduleToDisable, Module* moduleToEna
 		frameCount = 0;
 		maxFadeFrames = frames;
 
+		// TODO 1: How do we keep track of the modules received in this function?
 		this->moduleToDisable = moduleToDisable;
 		this->moduleToEnable = moduleToEnable;
 
@@ -84,4 +86,4 @@ bool ModuleFadeToBlack::FadeToBlack(Module* moduleToDisable, Module* moduleToEna
 	}
 
 	return ret;
-}*/
+}

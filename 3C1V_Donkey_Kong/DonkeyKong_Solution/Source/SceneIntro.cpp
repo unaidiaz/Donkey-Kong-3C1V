@@ -1,4 +1,4 @@
-/*#include "SceneIntro.h"
+#include "SceneIntro.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -24,30 +24,27 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/startScreen.png");
-	App->audio->PlayMusic("Assets/Music/introTitle.ogg", 1.0f);
-
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	IntroTexture = App->textures->Load("Assets/sceneIntro.png");
+	App->audio->PlayMusic("Assets/5. How High Can You Get.ogg", 1.0f);
 
 	return ret;
 }
 
-Update_Status SceneIntro::Update()
+update_status SceneIntro::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
 	}
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
-Update_Status SceneIntro::PostUpdate()
+update_status SceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(IntroTexture, 0, 0, NULL);
 
-	return Update_Status::UPDATE_CONTINUE;
-}*/
+	return update_status::UPDATE_CONTINUE;
+}

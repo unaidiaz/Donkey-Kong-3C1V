@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL/include/SDL_scancode.h"
 
 #define MAX_KEYS 256
 
@@ -18,7 +19,7 @@ class ModuleInput : public Module
 {
 public:
 	// Constructor
-	ModuleInput();
+	ModuleInput(bool startEnabled);
 
 	// Destructor
 	~ModuleInput();

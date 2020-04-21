@@ -13,9 +13,9 @@ class posicion {
 public:
 	int x, y;
 };
-class ModulePlayer :public Module {
+class ModulePlayer : public Module {
 public:
-	ModulePlayer();
+	ModulePlayer(bool startEnabled);
 	bool Start();
 	void jump();
 	void OnCollision(Collider* c1, Collider* c2);

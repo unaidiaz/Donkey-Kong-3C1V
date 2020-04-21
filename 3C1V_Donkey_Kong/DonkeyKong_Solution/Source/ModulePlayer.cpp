@@ -10,7 +10,8 @@
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_scancode.h"
 
-ModulePlayer::ModulePlayer() {
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
+{
 	
 	mart_iz.PushBack({80,73,16,29});
 	mart_iz.PushBack({35,79,26,17});
@@ -320,19 +321,23 @@ void ModulePlayer::jump()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::escalera) {
+	if (c1 == collider && c2->type == Collider::escalera) 
+	{
 		Posicion.y -= 2;
 		escalera = true;
 	}
-	else {
+	else 
+	{
 
-		if (c1 == collider && c2->type == Collider::plataforma) {
+		if (c1 == collider && c2->type == Collider::plataforma) 
+		{
 
 			Posicion.y -= 2;
 			plataforma = true;
 
 		}
-		else {
+		else 
+		{
 			plataforma = false;
 		}
 	}

@@ -10,7 +10,7 @@ class SceneLevel4 : public Module
 {
 public:
 	//Constructor
-	SceneLevel4();
+	SceneLevel4(bool startEnabled);
 
 	//Destructor
 	~SceneLevel4();

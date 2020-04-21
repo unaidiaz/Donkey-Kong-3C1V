@@ -7,7 +7,7 @@
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
-ModuleTextures::ModuleTextures() : Module()
+ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled)
 {
 	// TODO 5: Initialize all texture pointers to nullptr
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
