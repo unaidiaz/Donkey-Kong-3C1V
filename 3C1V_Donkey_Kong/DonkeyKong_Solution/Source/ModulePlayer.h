@@ -50,7 +50,6 @@ public:
 	SDL_Texture* mario = nullptr;
 	int cont = 0;
 	bool jumpact = false;
-	bool canJump = true;
 	bool canAudioJump = true;
 	bool canLateralMov = true;
 	int paso;

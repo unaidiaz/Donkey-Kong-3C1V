@@ -120,19 +120,17 @@ bool ModulePlayer::Start() {
 update_status ModulePlayer::Update() 
 {
 	cont_muerte += 3;
-	if (cont_muerte >= 5714 && lastanimation == &mart_iz)
+	if ((cont_muerte >= 5714) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz))
 	{
 		currentAnimation = &dead_mario_l;
 		currentAnimation->Update();
 		canLateralMov = false;
-		canJump = false;
 	}
-	else if (cont_muerte >= 5714 && lastanimation == &mart_der)
+	else if ((cont_muerte >= 5714) &&( lastanimation == &topescalera||lastanimation==&arriba|| lastanimation == &abajo|| lastanimation == &saltarder|| lastanimation == &paradoder|| lastanimation == &mart_der))
 	{
 		currentAnimation = &dead_mario_r;
 		currentAnimation->Update();
 		canLateralMov = false;
-		canJump = false;
 	}
 
 	if (jumpact == false) 
