@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include"Animation.h"
 #include "ModuleAudio.h"
+#include "SceneLevel4.h"
 #include "SDL/include/SDL_scancode.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
@@ -423,7 +424,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		_win = true;
 		canLateralMov = false;
+		App->scene4->sum_points();
 	}
-
 	
 }

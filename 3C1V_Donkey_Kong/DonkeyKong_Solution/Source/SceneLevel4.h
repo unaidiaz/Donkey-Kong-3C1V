@@ -23,6 +23,10 @@ public:
 	// Loads the necessary textures for the map background
 	bool Start() override;
 
+	void sum_points()
+	{
+		_score += 20;
+	}
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
 	update_status Update() override;
