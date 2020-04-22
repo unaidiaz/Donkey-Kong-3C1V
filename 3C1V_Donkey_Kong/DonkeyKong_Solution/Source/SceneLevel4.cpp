@@ -1,5 +1,7 @@
 #include "SceneLevel4.h"
 
+#include "stdio.h"
+
 #include "Application.h"
 #include "ModuleInput.h"
 #include "Globals.h"
@@ -11,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "Animation.h"
+#include "ModuleFonts.h"
 #include "SDL/include/SDL_scancode.h"
 
 SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
@@ -49,6 +52,7 @@ bool SceneLevel4::Start()
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
 	lvl = App->textures->Load("Assets/carteles y mensajes.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
+	littlemario = App->textures->Load("Assets/letras.png");
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 11, 579, 627,10 }, Collider::Type::plataforma);
@@ -94,6 +98,10 @@ bool SceneLevel4::Start()
 	//MARTILLO ATAQUE
 	
 	App->enemies->AddEnemy(Enemy_Type::LLAMA, 370, 320);
+
+	char lookupTable[] = { "0123456789abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Assets/Fonts/letras.png", lookupTable, 2);
+
 	return ret;
 }
 
@@ -142,6 +150,16 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(bonus, 510, 70, &lvl_);
 	SDL_Rect four_ = { 63,23,8,8 };
 	App->render->Blit(four, 578, 70, &four_);
+	SDL_Rect littlemario_ = { 530,51,8,10 };
+	App->render->Blit(littlemario, 10, 70, &littlemario_);
+
+
+	sprintf_s(scoreText, 10, "%7d", score);
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+
+	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
 	return update_status::UPDATE_CONTINUE;
 }
 

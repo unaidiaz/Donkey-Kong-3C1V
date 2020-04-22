@@ -51,7 +51,14 @@ private:
 	SDL_Texture* bonus = nullptr;
 	SDL_Texture* lvl = nullptr;
 	SDL_Texture* four = nullptr;
+	SDL_Texture* littlemario = nullptr;
 	
+
+	// Font score index
+	uint score = 000;
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
+
 	int cont_win_lose = 0;
 	
 };
