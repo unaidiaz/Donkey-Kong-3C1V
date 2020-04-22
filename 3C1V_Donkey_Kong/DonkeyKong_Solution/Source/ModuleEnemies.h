@@ -25,7 +25,7 @@ class ModuleEnemies : public Module
 public:
 	// Constructor
 	ModuleEnemies(bool startEnabled);
-
+	update_status PreUpdate();
 	// Destructor
 	~ModuleEnemies();
 
@@ -61,7 +61,7 @@ public:
 
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
-
+	bool compene();
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);

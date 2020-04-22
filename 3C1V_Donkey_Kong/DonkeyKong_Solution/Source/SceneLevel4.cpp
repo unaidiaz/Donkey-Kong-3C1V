@@ -97,7 +97,11 @@ bool SceneLevel4::Start()
 	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);
 	//MARTILLO ATAQUE
 	
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 370, 320);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 100, 200);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 200, 320);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 300, 440);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 400, 560);
+	App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 680);
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };

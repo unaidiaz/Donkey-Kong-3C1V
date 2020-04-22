@@ -33,6 +33,8 @@ public:
 	virtual void OnCollision(Collider* collider);
 
 public:
+	bool pendingToDelete = false;
+	void destr();
 	// Current Position in the world
 	iPoint position;
 	bool pendientedeelim = false;

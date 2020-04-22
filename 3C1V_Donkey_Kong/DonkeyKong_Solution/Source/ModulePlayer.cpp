@@ -4,6 +4,7 @@
 #include"ModuleTextures.h"
 #include"Module.h"
 #include"Globals.h"
+#include"ModuleEnemies.h"
 #include"ModuleCollisions.h"
 #include"ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -422,8 +423,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::martillo && c2->type == Collider::Enemigo)
 	{
-		_win = true;
-		canLateralMov = false;
+		if (App->enemies->compene() == true) {
+			_win = true;
+			canLateralMov = false;
+		}
 		App->scene4->sum_points();
 	}
 	

@@ -41,3 +41,10 @@ void Enemy::OnCollision(Collider* collider)
 {	
 	App->audio->PlayFx(destroyedFx);
 }
+void Enemy::destr()
+{
+	if (collider != nullptr) {
+		pendientedeelim = true;
+	}
+
+}

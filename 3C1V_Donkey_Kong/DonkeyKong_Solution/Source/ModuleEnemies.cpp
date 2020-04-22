@@ -1,7 +1,7 @@
 #include "ModuleEnemies.h"
 
 #include "Application.h"
-
+#include"ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
@@ -34,13 +34,12 @@ bool ModuleEnemies::Start()
 	return true;
 }
 
-// PreUpdate
-/*update_status ModuleEnemies::PreUpdate()
+update_status ModuleEnemies::PreUpdate()
 {
 	// Remove all enemies scheduled for deletion
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (enemies[i] != nullptr && enemies[i]->pendingToDelete)
+		if (enemies[i] != nullptr && enemies[i]->pendingToDelete == true)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -48,7 +47,7 @@ bool ModuleEnemies::Start()
 	}
 
 	return update_status::UPDATE_CONTINUE;
-}*/ 
+}
 
 update_status ModuleEnemies::Update()
 {
@@ -115,7 +114,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 void ModuleEnemies::HandleEnemiesSpawn()
 {
 	// Iterate all the enemies queue
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (int i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
 		{
@@ -128,13 +127,17 @@ void ModuleEnemies::HandleEnemiesSpawn()
 void ModuleEnemies::HandleEnemiesDespawn()
 {
 	// Iterate existing enemies
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (int i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr&&enemies[i]->pendientedeelim==true)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
+	}
+	if (App->enemies->compene() == true) {
+		App->player->_win = true;
+		App->player->canLateralMov = false;
 	}
 }
 
@@ -149,10 +152,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			{
 			case Enemy_Type::LLAMA:
 				enemies[i] = new Enemy_Llama(info.x, info.y);
-				enemies[i]->enemigo = enemigos;
-				enemies[i]->destroyedFx = enemyDestroyedFx;
+				
 			break;
 			}
+			enemies[i]->enemigo = enemigos;
+			enemies[i]->destroyedFx = enemyDestroyedFx;
+			break;
 		}
 	}
 }
@@ -165,11 +170,19 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c1->type==c1->Enemigo&&c2->type == c2->martillo) {
 				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-				delete enemies[i];
-				SDL_DestroyTexture(enemigos);
+				enemies[i]->destr();
 				enemies[i] = nullptr;
 				break;
 			}			
 		}
 	}
+}
+bool ModuleEnemies::compene() {
+
+	for (int i = 0; i < MAX_ENEMIES; i++) {
+		if (enemies[i] != nullptr) {
+			return false;
+		}
+	}
+	return true;
 }
