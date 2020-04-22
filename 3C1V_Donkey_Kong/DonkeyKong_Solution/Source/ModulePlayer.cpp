@@ -423,9 +423,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			plataforma = false;
 		}
 	}
+
 	if (c1->type == Collider::martillo && c2->type == Collider::Enemigo)
 	{
 		_win = true;
 		canLateralMov = false;
 	}
+
+	
 }

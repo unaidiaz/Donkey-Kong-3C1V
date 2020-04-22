@@ -15,6 +15,10 @@ public:
 	//Destructor
 	~SceneLevel4();
 
+	Collider* bolso_col = nullptr;
+	Collider* paraguas_col = nullptr;
+	Collider* tanque_col = nullptr;
+
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
 	bool Start() override;
@@ -42,6 +46,7 @@ private:
 	SDL_Texture* _paraguas = nullptr;
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* princesa = nullptr;
+	
 	int cont_win_lose = 0;
 	
 };
