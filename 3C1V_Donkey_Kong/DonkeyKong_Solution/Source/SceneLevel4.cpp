@@ -161,7 +161,7 @@ update_status SceneLevel4::PostUpdate()
 	sprintf_s(scoreText, 10, "%d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(100, 100, blancas, "1");
+	App->fonts->BlitText(100, 100, amarillas, "1");
 
 	App->fonts->BlitText(8, 8, rojas, "HOLA");
 	

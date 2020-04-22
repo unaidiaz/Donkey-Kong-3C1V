@@ -55,7 +55,9 @@ private:
 	
 
 	// Font score index
-	uint score = 000;
+	uint scoreBonus = 0000;
+	uint HighScore = 0000;
+	uint score = 0000;
 	int rojas = -1;
 	int blancas = -1;
 	int amarillas = -1;
