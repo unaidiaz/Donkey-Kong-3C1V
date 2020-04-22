@@ -120,6 +120,6 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 		App->render->Blit(font->texture, x, y, &spriteRect);
 
 		// Advance the position where we blit the next character
-		x += spriteRect.w;
+		x += 24;
 	}
 }

@@ -55,13 +55,15 @@ private:
 	
 
 	// Font score index
-	uint scoreBonus = 0000;
-	uint HighScore = 0000;
-	uint score = 0000;
+	uint _score = 000000;
+	uint _highscore = 000000;
+	uint _bonus = 0000;
 	int rojas = -1;
 	int blancas = -1;
 	int amarillas = -1;
-	char scoreText[10] = { "\0" };
+	char _scoreText[7] = { "\0" };
+	char _highscoreText[7] = { "\0" };
+	char _bonusText[5] = { "\0" };
 
 	int cont_win_lose = 0;
 	
