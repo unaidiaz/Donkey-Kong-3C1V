@@ -25,7 +25,7 @@ public:
 
 	void sum_points()
 	{
-		_score += 20;
+		_score += 300;
 	}
 	// Called at the middle of the application loop
 	// Updates the scene's background animations

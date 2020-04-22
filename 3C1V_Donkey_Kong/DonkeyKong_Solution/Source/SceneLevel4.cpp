@@ -128,7 +128,7 @@ update_status SceneLevel4::Update()
 	{
 		_bonus = 0000;
 	}
-	if (_bonus==1000)
+	if (temp==4800)
 	{
 		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
 	}
@@ -199,6 +199,7 @@ update_status SceneLevel4::PostUpdate()
 
 bool SceneLevel4::CleanUp()
 {
+	App->player->cont_muerte = 0;
 	App->player->Disable();
 	App->enemies->Disable();
 	App->player->_lose = false;
@@ -211,10 +212,6 @@ bool SceneLevel4::CleanUp()
 	_bonus = 5000;
 	App->textures->CleanUp();
 	App->collisions->CleanUp();
-	
-	//delete App->player->collider;
-	//delete App->player->mart;
-	//delete App->player->mart2;
 
 	return true;
 }
