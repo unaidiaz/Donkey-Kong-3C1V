@@ -56,7 +56,9 @@ private:
 
 	// Font score index
 	uint score = 000;
-	int scoreFont = -1;
+	int rojas = -1;
+	int blancas = -1;
+	int amarillas = -1;
 	char scoreText[10] = { "\0" };
 
 	int cont_win_lose = 0;

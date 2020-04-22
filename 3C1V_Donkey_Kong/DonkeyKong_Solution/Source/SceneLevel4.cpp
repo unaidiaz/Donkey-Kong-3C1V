@@ -99,8 +99,12 @@ bool SceneLevel4::Start()
 	
 	App->enemies->AddEnemy(Enemy_Type::LLAMA, 370, 320);
 
-	char lookupTable[] = { "0123456789abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/Fonts/letras.png", lookupTable, 2);
+	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
+	char lookupTable_b[] = { "0123456789" };
+	char lookupTable_a[] = { "0123456789" };
+	rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
+	blancas = App->fonts->Load("Assets/letras_blancas.png", lookupTable_b, 1);
+	amarillas = App->fonts->Load("Assets/letras_amarillas.png", lookupTable_a, 1);
 
 	return ret;
 }
@@ -157,9 +161,9 @@ update_status SceneLevel4::PostUpdate()
 	sprintf_s(scoreText, 10, "%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+	//App->fonts->BlitText(8, 8, scoreFont, scoreText);
 
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	//App->fonts->BlitText(8, 8, scoreFont, "a");
 	return update_status::UPDATE_CONTINUE;
 }
 

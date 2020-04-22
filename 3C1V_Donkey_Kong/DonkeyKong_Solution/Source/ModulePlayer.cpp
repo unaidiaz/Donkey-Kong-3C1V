@@ -262,6 +262,7 @@ update_status ModulePlayer::Update()
 
 
 	}
+	App->
 	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
 		lastanimation = &mart_iz;
