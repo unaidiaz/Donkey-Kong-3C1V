@@ -46,6 +46,11 @@ private:
 	SDL_Texture* _paraguas = nullptr;
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* princesa = nullptr;
+	SDL_Texture* highscore = nullptr;
+	SDL_Texture* oneup = nullptr;
+	SDL_Texture* bonus = nullptr;
+	SDL_Texture* lvl = nullptr;
+	SDL_Texture* four = nullptr;
 	
 	int cont_win_lose = 0;
 	

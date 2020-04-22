@@ -44,7 +44,11 @@ bool SceneLevel4::Start()
 	_bolso = App->textures->Load("Assets/objetosestaticos.png");
 	_tanque = App->textures->Load("Assets/objetosestaticos.png");
 	_paraguas = App->textures->Load("Assets/objetosestaticos.png");
-
+	highscore = App->textures->Load("Assets/carteles y mensajes.png");
+	oneup = App->textures->Load("Assets/carteles y mensajes.png");
+	bonus = App->textures->Load("Assets/carteles y mensajes.png");
+	lvl = App->textures->Load("Assets/carteles y mensajes.png");
+	four = App->textures->Load("Assets/carteles y mensajes.png");
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 11, 579, 627,10 }, Collider::Type::plataforma);
@@ -128,6 +132,16 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(_tanque, 540, 583, &tanque_);
 	SDL_Rect princesa_ = { 0,428,14,23 };
 	App->render->Blit(princesa, 320, 60, &princesa_);
+	SDL_Rect highscore_ = { 63,36,80,8 };
+	App->render->Blit(highscore, 225, 0, &highscore_);
+	SDL_Rect oneup_ = { 16,36,27,8 };
+	App->render->Blit(oneup, 70, 0, &oneup_);
+	SDL_Rect bonus_ = { 146,64,45,30 };
+	App->render->Blit(bonus, 510, 80, &bonus_);
+	SDL_Rect lvl_ = { 0,58,22,8 };
+	App->render->Blit(bonus, 510, 70, &lvl_);
+	SDL_Rect four_ = { 63,23,8,8 };
+	App->render->Blit(four, 578, 70, &four_);
 	return update_status::UPDATE_CONTINUE;
 }
 
