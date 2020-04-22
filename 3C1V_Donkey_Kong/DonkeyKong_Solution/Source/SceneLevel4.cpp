@@ -111,6 +111,31 @@ bool SceneLevel4::Start()
 
 update_status SceneLevel4::Update()
 {
+	temp++;
+	if (temp % 120 == 0 && App->player->_win == false)
+	{
+		_bonus = _bonus - 100;
+	}
+	if (_score >= _highscore)
+	{
+		_highscore = _score;
+	}
+	if (_bonus<=0000)
+	{
+		_bonus = 0000;
+		App->player->_lose = true;
+	}
+	if (_bonus==1000)
+	{
+		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
+	}
+	if (App->player->_win == true)
+	{
+		_bonus = _bonus;
+		_score = _score + _bonus;
+		_bonus = NULL;
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -177,11 +202,11 @@ bool SceneLevel4::CleanUp()
 	App->player->_lose = false;
 	App->player->_win = false;
 	App->player->canLateralMov = true;
-	App->player->cont_muerte = 0;
 	App->player->contToFade = 0;
 	App->player->Posicion.x = 65;
 	App->player->Posicion.y = 680;
-	
+	_score = 000000;
+	_bonus = 5000;
 	App->textures->CleanUp();
 	App->collisions->CleanUp();
 	

@@ -107,7 +107,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	Posicion.y = 680;
 }
 bool ModulePlayer::Start() {
-	cont_muerte = 0;
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
@@ -126,8 +125,7 @@ bool ModulePlayer::Start() {
 }
 update_status ModulePlayer::Update() 
 {
-	cont_muerte += 3;
-	if ((cont_muerte >= 5714) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz))
+	if ((App->player->_lose == true) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz))
 	{	
 		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_l;
@@ -137,7 +135,7 @@ update_status ModulePlayer::Update()
 
 		destroyed = true;
 	}
-	else if ((cont_muerte >= 5714) &&( lastanimation == &topescalera||lastanimation==&arriba|| lastanimation == &abajo|| lastanimation == &saltarder|| lastanimation == &paradoder|| lastanimation == &mart_der))
+	else if ((App->player->_lose==true) &&( lastanimation == &topescalera||lastanimation==&arriba|| lastanimation == &abajo|| lastanimation == &saltarder|| lastanimation == &paradoder|| lastanimation == &mart_der))
 	{
 		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_r;
@@ -145,14 +143,10 @@ update_status ModulePlayer::Update()
 		canLateralMov = false;
 		_lose = true;
 	}	
-	if (cont_muerte >= 4235 && cont_muerte <= 4238)
-	{
-		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
-	}
 	if (_lose == true || _win == true)
 	{
 		contToFade += 3;
-		if (contToFade >= 200)
+		if (contToFade >= 600)
 		{
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
 			
