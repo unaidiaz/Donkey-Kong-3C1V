@@ -41,6 +41,7 @@ private:
 	SDL_Texture* _bolso = nullptr;
 	SDL_Texture* _paraguas = nullptr;
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* princesa = nullptr;
 	int cont_win_lose = 0;
 	
 };
