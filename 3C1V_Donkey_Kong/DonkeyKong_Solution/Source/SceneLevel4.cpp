@@ -199,6 +199,7 @@ update_status SceneLevel4::PostUpdate()
 
 bool SceneLevel4::CleanUp()
 {
+	temp = 0;
 	App->player->cont_muerte = 0;
 	App->player->Disable();
 	App->enemies->Disable();
