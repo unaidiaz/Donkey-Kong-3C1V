@@ -51,6 +51,7 @@ public:
 	SDL_Texture* win = nullptr;
 	SDL_Texture* lose = nullptr;
 	int cont = 0;
+	int cont_muerte = 0;
 	bool jumpact = false;
 	bool canAudioJump = true;
 	bool canLateralMov = true;

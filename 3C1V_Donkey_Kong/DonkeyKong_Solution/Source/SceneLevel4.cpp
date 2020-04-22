@@ -123,7 +123,6 @@ update_status SceneLevel4::Update()
 	if (_bonus<=0000)
 	{
 		_bonus = 0000;
-		App->player->_lose = true;
 	}
 	if (_bonus==1000)
 	{
@@ -131,8 +130,7 @@ update_status SceneLevel4::Update()
 	}
 	if (App->player->_win == true)
 	{
-		_bonus = _bonus;
-		_score = _score + _bonus;
+		_score += _bonus;
 		_bonus = NULL;
 	}
 
