@@ -158,12 +158,13 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
 
 
-	sprintf_s(scoreText, 10, "%7d", score);
+	sprintf_s(scoreText, 10, "%d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	//App->fonts->BlitText(8, 8, scoreFont, scoreText);
+	App->fonts->BlitText(100, 100, blancas, "1");
 
-	//App->fonts->BlitText(8, 8, scoreFont, "a");
+	App->fonts->BlitText(8, 8, rojas, "HOLA");
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
