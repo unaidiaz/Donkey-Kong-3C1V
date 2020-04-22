@@ -114,7 +114,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 void ModuleEnemies::HandleEnemiesSpawn()
 {
 	// Iterate all the enemies queue
-	for (int i = 0; i < MAX_ENEMIES; ++i)
+	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
 		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
 		{
@@ -127,7 +127,7 @@ void ModuleEnemies::HandleEnemiesSpawn()
 void ModuleEnemies::HandleEnemiesDespawn()
 {
 	// Iterate existing enemies
-	for (int i = 0; i < MAX_ENEMIES; ++i)
+	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
 		if (enemies[i] != nullptr&&enemies[i]->pendientedeelim==true)
 		{
@@ -150,10 +150,10 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			case Enemy_Type::LLAMA:
-				enemies[i] = new Enemy_Llama(info.x, info.y);
+				case Enemy_Type::LLAMA:
+					enemies[i] = new Enemy_Llama(info.x, info.y);
 				
-			break;
+				break;
 			}
 			enemies[i]->enemigo = enemigos;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
@@ -171,7 +171,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (c1->type==c1->Enemigo&&c2->type == c2->martillo) {
 				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 				enemies[i]->destr();
-				enemies[i] = nullptr;
 				break;
 			}			
 		}
