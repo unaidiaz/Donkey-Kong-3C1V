@@ -234,6 +234,7 @@ update_status ModulePlayer::Update()
 				}
 
 				escalera = false;
+				
 			}
 			else
 			{
@@ -242,8 +243,11 @@ update_status ModulePlayer::Update()
 				currentAnimation = &abajo;
 				lastanimation = currentAnimation;
 				currentAnimation->Update();
-
+				
 			}
+		}
+		if (plataforma == true) {
+			Posicion.y -= 1;
 		}
 	}
 	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
@@ -264,7 +268,7 @@ update_status ModulePlayer::Update()
 		}
 		if (plataforma == true)
 		{
-			Posicion.y -= 1;
+			//Posicion.y -= 1;
 		}
 
 
@@ -285,7 +289,7 @@ update_status ModulePlayer::Update()
 			escalera = false;
 		}
 		if (plataforma == true) {
-			Posicion.y -= 1;
+			//Posicion.y -= 1;
 		}
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
