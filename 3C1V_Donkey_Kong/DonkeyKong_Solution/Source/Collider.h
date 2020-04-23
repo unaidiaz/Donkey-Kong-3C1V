@@ -16,6 +16,10 @@ struct Collider
 		escalera,
 		martillo,
 		objeto,
+		placa,
+		paraguas,
+		bolso,
+		tanque,
 		MAX
 	};
 
