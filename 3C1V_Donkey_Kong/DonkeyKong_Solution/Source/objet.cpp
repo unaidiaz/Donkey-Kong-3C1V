@@ -73,21 +73,10 @@ void Objet::Draw()
 
 void Objet::OnCollision(Collider* collider)
 {
-	//App->audio->PlayFx(destroyedFx);
+	destr();
 }
 void Objet::destr()
 {
-	if (colob != nullptr) {
-		pendingToDelete = true;
-	}
-	if (_paraguas != nullptr) {
-		pendingToDelete = true;
-	}
-	if (_tanque != nullptr) {
-		pendingToDelete = true;
-	}
-	if (_bolso != nullptr) {
-		pendingToDelete = true;
-	}
-
+	pendingToDelete = true;
+	
 }
