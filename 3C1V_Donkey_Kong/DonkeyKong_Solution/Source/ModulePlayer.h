@@ -24,28 +24,35 @@ public:
 	posicion Posicion;
 	Animation* lastanimation = nullptr;
 	Animation* currentAnimation = nullptr;
-	int tecla=0;
+	int tecla = 0;
 	// A set of animations
+	Animation parado_der_mart;
+	Animation parado_izq_mart;
+
 	Animation dead_mario_l;
 	Animation dead_mario_r;
+
 	Animation mart_iz;
 	Animation mart_der;
+
 	Animation derecha;
 	Animation izquierda;
+
 	Animation arriba;
 	Animation abajo;
+
 	Animation saltar;
+
 	Animation paradoder;
 	Animation paradoizq;
-	Animation paradoder_mart;
-	Animation paradoizq_mart;
+
 	Animation saltarder;
 	Animation saltariz;
 	Animation topescalera;
 	bool escalera = false;
 	Animation espalda;
 	bool plataforma = false;
-	Collider* collider=nullptr;
+	Collider* collider = nullptr;
 	Collider* mart = nullptr; Collider* mart2 = nullptr;
 	SDL_Texture* mario = nullptr;
 	SDL_Texture* win = nullptr;
@@ -64,6 +71,6 @@ public:
 	bool _lose = false;
 	bool destroyed = false;
 private:
-	SDL_Texture* marioo=nullptr;
+	SDL_Texture* marioo = nullptr;
 };
 #endif
