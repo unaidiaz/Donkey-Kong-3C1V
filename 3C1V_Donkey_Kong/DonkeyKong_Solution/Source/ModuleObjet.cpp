@@ -80,7 +80,7 @@ update_status ModuleObjet::PostUpdate()
 // Called before quitting
 bool ModuleObjet::CleanUp()
 {
-	LOG("Freeing all enemies");
+	LOG("Freeing all objects");
 
 	for (uint i = 0; i < MAX_OBJET; ++i)
 	{
@@ -172,20 +172,11 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objetos[i] != nullptr && objetos[i]->GetCollider() == c1)
 		{
-			if (c1->type == c1->objeto && c2->type == c2->PLAYER) {
+			if (c1->type == c1->placa && c2->type == c2->PLAYER) {
 				objetos[i]->OnCollision(c2); //Notify the enemy of a collision
 				objetos[i]->destr();
 				break;
 			}
 		}
 	}
-}
-bool ModuleObjet::compene() {
-
-	for (int i = 0; i < MAX_OBJET; i++) {
-		if (objetos[i] != nullptr) {
-			return false;
-		}
-	}
-	return true;
 }

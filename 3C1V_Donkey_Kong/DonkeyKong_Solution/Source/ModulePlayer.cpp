@@ -7,6 +7,7 @@
 #include"ModuleEnemies.h"
 #include"ModuleCollisions.h"
 #include"ModuleInput.h"
+#include"ModuleObjet.h"
 #include "ModuleFadeToBlack.h"
 #include"Animation.h"
 #include "ModuleAudio.h"
@@ -434,23 +435,28 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::martillo && c2->type == Collider::Enemigo)
 	{
-		if (App->enemies->compene() == true) {
+		/*
+		if (App->enemies->compene() == true) 
+		{
+			_win = true;
+			canLateralMov = false;
+		}*/
+		App->scene4->sum_points_300();
+	}
+
+	if (c1->type == Collider::PLAYER && c2->type == Collider::placa)
+	{
+		cont_win++;
+		if (cont_win == 8)
+		{
 			_win = true;
 			canLateralMov = false;
 		}
-		App->scene4->sum_points_llama();
+		App->scene4->sum_points_100();
 	}
 
-	if (c1->type == Collider::PLAYER && c2->type == Collider::bolso)
+	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
 	{
-		App->scene4->sum_points_objetos();
-	}
-	if (c1->type == Collider::PLAYER && c2->type == Collider::tanque)
-	{
-		App->scene4->sum_points_objetos();
-	}
-	if (c1->type == Collider::PLAYER && c2->type == Collider::paraguas)
-	{
-		App->scene4->sum_points_objetos();
+		App->scene4->sum_points_300();
 	}
 }

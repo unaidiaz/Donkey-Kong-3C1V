@@ -10,7 +10,7 @@ placa::placa(int x, int y) : Objet(x, y)
 
 	currentAnim = &placaa;
 
-	colob = App->collisions->AddCollider({ 0, 0, 5,90 }, Collider::Type::objeto, (Module*)App->objet);
+	colob = App->collisions->AddCollider({ 0, 0, 5,90 }, Collider::Type::placa, (Module*)App->objet);
 }
 
 void placa::Update()

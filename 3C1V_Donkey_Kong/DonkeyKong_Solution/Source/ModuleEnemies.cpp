@@ -138,10 +138,6 @@ void ModuleEnemies::HandleEnemiesDespawn()
 			enemies[i] = nullptr;
 		}
 	}
-	if (App->enemies->compene() == true) {
-		App->player->_win = true;
-		App->player->canLateralMov = false;
-	}
 }
 
 void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
@@ -180,10 +176,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-bool ModuleEnemies::compene() {
-
-	for (int i = 0; i < MAX_ENEMIES; i++) {
-		if (enemies[i] != nullptr) {
+bool ModuleEnemies::compene()
+{
+	for (int i = 0; i < MAX_ENEMIES; i++) 
+	{
+		if (enemies[i] != nullptr) 
+		{
 			return false;
 		}
 	}

@@ -67,6 +67,7 @@ public:
 	int muerteMario = 0;
 	int contador = 0;
 	int contToFade = 0;
+	int cont_win = 0;
 	bool _win = false;
 	bool _lose = false;
 	bool destroyed = false;

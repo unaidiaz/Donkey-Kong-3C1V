@@ -16,6 +16,7 @@ struct Collider
 		escalera,
 		martillo,
 		objeto,
+		placa,
 		MAX
 	};
 

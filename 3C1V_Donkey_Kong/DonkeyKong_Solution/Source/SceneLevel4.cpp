@@ -84,15 +84,7 @@ bool SceneLevel4::Start()
 	//Martillo
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
-	//Placas
-	/*App->collisions->AddCollider({ 167,500,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 477,500,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 167,377,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 477,377,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 163,257,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 477,257,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 163,137,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 477,137,5,90 }, Collider::Type::placas);*/
+	
 	//"Power-Up"
 	/*bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
@@ -230,17 +222,20 @@ bool SceneLevel4::CleanUp()
 {
 	temp = 0;
 	App->player->cont_muerte = 0;
+	App->player->cont_win = 0;
 	App->player->Disable();
 	App->enemies->Disable();
+	App->objet->Disable();
+
 	App->player->_lose = false;
 	App->player->_win = false;
-	App->player->canLateralMov = true;
+	App->player->canLateralMov = true;	
 	App->player->contToFade = 0;
 	App->player->Posicion.x = 65;
-	App->player->Posicion.y = 680;
+	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
-	App->textures->CleanUp();
+	App->textures->CleanUp();	
 	App->collisions->CleanUp();
 
 	return true;
