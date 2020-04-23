@@ -81,9 +81,6 @@ private:
 	// The enemies sprite sheet
 	SDL_Texture* placatext = nullptr;
 	SDL_Texture* objetostex = nullptr;
-	SDL_Texture* paraguastext = nullptr;
-	SDL_Texture* tanquetext = nullptr;
-	SDL_Texture* bolsotext = nullptr;
 
 	// The audio fx for destroying an enemy
 	//int enemyDestroyedFx = 0;

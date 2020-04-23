@@ -10,7 +10,7 @@ bolso::bolso(int x, int y) : Objet(x, y)
 
 	currentAnim = &bolsoo;
 
-	_bolso = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso, (Module*)App->objet);
+	obcollider= App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::objeto, (Module*)App->objet);
 }
 
 void bolso::Update()

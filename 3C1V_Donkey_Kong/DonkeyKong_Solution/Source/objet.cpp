@@ -13,50 +13,30 @@ Objet::Objet(int x, int y) : position(x, y)
 
 Objet::~Objet()
 {
-	if (colob != nullptr)
-		colob->pendingToDelete = true;
-	if (_tanque != nullptr)
-		_tanque->pendingToDelete = true;
-	if (_bolso != nullptr)
-		_bolso->pendingToDelete = true;
-	if (_paraguas != nullptr)
-		_paraguas->pendingToDelete = true;
+	if (obcollider != nullptr)
+		obcollider->pendingToDelete = true;
+	
 }
 
 const Collider* Objet::GetCollider() const
 {
-	if (Collider::paraguas)
-	{
-		return _paraguas;
-	}
-	else if (Collider::bolso)
-	{
-		return _bolso;
-	}
-	else if (Collider::tanque)
-	{
-		return _tanque;
-	}
-	else if (Collider::placa)
-	{
-		return colob;
-	}
+	return obcollider;
 	
 }
 
 void Objet::Update()
 {
-	if (currentAnim != nullptr)
+	if (currentAnim != nullptr) {
 		currentAnim->Update();
+	}
+		
 
-	if (colob != nullptr)
-		colob->SetPos(position.x, position.y);
-	if (_paraguas != nullptr)
-		_paraguas->SetPos(position.x, position.y);
-	if (_bolso != nullptr)
-		_bolso->SetPos(position.x, position.y);
-	if (_tanque != nullptr)
-		_tanque->SetPos(position.x, position.y);
+	if (obcollider != nullptr) {
+		obcollider->SetPos(position.x, position.y);
+
+	}
+		
+	
 }
 
 void Objet::Draw()
@@ -78,5 +58,8 @@ void Objet::OnCollision(Collider* collider)
 void Objet::destr()
 {
 	pendingToDelete = true;
+	if (obcollider != nullptr) {
+		obcollider->pendingToDelete = true;
+	}
 	
 }

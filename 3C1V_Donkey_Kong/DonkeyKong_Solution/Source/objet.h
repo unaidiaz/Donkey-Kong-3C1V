@@ -52,10 +52,7 @@ protected:
 	Animation* currentAnim = nullptr;
 
 	// The enemy's collider
-	Collider* colob = nullptr;
-	Collider* _tanque = nullptr;
-	Collider* _bolso = nullptr;
-	Collider* _paraguas = nullptr;
+	Collider* obcollider = nullptr;
 	// Original spawn position
 	iPoint spawnPos;
 };

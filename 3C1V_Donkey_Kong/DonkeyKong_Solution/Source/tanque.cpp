@@ -10,7 +10,7 @@ tanque::tanque(int x, int y) : Objet(x, y)
 
 	currentAnim = &tanquee;
 
-	_tanque = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque, (Module*)App->objet);
+	obcollider = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::objeto, (Module*)App->objet);
 }
 
 void tanque::Update()

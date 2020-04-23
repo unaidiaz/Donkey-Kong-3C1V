@@ -10,7 +10,7 @@ paraguas::paraguas(int x, int y) : Objet(x, y)
 
 	currentAnim = &paraguass;
 
-	_paraguas = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas, (Module*)App->objet);
+	obcollider = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::objeto, (Module*)App->objet);
 }
 
 void paraguas::Update()

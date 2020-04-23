@@ -34,9 +34,7 @@ bool ModuleObjet::Start()
 {
 
 	placatext = App->textures->Load("Assets/taco.png");
-	tanquetext = App->textures->Load("Assets/objetosestaticos.png");
-	bolsotext = App->textures->Load("Assets/objetosestaticos.png");
-	paraguastext = App->textures->Load("Assets/objetosestaticos.png");
+	objetostex = App->textures->Load("Assets/objetosestaticos.png");
 	//enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
@@ -166,15 +164,15 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 				break;
 			case Objet_Type::paraguas:
 				objetos[i] = new paraguas(info.x, info.y);
-				objetos[i]->paraguastext = paraguastext;
+				objetos[i]->paraguastext = objetostex;
 				break;
 			case Objet_Type::bolso:
 				objetos[i] = new bolso(info.x, info.y);
-				objetos[i]->bolsotext = bolsotext;
+				objetos[i]->bolsotext = objetostex;
 				break;
 			case Objet_Type::tanque:
 				objetos[i] = new tanque(info.x, info.y);
-				objetos[i]->tanquetext = tanquetext;
+				objetos[i]->tanquetext = objetostex;
 				break;
 			}
 
@@ -190,7 +188,11 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objetos[i] != nullptr && objetos[i]->GetCollider() == c1)
 		{
-			objetos[i]->OnCollision(c2);
+			if (c2->type != c2->Enemigo) {
+				objetos[i]->OnCollision(c2);
+
+			}
+			
 		}
 	}
 }
