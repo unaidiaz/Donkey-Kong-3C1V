@@ -441,4 +441,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->scene4->sum_points_llama();
 	}
 
+	if (c1->type == Collider::PLAYER && c2->type == Collider::bolso)
+	{
+		App->scene4->sum_points_objetos();
+	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::tanque)
+	{
+		App->scene4->sum_points_objetos();
+	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::paraguas)
+	{
+		App->scene4->sum_points_objetos();
+	}
 }
