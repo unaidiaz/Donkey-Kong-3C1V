@@ -22,7 +22,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	parado_der_mart.loop = true;
 
 	parado_izq_mart.PushBack({ 80,73,16,29 });
-	parado_izq_mart.PushBack({ 116,79,25,17 });
+	parado_izq_mart.PushBack({ 35,79,26,17 });
 	parado_izq_mart.speed = 0.1f;
 	parado_izq_mart.loop = true;
 
