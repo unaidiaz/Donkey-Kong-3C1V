@@ -60,12 +60,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	mart_iz.PushBack({ 80,73,16,29 });
 	mart_iz.PushBack({ 35,79,26,17 });
 	mart_iz.loop = true;
-	mart_iz.speed = 0.1f;
+	mart_iz.speed = 0.05f;
 
 	mart_der.PushBack({ 199,73,16,29 });
 	mart_der.PushBack({ 234,79,26,16 });
 	mart_der.loop = true;
-	mart_der.speed = 0.1f;
+	mart_der.speed = 0.05f;
 
 
 
@@ -131,7 +131,7 @@ update_status ModulePlayer::Update()
 
 		destroyed = true;
 	}*/
-	if ((cont_muerte == 600))
+	if ((cont_muerte == 6000))
 	{
 		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_r;
