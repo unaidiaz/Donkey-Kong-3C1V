@@ -15,6 +15,7 @@
 #include "Animation.h"
 #include "ModuleFonts.h"
 #include "SDL/include/SDL_scancode.h"
+#include "ModuleFadeToBlack.h"
 
 SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 {
@@ -139,6 +140,18 @@ bool SceneLevel4::Start()
 
 update_status SceneLevel4::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+	}
+	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->_win = true;
+	}
+	if (App->input->keys[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->_lose = true;
+	}
 	temp++;
 	if (temp % 120 == 0 && App->player->_win == false)
 	{
