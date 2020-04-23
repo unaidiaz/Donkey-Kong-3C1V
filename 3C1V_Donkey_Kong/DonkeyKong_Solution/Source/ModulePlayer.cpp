@@ -110,6 +110,7 @@ bool ModulePlayer::Start()
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
+	placaSound = App->audio->LoadFx("Assets/6. SFX (Bonus).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
 	lastanimation = &topescalera;
@@ -269,7 +270,7 @@ update_status ModulePlayer::Update()
 		}
 		if (plataforma == true)
 		{
-			//Posicion.y -= 1;
+			Posicion.y -= 1;
 		}
 
 
@@ -289,8 +290,9 @@ update_status ModulePlayer::Update()
 		if (escalera == true) {
 			escalera = false;
 		}
-		if (plataforma == true) {
-			//Posicion.y -= 1;
+		if (plataforma == true) 
+		{
+			Posicion.y -= 1;
 		}
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -397,18 +399,20 @@ void ModulePlayer::jump()
 	if (currentAnimation != &saltarder || currentAnimation != &saltariz)
 	{
 		if (tecla == 0) {
-			if (currentAnimation != &saltarder) {
+			if (currentAnimation != &saltarder) 
+			{
 				//saltarder.Reset();
 				currentAnimation = &saltarder;
 				lastanimation = currentAnimation;
 			}
 		}
-		else {
-			if (currentAnimation != &saltarder) {
+		else 
+		{
+			if (currentAnimation != &saltarder) 
+			{
 				//saltariz.Reset();
 				currentAnimation = &saltariz;
 				lastanimation = currentAnimation;
-
 			}
 		}
 	}
@@ -457,10 +461,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			_win = true;
 			canLateralMov = false;
 		}
+		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_100();
 	}
 	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
 	{
+		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_300();
 	}
 }

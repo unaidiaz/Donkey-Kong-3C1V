@@ -9,11 +9,13 @@ struct SDL_Rect;
 struct SDL_Texture;
 struct SDL_Renderer;
 struct Collider;
-class posicion {
+class posicion 
+{
 public:
 	int x, y;
 };
-class ModulePlayer : public Module {
+class ModulePlayer : public Module 
+{
 public:
 	ModulePlayer(bool startEnabled);
 	bool Start();
@@ -64,6 +66,7 @@ public:
 	bool canLateralMov = true;
 	int paso;
 	int salto;
+	int placaSound;
 	int muerteMario = 0;
 	int contador = 0;
 	int contToFade = 0;
