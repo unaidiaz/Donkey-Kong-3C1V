@@ -109,6 +109,7 @@ bool ModulePlayer::Start() {
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
+	sonidoplaca = App->audio->LoadFx("Assets/2. SFX (Bonus).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
 	lastanimation = &topescalera;
@@ -456,6 +457,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
 	{
 		App->scene4->sum_points_100();
+		App->audio->PlayFx(sonidoplaca);
 		cont_win++;
 		if (cont_win == 8)
 		{
