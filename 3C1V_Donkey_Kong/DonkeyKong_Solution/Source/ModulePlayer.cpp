@@ -120,7 +120,7 @@ bool ModulePlayer::Start() {
 update_status ModulePlayer::Update()
 {
 	cont_muerte++;
-	if ((cont_muerte >= 6000) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz))
+	/*if ((cont_muerte >= 6000) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz || lastanimation == &parado_izq_mart))
 	{
 		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_l;
@@ -130,8 +130,8 @@ update_status ModulePlayer::Update()
 		_lose = true;
 
 		destroyed = true;
-	}
-	else if ((cont_muerte >= 6000) && (lastanimation == &topescalera || lastanimation == &arriba || lastanimation == &abajo || lastanimation == &saltarder || lastanimation == &paradoder || lastanimation == &mart_der))
+	}*/
+	if ((cont_muerte == 600))
 	{
 		App->audio->PlayFx(muerteMario);
 		currentAnimation = &dead_mario_r;
