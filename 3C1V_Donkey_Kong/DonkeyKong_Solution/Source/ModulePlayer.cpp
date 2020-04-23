@@ -427,7 +427,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			_win = true;
 			canLateralMov = false;
 		}
-		App->scene4->sum_points();
+		App->scene4->sum_points_llama();
 	}
 	
 }
