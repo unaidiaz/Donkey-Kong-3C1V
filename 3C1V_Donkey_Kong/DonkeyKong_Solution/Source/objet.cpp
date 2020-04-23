@@ -77,6 +77,8 @@ void Objet::OnCollision(Collider* collider)
 }
 void Objet::destr()
 {
-	pendingToDelete = true;
-	
+	if (colob != nullptr) 
+	{
+		pendingToDelete = true;
+	}	
 }

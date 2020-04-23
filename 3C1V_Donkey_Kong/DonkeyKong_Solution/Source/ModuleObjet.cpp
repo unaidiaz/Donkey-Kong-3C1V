@@ -176,9 +176,7 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 				objetos[i] = new tanque(info.x, info.y);
 				objetos[i]->tanquetext = tanquetext;
 				break;
-			}
-
-			
+			}			
 			break;
 		}
 	}
@@ -190,7 +188,12 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objetos[i] != nullptr && objetos[i]->GetCollider() == c1)
 		{
-			objetos[i]->OnCollision(c2);
+			if (c1->type == c1->placa && c2->type == c2->PLAYER) 
+			{
+				objetos[i]->OnCollision(c2); //Notify the enemy of a collision
+				objetos[i]->destr();
+				break;
+			}
 		}
 	}
 }
