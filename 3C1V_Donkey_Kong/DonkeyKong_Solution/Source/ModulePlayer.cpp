@@ -101,7 +101,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	Posicion.x = 65;
 	Posicion.y = 680;
 }
-bool ModulePlayer::Start() {
+bool ModulePlayer::Start() 
+{
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
@@ -109,7 +110,6 @@ bool ModulePlayer::Start() {
 	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
-	sonidoplaca = App->audio->LoadFx("Assets/2. SFX (Bonus).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
 	lastanimation = &topescalera;
@@ -449,20 +449,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->scene4->sum_points_300();
 	}
 
-	if (c1->type == Collider::PLAYER && c2->type == Collider::paraguas|| c1->type == Collider::PLAYER && c2->type == Collider::bolso || c1->type == Collider::PLAYER && c2->type == Collider::tanque)
-	{
-		App->scene4->sum_points_300();
-	}
-
-	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
-	{
-		App->scene4->sum_points_100();
-		App->audio->PlayFx(sonidoplaca);
+	if (c1->type == Collider::PLAYER && c2->type == Collider::placa)
+	{		
 		cont_win++;
 		if (cont_win == 8)
 		{
 			_win = true;
 			canLateralMov = false;
 		}
+		App->scene4->sum_points_100();
+	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
+	{
+		App->scene4->sum_points_300();
 	}
 }

@@ -64,7 +64,6 @@ public:
 	bool canLateralMov = true;
 	int paso;
 	int salto;
-	int sonidoplaca;
 	int muerteMario = 0;
 	int contador = 0;
 	int contToFade = 0;

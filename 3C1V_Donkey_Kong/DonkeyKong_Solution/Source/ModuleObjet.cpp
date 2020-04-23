@@ -188,11 +188,14 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objetos[i] != nullptr && objetos[i]->GetCollider() == c1)
 		{
-			if (c2->type != c2->Enemigo) {
+			if (c2->type != c2->Enemigo) 
+			{
 				objetos[i]->OnCollision(c2);
-
 			}
-			
+			else if (c2->type == c2->placa)
+			{
+				objetos[i]->OnCollision(c2);
+			}
 		}
 	}
 }
