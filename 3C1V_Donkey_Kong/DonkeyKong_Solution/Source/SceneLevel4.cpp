@@ -46,9 +46,9 @@ bool SceneLevel4::Start()
 	placas = App->textures->Load("Assets/taco.png"); /*placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");*/
 	/*placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
 	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");*/
-	_bolso = App->textures->Load("Assets/objetosestaticos.png");
-	_tanque = App->textures->Load("Assets/objetosestaticos.png");
-	_paraguas = App->textures->Load("Assets/objetosestaticos.png");
+	//_bolso = App->textures->Load("Assets/objetosestaticos.png");
+	//_tanque = App->textures->Load("Assets/objetosestaticos.png");
+	//_paraguas = App->textures->Load("Assets/objetosestaticos.png");
 	highscore = App->textures->Load("Assets/carteles y mensajes.png");
 	oneup = App->textures->Load("Assets/carteles y mensajes.png");
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
@@ -123,6 +123,9 @@ bool SceneLevel4::Start()
 	App->objet->AddObjet(Objet_Type::placa, 480, 257);
 	App->objet->AddObjet(Objet_Type::placa, 167, 137);
 	App->objet->AddObjet(Objet_Type::placa, 480, 137);
+	App->objet->AddObjet(Objet_Type::tanque, 530, 553);
+	App->objet->AddObjet(Objet_Type::bolso, 390, 670);
+	App->objet->AddObjet(Objet_Type::paraguas, 120, 170);
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };

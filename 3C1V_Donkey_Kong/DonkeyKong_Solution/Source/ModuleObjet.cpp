@@ -8,6 +8,9 @@
 #include "SceneLevel4.h"
 #include"ModuleObjet.h"
 #include"placa.h"
+#include "paraguas.h"
+#include "tanque.h"
+#include "bolso.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 
@@ -31,6 +34,9 @@ bool ModuleObjet::Start()
 {
 
 	placatext = App->textures->Load("Assets/taco.png");
+	tanquetext = App->textures->Load("Assets/objetosestaticos.png");
+	bolsotext = App->textures->Load("Assets/objetosestaticos.png");
+	paraguastext = App->textures->Load("Assets/objetosestaticos.png");
 	//enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
@@ -157,9 +163,21 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 			case Objet_Type::placa:
 				objetos[i] = new placa(info.x,info.y);
 				objetos[i]->placatext = placatext;
-
+				break;
+			case Objet_Type::paraguas:
+				objetos[i] = new paraguas(info.x, info.y);
+				objetos[i]->paraguastext = paraguastext;
+				break;
+			case Objet_Type::bolso:
+				objetos[i] = new bolso(info.x, info.y);
+				objetos[i]->bolsotext = bolsotext;
+				break;
+			case Objet_Type::tanque:
+				objetos[i] = new tanque(info.x, info.y);
+				objetos[i]->tanquetext = tanquetext;
 				break;
 			}
+
 			
 			break;
 		}

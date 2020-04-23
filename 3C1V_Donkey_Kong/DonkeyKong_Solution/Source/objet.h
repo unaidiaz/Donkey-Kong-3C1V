@@ -40,6 +40,9 @@ public:
 
 	// The enemy's texture
 	SDL_Texture* placatext = nullptr;
+	SDL_Texture* tanquetext = nullptr;
+	SDL_Texture* bolsotext = nullptr;
+	SDL_Texture* paraguastext = nullptr;
 	SDL_Texture* objetos = nullptr;
 	// Sound fx when destroyed
 	//int destroyedFx = 0;
@@ -50,6 +53,9 @@ protected:
 
 	// The enemy's collider
 	Collider* colob = nullptr;
+	Collider* _tanque = nullptr;
+	Collider* _bolso = nullptr;
+	Collider* _paraguas = nullptr;
 	// Original spawn position
 	iPoint spawnPos;
 };

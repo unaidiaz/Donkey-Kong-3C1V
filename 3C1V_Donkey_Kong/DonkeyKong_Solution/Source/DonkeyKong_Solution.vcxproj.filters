@@ -112,6 +112,15 @@
     <ClInclude Include="placa.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="bolso.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="tanque.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="paraguas.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -190,6 +199,15 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="placa.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="bolso.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="tanque.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="paraguas.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>

@@ -200,6 +200,15 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::placa:
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
+		case Collider::Type::bolso:
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+		case Collider::Type::paraguas:
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+		case Collider::Type::tanque:
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
 		}
 	}
 }

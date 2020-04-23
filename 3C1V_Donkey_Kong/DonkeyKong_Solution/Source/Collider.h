@@ -17,6 +17,9 @@ struct Collider
 		martillo,
 		objeto,
 		placa,
+		tanque,
+		bolso,
+		paraguas,
 		MAX
 	};
 
