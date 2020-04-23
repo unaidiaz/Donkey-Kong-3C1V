@@ -1,5 +1,5 @@
 #include "SceneLevel4.h"
-
+#include"ModuleObjet.h"
 #include "stdio.h"
 #include<time.h>
 #include "Application.h"
@@ -37,15 +37,15 @@ bool SceneLevel4::Start()
 
 	App->enemies->Enable();
 	App->player->Enable();
-
+	App->objet->Enable();
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
 	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	princesa = App->textures->Load("Assets/perso.png");
-	placas = App->textures->Load("Assets/taco.png"); placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");
-	placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
-	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");
+	placas = App->textures->Load("Assets/taco.png"); /*placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");*/
+	/*placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
+	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");*/
 	_bolso = App->textures->Load("Assets/objetosestaticos.png");
 	_tanque = App->textures->Load("Assets/objetosestaticos.png");
 	_paraguas = App->textures->Load("Assets/objetosestaticos.png");
@@ -85,18 +85,18 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
 	//Placas
-	App->collisions->AddCollider({ 167,500,5,90 }, Collider::Type::placas);
+	/*App->collisions->AddCollider({ 167,500,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 477,500,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 167,377,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 477,377,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 163,257,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 477,257,5,90 }, Collider::Type::placas);
 	App->collisions->AddCollider({ 163,137,5,90 }, Collider::Type::placas);
-	App->collisions->AddCollider({ 477,137,5,90 }, Collider::Type::placas);
+	App->collisions->AddCollider({ 477,137,5,90 }, Collider::Type::placas);*/
 	//"Power-Up"
-	bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
+	/*bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
-	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);
+	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
 	//MARTILLO ATAQUE
 	int direccion, x;
 	for (int i = 0; i < 5;i++) {
@@ -122,13 +122,15 @@ bool SceneLevel4::Start()
 			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680,direccion);
 			break;
 		}
-		
-		
-	
-		
-		
 	}
-	
+	App->objet->AddObjet(Objet_Type::placa, 168, 500);
+	App->objet->AddObjet(Objet_Type::placa, 480, 500);
+	App->objet->AddObjet(Objet_Type::placa, 170, 377);
+	App->objet->AddObjet(Objet_Type::placa, 480, 377);
+	App->objet->AddObjet(Objet_Type::placa, 170, 257);
+	App->objet->AddObjet(Objet_Type::placa, 480, 257);
+	App->objet->AddObjet(Objet_Type::placa, 167, 137);
+	App->objet->AddObjet(Objet_Type::placa, 480, 137);
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
@@ -181,7 +183,7 @@ update_status SceneLevel4::PostUpdate()
 	SDL_Rect mart = { 0,4,9,11 };
 	App->render->Blit(martillo, 325, 280, &mart);
 	App->render->Blit(martillo2, 10, 400, &mart);
-	SDL_Rect taco = { 0,0,8,9 };
+	/*SDL_Rect taco = { 0,0,8,9 };
 	App->render->Blit(placas, 480, 610, &taco);
 	App->render->Blit(placas2, 170, 610, &taco);
 	App->render->Blit(placas3, 480, 487, &taco);
@@ -189,7 +191,7 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(placas5, 480, 367, &taco);
 	App->render->Blit(placas6, 168, 367, &taco);
 	App->render->Blit(placas7, 480, 247, &taco);
-	App->render->Blit(placas8, 168, 247, &taco);
+	App->render->Blit(placas8, 168, 247, &taco);*/
 	SDL_Rect paraguas_ = { 50,0,17,15 };
 	App->render->Blit(_paraguas, 120, 200, &paraguas_);
 	SDL_Rect bolso_ = { 14,5,10,10 };

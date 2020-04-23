@@ -3,9 +3,10 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 12
+#define NUM_MODULES 13
 
 class Module;
+class ModuleObjet;
 class ModuleCollisions;
 class ModuleWindow;
 class ModuleInput;
@@ -56,7 +57,7 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
-	
+	ModuleObjet* objet = nullptr;
 	ModuleRender* render = nullptr;	
 };
 

@@ -12,7 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
-#include "ModuleObjects.h"
+#include"ModuleObjet.h"
 #include "ModuleFonts.h"
 
 Application::Application()
@@ -29,11 +29,11 @@ Application::Application()
 	modules[5] = scene4 = new SceneLevel4(false);
 	modules[6] = player = new ModulePlayer(false);
 	modules[7] = enemies = new ModuleEnemies(false);
-
-	modules[8] = collisions = new ModuleCollisions(true);
-	modules[9] = fade = new ModuleFadeToBlack(true);
-	modules[10] = fonts = new ModuleFonts(true);
-	modules[11] = render = new ModuleRender(true);
+	modules[8] = objet = new ModuleObjet(false);
+	modules[9] = collisions = new ModuleCollisions(true);
+	modules[10] = fade = new ModuleFadeToBlack(true);
+	modules[11] = fonts = new ModuleFonts(true);
+	modules[12] = render = new ModuleRender(true);
 }
 
 Application::~Application()
