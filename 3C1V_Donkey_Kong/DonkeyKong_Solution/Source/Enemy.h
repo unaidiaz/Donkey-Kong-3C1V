@@ -50,7 +50,7 @@ protected:
 
 	// The enemy's collider
 	Collider* collider = nullptr;
-
+	int dire;
 	// Original spawn position
 	iPoint spawnPos;
 };

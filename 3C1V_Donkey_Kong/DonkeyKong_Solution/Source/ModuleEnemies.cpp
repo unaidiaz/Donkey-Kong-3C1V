@@ -10,6 +10,7 @@
 #include "Enemy_Llama.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
+#include<time.h>
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
 #define SPAWN_MARGIN 50
@@ -28,6 +29,7 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
+	
 	enemigos = App->textures->Load("Assets/objetosanimados.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
@@ -92,7 +94,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
+bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y,int direccion)
 {
 	bool ret = false;
 
@@ -103,6 +105,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
+			spawnQueue[i].direccion = direccion;
 			ret = true;
 			break;
 		}
@@ -148,10 +151,11 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 	{
 		if (enemies[i] == nullptr)
 		{
+			
 			switch (info.type)
 			{
 				case Enemy_Type::LLAMA:
-					enemies[i] = new Enemy_Llama(info.x, info.y);
+					enemies[i] = new Enemy_Llama(info.x, info.y,info.direccion);
 				
 				break;
 			}

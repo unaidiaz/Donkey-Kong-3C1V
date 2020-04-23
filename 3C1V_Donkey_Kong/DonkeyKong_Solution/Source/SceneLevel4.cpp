@@ -1,7 +1,7 @@
 #include "SceneLevel4.h"
 
 #include "stdio.h"
-
+#include<time.h>
 #include "Application.h"
 #include "ModuleInput.h"
 #include "Globals.h"
@@ -29,6 +29,8 @@ SceneLevel4::~SceneLevel4()
 // Load assets
 bool SceneLevel4::Start()
 {
+	srand(time(NULL));
+	
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -96,12 +98,37 @@ bool SceneLevel4::Start()
 	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
 	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);
 	//MARTILLO ATAQUE
+	int direccion, x;
+	for (int i = 0; i < 5;i++) {
+		direccion = rand() % 2;
+		if (direccion == 0) {
+			direccion = -1;
+		}
+		switch (i)
+		{
+		case 0:
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 50, 200,direccion);
+			break;
+		case 1:
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320,direccion);
+			break;
+		case 2:
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440,direccion);
+			break;
+		case 3:
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560,direccion);
+			break;
+		case 4:
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680,direccion);
+			break;
+		}
+		
+		
 	
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 100, 200);
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 200, 320);
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 300, 440);
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 400, 560);
-	App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 680);
+		
+		
+	}
+	
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
