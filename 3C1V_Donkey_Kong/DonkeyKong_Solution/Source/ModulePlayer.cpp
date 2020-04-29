@@ -311,6 +311,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+	{
+		exit(0);
+	}
 	if (jumpact == true)
 	{
 		jump();
