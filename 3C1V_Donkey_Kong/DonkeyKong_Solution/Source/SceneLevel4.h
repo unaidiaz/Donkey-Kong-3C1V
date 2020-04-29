@@ -39,6 +39,8 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
+	void DebugDrawGamepadInfo();
+
 	// Disables the player and the enemies
 	bool CleanUp();
 private:
@@ -75,6 +77,8 @@ private:
 	char _bonusText[5] = { "\0" };
 
 	int cont_win_lose = 0;
+
+	bool debugGamepadInfo = false;
 	
 };
 #endif

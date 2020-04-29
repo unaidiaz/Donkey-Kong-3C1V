@@ -122,6 +122,8 @@ bool ModulePlayer::Start()
 }
 update_status ModulePlayer::Update()
 {
+	GamePad& pad = App->input->pads[0];
+
 	cont_muerte++;
 	/*if ((cont_muerte >= 6000) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz || lastanimation == &parado_izq_mart))
 	{

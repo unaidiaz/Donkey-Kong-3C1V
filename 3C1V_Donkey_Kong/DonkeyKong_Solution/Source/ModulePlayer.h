@@ -74,7 +74,12 @@ public:
 	bool _win = false;
 	bool _lose = false;
 	bool destroyed = false;
+
+	bool debugGamepadInfo = false;
+
 private:
 	SDL_Texture* marioo = nullptr;
+	// Debugdraw for gamepad data
+
 };
 #endif
