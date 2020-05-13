@@ -44,12 +44,6 @@ bool SceneLevel4::Start()
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	princesa = App->textures->Load("Assets/perso.png");
-	placas = App->textures->Load("Assets/taco.png"); /*placas2 = App->textures->Load("Assets/taco.png"); placas3 = App->textures->Load("Assets/taco.png");*/
-	/*placas4 = App->textures->Load("Assets/taco.png"); placas5 = App->textures->Load("Assets/taco.png"); placas6 = App->textures->Load("Assets/taco.png");
-	placas7 = App->textures->Load("Assets/taco.png"); placas8 = App->textures->Load("Assets/taco.png"); placas9 = App->textures->Load("Assets/taco.png");*/
-	//_bolso = App->textures->Load("Assets/objetosestaticos.png");
-	//_tanque = App->textures->Load("Assets/objetosestaticos.png");
-	//_paraguas = App->textures->Load("Assets/objetosestaticos.png");
 	highscore = App->textures->Load("Assets/carteles y mensajes.png");
 	oneup = App->textures->Load("Assets/carteles y mensajes.png");
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
