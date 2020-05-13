@@ -126,7 +126,7 @@ bool SceneLevel4::Start()
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
 	char lookupTable_a[] = { "0123456789" };
-	rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
+	//rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
 	blancas = App->fonts->Load("Assets/letras_blancas.png", lookupTable_b, 1);
 	amarillas = App->fonts->Load("Assets/letras_amarillas.png", lookupTable_a, 1);
 
@@ -235,15 +235,6 @@ update_status SceneLevel4::PostUpdate()
 	SDL_Rect mart = { 0,4,9,11 };
 	App->render->Blit(martillo, 325, 280, &mart);
 	App->render->Blit(martillo2, 10, 400, &mart);
-	/*SDL_Rect taco = { 0,0,8,9 };
-	App->render->Blit(placas, 480, 610, &taco);
-	App->render->Blit(placas2, 170, 610, &taco);
-	App->render->Blit(placas3, 480, 487, &taco);
-	App->render->Blit(placas4, 168, 490, &taco);
-	App->render->Blit(placas5, 480, 367, &taco);
-	App->render->Blit(placas6, 168, 367, &taco);
-	App->render->Blit(placas7, 480, 247, &taco);
-	App->render->Blit(placas8, 168, 247, &taco);*/
 	SDL_Rect paraguas_ = { 50,0,17,15 };
 	App->render->Blit(_paraguas, 120, 200, &paraguas_);
 	SDL_Rect bolso_ = { 14,5,10,10 };
