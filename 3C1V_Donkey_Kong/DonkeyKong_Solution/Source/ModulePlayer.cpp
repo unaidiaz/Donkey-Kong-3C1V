@@ -68,13 +68,20 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	mart_der.loop = true;
 	mart_der.speed = 0.05f;
 
-
-
-
 	topescalera.PushBack({ 200,39,15,15 });
 	topescalera.PushBack({ 239,41,15,13 });
 	topescalera.loop = true;
 	topescalera.speed = 0.1f;
+
+	derecha.PushBack({ 378, 84, 17, 17 });
+	derecha.PushBack({ 354, 85, 16, 17 });
+	derecha.loop = true;
+	derecha.speed = 0.05f;
+
+	izquierda.PushBack({ 310, 84, 17, 17 });
+	izquierda.PushBack({ 334, 85, 16, 17 });
+	izquierda.loop = true;
+	izquierda.speed = 0.05f;
 
 	paradoder.PushBack({ 161,0,16,17 });
 	paradoizq.PushBack({ 121,0,16,17 });
@@ -95,7 +102,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	saltariz.PushBack({ 80,0,16,16 });
 
 
-	currentAnimation = &mart_der;
+	currentAnimation = &paradoder;
 	lastanimation = currentAnimation;
 
 	Posicion.x = 65;
@@ -106,14 +113,15 @@ bool ModulePlayer::Start()
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
-	mart = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
-	mart2 = App->collisions->AddCollider({ Posicion.x, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
+	mart = App->collisions->AddCollider({ Posicion.x + 50, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
+	mart2 = App->collisions->AddCollider({ Posicion.x - 50, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	placaSound = App->audio->LoadFx("Assets/6. SFX (Bonus).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
 	lastanimation = &topescalera;
+	hammerCont = 0;
 
 	destroyed = false;
 	//collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
@@ -154,15 +162,49 @@ update_status ModulePlayer::Update()
 
 		}
 	}
+	if (hammerMode == true)
+	{
+		hammerCont++;
+	}
+	if (hammerCont == 600)
+	{
+		if (lastanimation == &parado_der_mart)
+		{
+			currentAnimation = &paradoder;
+		}
+		else if (lastanimation == &parado_izq_mart)
+		{
+			currentAnimation = &paradoizq;
+		}
+
+		hammerMode = false;
+		hammerCont = 0;
+	}
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar)
 	{
-		currentAnimation = &parado_der_mart;
-		lastanimation = currentAnimation;
+		if (hammerMode == false)
+		{
+			currentAnimation = &paradoder;
+			lastanimation = currentAnimation;
+		}
+		else if (hammerMode == true)
+		{
+			currentAnimation = &parado_der_mart;
+			lastanimation = currentAnimation;
+		}
 	}
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz)
 	{
-		currentAnimation = &parado_izq_mart;
-		lastanimation = currentAnimation;
+		if (hammerMode == false)
+		{
+			currentAnimation = &paradoizq;
+			lastanimation = currentAnimation;
+		}
+		else if (hammerMode == true)
+		{
+			currentAnimation = &parado_izq_mart;
+			lastanimation = currentAnimation;
+		}
 	}
 	currentAnimation->Update();
 	if (jumpact == false)
@@ -256,45 +298,90 @@ update_status ModulePlayer::Update()
 	}
 	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
-		lastanimation = &mart_der;
-		tecla = 0;
-		Posicion.x += 2;
-		if (jumpact == false) {
-			contador++;
-		}
-		//derecha.Reset();
-		currentAnimation = &mart_der;
-		lastanimation = currentAnimation;
-		currentAnimation->Update();
-		if (escalera == true)
+		if (hammerMode == false)
 		{
-			escalera = false;
+			lastanimation = &derecha;
+			tecla = 0;
+			Posicion.x += 2;
+			if (jumpact == false)
+			{
+				contador++;
+			}
+			currentAnimation = &derecha;
+			lastanimation = currentAnimation;
+			currentAnimation->Update();
+			if (escalera == true)
+			{
+				escalera = false;
+			}
+			if (plataforma == true)
+			{
+				Posicion.y -= 1;
+			}
 		}
-		if (plataforma == true)
+		else if (hammerMode == true)
 		{
-			Posicion.y -= 1;
+			lastanimation = &mart_der;
+			tecla = 0;
+			Posicion.x += 2;
+			if (jumpact == false)
+			{
+				contador++;
+			}
+			currentAnimation = &mart_der;
+			lastanimation = currentAnimation;
+			currentAnimation->Update();
+			if (escalera == true)
+			{
+				escalera = false;
+			}
+			if (plataforma == true)
+			{
+				Posicion.y -= 1;
+			}
 		}
-
-
 	}
 	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
-		lastanimation = &mart_iz;
-		tecla = 1;
-		Posicion.x -= 2;
-		if (jumpact == false) {
-			contador++;
-		}
-		//izquierda.Reset();
-		currentAnimation = &mart_iz;
-		lastanimation = currentAnimation;
-		currentAnimation->Update();
-		if (escalera == true) {
-			escalera = false;
-		}
-		if (plataforma == true) 
+		if (hammerMode == false)
 		{
-			Posicion.y -= 1;
+			lastanimation = &izquierda;
+			tecla = 1;
+			Posicion.x -= 2;
+			if (jumpact == false) {
+				contador++;
+			}
+			currentAnimation = &izquierda;
+			lastanimation = currentAnimation;
+			currentAnimation->Update();
+			if (escalera == true)
+			{
+				escalera = false;
+			}
+			if (plataforma == true)
+			{
+				Posicion.y -= 1;
+			}
+		}
+		else if (hammerMode == true)
+		{
+			lastanimation = &mart_iz;
+			tecla = 1;
+			Posicion.x -= 2;
+			if (jumpact == false) {
+				contador++;
+			}
+			currentAnimation = &mart_iz;
+			lastanimation = currentAnimation;
+			currentAnimation->Update();
+			if (escalera == true)
+			{
+				escalera = false;
+			}
+			if (plataforma == true)
+			{
+				Posicion.y -= 1;
+			}
 		}
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -472,6 +559,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
 	{
+		App->audio->PlayFx(placaSound);
+		App->scene4->sum_points_300();
+	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::martillo)
+	{
+		hammerMode = true;
 		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_300();
 	}

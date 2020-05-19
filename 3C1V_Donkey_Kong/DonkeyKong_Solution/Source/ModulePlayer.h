@@ -64,6 +64,8 @@ public:
 	bool jumpact = false;
 	bool canAudioJump = true;
 	bool canLateralMov = true;
+	bool hammerMode = false;
+	int hammerCont;
 	int paso;
 	int salto;
 	int placaSound;
