@@ -235,12 +235,12 @@ update_status SceneLevel4::PostUpdate()
 	SDL_Rect mart = { 0,4,9,11 };
 	App->render->Blit(martillo, 325, 280, &mart);
 	App->render->Blit(martillo2, 10, 400, &mart);
-	SDL_Rect paraguas_ = { 50,0,17,15 };
+	/*SDL_Rect paraguas_ = { 50,0,17,15 };
 	App->render->Blit(_paraguas, 120, 200, &paraguas_);
 	SDL_Rect bolso_ = { 14,5,10,10 };
 	App->render->Blit(_bolso, 400, 700, &bolso_);
 	SDL_Rect tanque_ = { 30,6,16,9 };
-	App->render->Blit(_tanque, 540, 583, &tanque_);
+	App->render->Blit(_tanque, 540, 583, &tanque_);*/
 	SDL_Rect princesa_ = { 0,428,14,23 };
 	App->render->Blit(princesa, 320, 60, &princesa_);
 	SDL_Rect highscore_ = { 63,36,80,8 };

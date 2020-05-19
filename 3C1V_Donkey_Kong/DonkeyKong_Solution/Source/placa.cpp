@@ -5,7 +5,7 @@
 
 placa::placa(int x, int y) : Objet(x, y)
 {
-	placaa.PushBack({ 0,0,8,8 });
+	placaa.PushBack({ 24,54,8,8 });
 	
 
 	currentAnim = &placaa;

@@ -43,11 +43,12 @@ public:
 	SDL_Texture* tanquetext = nullptr;
 	SDL_Texture* bolsotext = nullptr;
 	SDL_Texture* paraguastext = nullptr;
-	SDL_Texture* objetos = nullptr;
+	
 	// Sound fx when destroyed
 	//int destroyedFx = 0;
 
 protected:
+	
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
@@ -57,4 +58,4 @@ protected:
 	iPoint spawnPos;
 };
 
-#endif // __ENEMY_H__*/
+#endif 

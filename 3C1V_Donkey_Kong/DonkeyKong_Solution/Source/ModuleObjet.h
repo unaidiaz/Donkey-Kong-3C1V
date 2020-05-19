@@ -79,7 +79,6 @@ private:
 	//////
 	Objet* objetos[MAX_OBJET] = {nullptr};
 	// The enemies sprite sheet
-	SDL_Texture* placatext = nullptr;
 	SDL_Texture* objetostex = nullptr;
 
 	// The audio fx for destroying an enemy

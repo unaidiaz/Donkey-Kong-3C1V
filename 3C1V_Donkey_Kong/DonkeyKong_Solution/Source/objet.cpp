@@ -26,9 +26,9 @@ const Collider* Objet::GetCollider() const
 
 void Objet::Update()
 {
-	if (currentAnim != nullptr) {
+	/*if (currentAnim != nullptr) {
 		currentAnim->Update();
-	}
+	}*/
 		
 
 	if (obcollider != nullptr) {
@@ -43,10 +43,20 @@ void Objet::Draw()
 {
 	if (currentAnim != nullptr)
 	{
-		App->render->Blit(placatext, position.x, position.y + 110, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(tanquetext, position.x+5, position.y+30, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(bolsotext, position.x+10, position.y+30, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(paraguastext, position.x+5, position.y+30, &(currentAnim->GetCurrentFrame()));
+		if (placatext != nullptr) {
+			App->render->Blit(placatext, position.x, position.y + 110, &(currentAnim->GetCurrentFrame()));
+		}
+		if (tanquetext != nullptr) {
+			App->render->Blit(tanquetext, position.x+5, position.y+30, &(currentAnim->GetCurrentFrame()));
+		}
+		if (bolsotext != nullptr) {
+			App->render->Blit(bolsotext, position.x+10, position.y+30, &(currentAnim->GetCurrentFrame()));
+		}
+		if (paraguastext != nullptr) {
+			App->render->Blit(paraguastext, position.x+5, position.y+30, &(currentAnim->GetCurrentFrame()));
+		}
+		
+		
 	}
 		
 }

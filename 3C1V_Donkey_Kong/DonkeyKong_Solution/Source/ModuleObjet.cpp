@@ -33,7 +33,6 @@ ModuleObjet::~ModuleObjet()
 bool ModuleObjet::Start()
 {
 
-	placatext = App->textures->Load("Assets/taco.png");
 	objetostex = App->textures->Load("Assets/objetosestaticos.png");
 	//enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
@@ -72,10 +71,13 @@ update_status ModuleObjet::Update()
 
 update_status ModuleObjet::PostUpdate()
 {
-	for (uint i = 0; i < MAX_OBJET; ++i)
+	for (int i = 0; i < MAX_OBJET; i++)
 	{
-		if (objetos[i] != nullptr)
+		if (objetos[i] != nullptr) {
 			objetos[i]->Draw();
+
+		}
+			
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -160,7 +162,7 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 			{
 			case Objet_Type::placa:
 				objetos[i] = new placa(info.x,info.y);
-				objetos[i]->placatext = placatext;
+				objetos[i]->placatext = objetostex;
 				break;
 			case Objet_Type::paraguas:
 				objetos[i] = new paraguas(info.x, info.y);
@@ -175,10 +177,9 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 				objetos[i]->tanquetext = objetostex;
 				break;
 			}
-
-			
 			break;
 		}
+		
 	}
 }
 
@@ -188,14 +189,14 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objetos[i] != nullptr && objetos[i]->GetCollider() == c1)
 		{
-			if (c2->type != c2->Enemigo) 
+			if (c2->type == c2->PLAYER)
 			{
 				objetos[i]->OnCollision(c2);
 			}
-			else if (c2->type == c2->placa)
+			/*else if (c2->type == c2->placa)
 			{
 				objetos[i]->OnCollision(c2);
-			}
+			}*/
 		}
 	}
 }
