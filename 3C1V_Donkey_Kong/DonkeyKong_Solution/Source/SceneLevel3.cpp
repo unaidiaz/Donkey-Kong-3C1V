@@ -100,7 +100,7 @@ bool SceneLevel3::Start()
 	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
 	//MARTILLO ATAQUE
 	int direccion, x;
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;
 		if (direccion == 0) {
 			direccion = -1;
@@ -108,19 +108,10 @@ bool SceneLevel3::Start()
 		switch (i)
 		{
 		case 0:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 50, 200, direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 153, 409, direccion);
 			break;
 		case 1:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320, direccion);
-			break;
-		case 2:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440, direccion);
-			break;
-		case 3:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560, direccion);
-			break;
-		case 4:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680, direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 420, direccion);
 			break;
 		}
 	}

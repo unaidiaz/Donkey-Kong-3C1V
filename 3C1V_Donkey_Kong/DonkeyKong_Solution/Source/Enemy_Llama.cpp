@@ -67,6 +67,26 @@ void Enemy_Llama::Update()
 			dire = 1;
 		}
 		break;
+	case 409:
+		if (position.x > 250)
+		{
+			dire = -1;
+		}
+		else if (position.x < 150)
+		{
+			dire = 1;
+		}
+		break;
+	case 420:
+		if (position.x > 630)
+		{
+			dire = -1;
+		}
+		else if (position.x < 530)
+		{
+			dire = 1;
+		}
+		break;
 	}
 	
 	// Call to the base class. It must be called at the end
