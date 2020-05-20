@@ -94,11 +94,7 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 380, 193, 5,35 }, Collider::Type::escalera);
 
 
-	//"Power-Up"
-	/*bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
-	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
-	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
-	//MARTILLO ATAQUE
+	
 	int direccion, x;
 	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;
@@ -108,16 +104,16 @@ bool SceneLevel3::Start()
 		switch (i)
 		{
 		case 0:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 153, 409, direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 153, 400, direccion);
 			break;
 		case 1:
 			App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 420, direccion);
 			break;
 		}
 	}
-	App->objet->AddObjet(Objet_Type::tanque, 530, 553);
-	App->objet->AddObjet(Objet_Type::bolso, 390, 670);
-	App->objet->AddObjet(Objet_Type::paraguas, 120, 170);
+	App->objet->AddObjet(Objet_Type::tanque, 200, 575);
+	App->objet->AddObjet(Objet_Type::bolso, 610, 287);
+	App->objet->AddObjet(Objet_Type::paraguas, -10, 365);
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
@@ -227,18 +223,9 @@ update_status SceneLevel3::PostUpdate()
 	//Blit(mario, 50, 50, nullptr);
 
 	SDL_Rect dkong = { 51,155,40,33 };
-	App->render->Blit(kong, 280, 153, &dkong);
-	SDL_Rect mart = { 0,4,9,11 };
-	App->render->Blit(martillo, 325, 280, &mart);
-	App->render->Blit(martillo2, 10, 400, &mart);
-	SDL_Rect paraguas_ = { 50,0,17,15 };
-	App->render->Blit(_paraguas, 120, 200, &paraguas_);
-	SDL_Rect bolso_ = { 14,5,10,10 };
-	App->render->Blit(_bolso, 400, 700, &bolso_);
-	SDL_Rect tanque_ = { 30,6,16,9 };
-	App->render->Blit(_tanque, 540, 583, &tanque_);
+	App->render->Blit(kong, 50, 200, &dkong);
 	SDL_Rect princesa_ = { 0,428,14,23 };
-	App->render->Blit(princesa, 320, 60, &princesa_);
+	App->render->Blit(princesa, 270, 160, &princesa_);
 	SDL_Rect highscore_ = { 63,36,80,8 };
 	App->render->Blit(highscore, 225, 0, &highscore_);
 	SDL_Rect oneup_ = { 16,36,27,8 };

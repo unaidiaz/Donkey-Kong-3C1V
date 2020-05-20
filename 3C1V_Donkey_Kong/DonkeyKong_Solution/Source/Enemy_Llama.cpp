@@ -67,7 +67,7 @@ void Enemy_Llama::Update()
 			dire = 1;
 		}
 		break;
-	case 409:
+	case 400:
 		if (position.x > 250)
 		{
 			dire = -1;
