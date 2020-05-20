@@ -121,6 +121,9 @@
     <ClInclude Include="paraguas.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="SceneLevel3.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -209,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="paraguas.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevel3.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
