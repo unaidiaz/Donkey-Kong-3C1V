@@ -93,6 +93,8 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 620, 313, 5,85 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 380, 193, 5,35 }, Collider::Type::escalera);
 
+	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
+
 
 	
 	int direccion, x;

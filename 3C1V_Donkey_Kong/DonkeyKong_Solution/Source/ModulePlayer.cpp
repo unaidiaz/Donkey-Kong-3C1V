@@ -573,4 +573,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		_lose = true;
 		currentAnimation = &dead_mario_r;
 	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::Victoria)
+	{
+		_win = true;
+		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
+	}
 }

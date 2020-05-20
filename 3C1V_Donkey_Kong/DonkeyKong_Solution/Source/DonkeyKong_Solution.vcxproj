@@ -106,6 +106,7 @@
     <ClInclude Include="SceneLevel3.h" />
     <ClInclude Include="SceneLevel4.h" />
     <ClInclude Include="tanque.h" />
+    <ClInclude Include="Victoria.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="SceneLevel3.cpp" />
     <ClCompile Include="SceneLevel4.cpp" />
     <ClCompile Include="tanque.cpp" />
+    <ClCompile Include="Victoria.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
