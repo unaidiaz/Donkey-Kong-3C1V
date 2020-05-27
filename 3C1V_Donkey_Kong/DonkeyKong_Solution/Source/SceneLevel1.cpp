@@ -274,7 +274,10 @@ update_status SceneLevel1::PostUpdate()
 	SDL_Rect littlemario_ = { 530,51,8,10 };
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
 	*/
-
+	if (App->player->_lose == true || App->player->_win == true)
+	{
+		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 90);
+	}
 	sprintf_s(_scoreText, 10, "%6d", _score);
 	sprintf_s(_highscoreText, 10, "%6d", _highscore);
 	sprintf_s(_bonusText, 10, "%4d", _bonus);

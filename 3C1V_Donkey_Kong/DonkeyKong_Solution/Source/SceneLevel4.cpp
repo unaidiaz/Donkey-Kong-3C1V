@@ -225,6 +225,10 @@ update_status SceneLevel4::Update()
 // Update: draw background
 update_status SceneLevel4::PostUpdate()
 {
+	if (App->player->_lose == true || App->player->_win == true)
+	{
+		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
+	}
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality
 	App->render->Blit(testTexture, 0, 130, nullptr);

@@ -153,7 +153,7 @@ update_status ModulePlayer::Update()
 		canLateralMov = false;
 		_lose = true;
 	}
-	if (_lose == true || _win == true)
+	/*if (_lose == true || _win == true)
 	{
 		contToFade += 3;
 		if (contToFade >= 600)
@@ -161,7 +161,7 @@ update_status ModulePlayer::Update()
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
 
 		}
-	}
+	}*/
 	if (hammerMode == true)
 	{
 		hammerCont++;
