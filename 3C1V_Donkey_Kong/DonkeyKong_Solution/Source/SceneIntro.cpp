@@ -34,7 +34,7 @@ update_status SceneIntro::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
+		App->fade->FadeToBlack(this, (Module*)App->scene1, 90);
 	}
 
 	return update_status::UPDATE_CONTINUE;
