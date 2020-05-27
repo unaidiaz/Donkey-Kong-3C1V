@@ -127,6 +127,9 @@
     <ClInclude Include="Victoria.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="SceneLevel1.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="Victoria.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevel1.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

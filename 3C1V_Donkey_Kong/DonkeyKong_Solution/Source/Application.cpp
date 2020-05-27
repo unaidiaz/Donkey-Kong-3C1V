@@ -7,6 +7,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
+#include "SceneLevel1.h"
 #include "SceneLevel3.h"
 #include "SceneLevel4.h"
 #include "ModuleCollisions.h"
@@ -27,15 +28,16 @@ Application::Application()
 	modules[3] = audio = new ModuleAudio(true);
 
 	modules[4] = sceneIntro = new SceneIntro(true);
-	modules[5] = scene3 = new SceneLevel3(false);
-	modules[6] = scene4 = new SceneLevel4(false);
-	modules[7] = player = new ModulePlayer(false);
-	modules[8] = enemies = new ModuleEnemies(false);
-	modules[9] = objet = new ModuleObjet(false);
-	modules[10] = collisions = new ModuleCollisions(true);
-	modules[11] = fade = new ModuleFadeToBlack(true);
-	modules[12] = fonts = new ModuleFonts(true);
-	modules[13] = render = new ModuleRender(true);
+	modules[5] = scene1 = new SceneLevel1(false);
+	modules[6] = scene3 = new SceneLevel3(false);
+	modules[7] = scene4 = new SceneLevel4(false);
+	modules[8] = player = new ModulePlayer(false);
+	modules[9] = enemies = new ModuleEnemies(false);
+	modules[10] = objet = new ModuleObjet(false);
+	modules[11] = collisions = new ModuleCollisions(true);
+	modules[12] = fade = new ModuleFadeToBlack(true);
+	modules[13] = fonts = new ModuleFonts(true);
+	modules[14] = render = new ModuleRender(true);
 
 }
 
