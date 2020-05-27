@@ -51,85 +51,96 @@ bool SceneLevel1::Start()
 	littlemario = App->textures->Load("Assets/letras.png");
 
 	//547
-	App->collisions->AddCollider({ 87*3, 23*3,49*3 ,3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 0, 153, 432,3  }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 143*3, 52*3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 159*3, 53*3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175*3, 54*3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 191*3, 55*3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 207*3,76*3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 191*3, 77 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175*3,78 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({159*3 ,79 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 143*3, 80 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 127 * 3, 81 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 111 * 3, 82 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 95 * 3, 83 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 79 * 3, 84 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 63 * 3, 85 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 47 * 3, 86 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 31 * 3, 87 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 15 * 3, 88 * 3, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 87*3-15, 23*3+72,49*3 ,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ -15, 153 + 72, 432,3  }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143*3 - 12, 52*3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159*3 - 12, 53*3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175*3 - 12, 54*3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191*3 - 12, 55*3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 207*3 - 12,76*3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191*3 - 12, 77 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175*3 - 12,78 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159*3 - 12,79 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143*3 - 12, 80 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 127 * 3 - 12, 81 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 111 * 3 - 12, 82 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 95 * 3 - 12, 83 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 79 * 3 - 12, 84 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 63 * 3 - 12, 85 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 47 * 3 - 12, 86 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 31 * 3 - 12, 87 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 15 * 3 - 12, 88 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 	
-	App->collisions->AddCollider({ 207 * 3,143 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 191 * 3, 144 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175 * 3,145 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 159 * 3,146 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 143 * 3, 147 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 127 * 3, 148 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 111 * 3, 149 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 95 * 3, 150 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 79 * 3, 151 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 63 * 3, 152 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 47 * 3, 153 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 31 * 3, 154 * 3, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 15 * 3, 155 * 3, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 207 * 3 - 15,143 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191 * 3 - 15, 144 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175 * 3 - 15,145 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159 * 3 - 15,146 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143 * 3 - 15, 147 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 127 * 3 - 15, 148 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 111 * 3 - 15, 149 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 95 * 3 - 15, 150 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 79 * 3 - 15, 151 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 63 * 3 - 15, 152 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 47 * 3 - 15, 153 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 31 * 3 - 15, 154 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 15 * 3 - 15, 155 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 
-	App->collisions->AddCollider({ 191 * 3,121 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175 * 3,120 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 159 * 3,119 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 143 * 3,118 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 127 * 3,117 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 111 * 3,116 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 95 * 3,115 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 79 * 3,114 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 63 * 3,113 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 47 * 3,112 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 31 * 3,111 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 15 * 3,110 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ -1 * 3,109 * 3 , 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191 * 3 - 15,121 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175 * 3 - 15,120 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159 * 3 - 15,119 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143 * 3 - 15,118 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 127 * 3 - 15,117 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 111 * 3 - 15,116 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 95 * 3 - 15,115 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 79 * 3 - 15,114 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 63 * 3 - 15,113 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 47 * 3 - 15,112 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 31 * 3 - 15,111 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 15 * 3 - 15,110 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ -1 * 3 - 15,109 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 
-	App->collisions->AddCollider({ 191 * 3,187 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175 * 3,186* 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 159 * 3,185 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 143 * 3,184 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 127 * 3,183* 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 111 * 3,182 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 95 * 3,181 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 79 * 3,180 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 63 * 3,179 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 47 * 3,178 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 31 * 3,177 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 15 * 3,176 * 3 , 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ -1 * 3,175* 3 , 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191 * 3 - 12,187 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175 * 3 - 12,186* 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175 * 3 - 12,186* 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159 * 3 - 12,185 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143 * 3 - 12,184 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 127 * 3 - 12,183* 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 111 * 3 - 12,182 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 95 * 3 - 12,181 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 79 * 3 - 12,180 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 63 * 3 - 12,179 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 47 * 3 - 12,178 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 31 * 3 - 12,177 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 15 * 3 - 12,176 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ -1 * 3 - 12,175* 3 + 72, 48, 3 }, Collider::Type::plataforma);
 
-	
+	App->collisions->AddCollider({ 207 * 3 - 15,209 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 191 * 3 - 15, 210 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 175 * 3 - 15,211 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 159 * 3 - 15,212 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 143 * 3 - 15, 213 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 127 * 3 - 15, 214 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 111 * 3 - 15, 215 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ -1 * 3 - 15, 216 * 3 + 72, 336, 3 }, Collider::Type::plataforma);
 	
 	////////////////////////////////////////////////////////////////////////////////////////
-	App->collisions->AddCollider({ 20, 553, 5,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 45, 409, 5,105 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 188, 409, 5,155 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 235, 409, 5,155 }, Collider::Type::escalera);
+	
 	App->collisions->AddCollider({ 188, 100, 5,130 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 235, 100, 5,130 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 623, 553, 5, 20 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 547, 439, 5, 50 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 405, 385, 5,65 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 477, 271, 5,65 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 620, 313, 5,85 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 380, 193, 5,35 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 380, 23 * 3 + 73, 5,75 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188 * 3 - 15, 54 * 3 + 73, 5,70 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 36 * 3 - 15, 154 * 3 + 72, 5, 70 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 36 * 3 - 15, 87 * 3 + 72, 5, 70 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188 * 3 - 15, 120 * 3 + 72, 5, 70 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188 * 3 - 15, 186 * 3 + 72, 5, 70 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 100 * 3 - 15, 150 * 3 + 72, 5, 90 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
+	App->collisions->AddCollider({ 116 * 3 - 15,116 * 3 + 72, 5, 90 }, Collider::Type::escalera);
+
+	App->collisions->AddCollider({ 76 * 3 - 15, 85 * 3 + 72, 5, 75 }, Collider::Type::escalera);
+
+
+	App->collisions->AddCollider({ 330, 85, 70, 70 }, Collider::Type::Victoria);
 
 
 
