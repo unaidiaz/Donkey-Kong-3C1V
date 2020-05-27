@@ -254,7 +254,7 @@ update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality
-	App->render->Blit(testTexture, 0, 130, nullptr);
+	App->render->Blit(testTexture, 0, 100, nullptr);
 	//Blit(mario, 50, 50, nullptr);
 
 	/*SDL_Rect dkong = { 51,155,40,33 };
