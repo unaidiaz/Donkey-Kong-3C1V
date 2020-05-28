@@ -8,7 +8,10 @@
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
+	estado = state::recto;
 	spawnPos = position;
+	srand(time(NULL));
+	frames = 2;
 }
 
 Enemy::~Enemy()
@@ -39,7 +42,7 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* collider)
 {	
-	App->audio->PlayFx(destroyedFx);
+	//App->audio->PlayFx(destroyedFx);
 }
 void Enemy::destr()
 {
@@ -47,4 +50,18 @@ void Enemy::destr()
 		pendientedeelim = true;
 	}
 
+}
+state Enemy::random(state Estado) {
+	if (Estado == state::recto) {
+		numerorand = 1 + rand() % 2;
+		if (numerorand == 1) {
+			Estado = state::bajando;
+			
+		}
+		else if (numerorand == 2) {
+			
+		}
+	}
+	frames = 0;
+	return Estado;
 }

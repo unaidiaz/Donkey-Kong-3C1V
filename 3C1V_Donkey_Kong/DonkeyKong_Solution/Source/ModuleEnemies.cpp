@@ -169,10 +169,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			if (c1->type==c1->Enemigo&&c2->type == c2->martillo) {
-				enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+				enemies[i]->OnCollision(c2);
+				App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
 				enemies[i]->destr();
 				break;
-			}			
+			}else if (c1->type == c1->Enemigo && c2->type == c2->escalera&& enemies[i]->estado==state::recto) {
+				if (enemies[i]->frames >1) {
+					enemies[i]->estado = enemies[i]->random(enemies[i]->estado);
+				}
+				enemies[i]->frames = 0;
+				//enemies[i]->OnCollision(c2);
+				break;
+			}
 		}
 	}
 }

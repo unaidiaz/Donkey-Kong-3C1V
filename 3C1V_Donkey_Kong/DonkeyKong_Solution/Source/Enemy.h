@@ -4,10 +4,12 @@
 
 #include "p2Point.h"
 #include "Animation.h"
-
+#include <time.h>
 struct SDL_Texture;
 struct Collider;
-
+enum class state {
+	recto, bajando
+};
 class Enemy
 {
 public:
@@ -33,14 +35,17 @@ public:
 	virtual void OnCollision(Collider* collider);
 
 public:
+	int numerorand;
+	state random(state Estado);
 	bool pendingToDelete = false;
 	void destr();
 	// Current Position in the world
 	iPoint position;
 	bool pendientedeelim = false;
 	// The enemy's texture
+	int frames;
 	SDL_Texture* enemigo = nullptr;
-
+	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 
