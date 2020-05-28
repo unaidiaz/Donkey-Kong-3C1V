@@ -173,12 +173,33 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
 				enemies[i]->destr();
 				break;
-			}else if (c1->type == c1->Enemigo && c2->type == c2->escalera&& enemies[i]->estado==state::recto) {
+			}else if (c1->type == c1->Enemigo && c2->type == c2->escalera&& enemies[i]->estado != state::bajando) {
+			
 				if (enemies[i]->frames >1) {
+				
 					enemies[i]->estado = enemies[i]->random(enemies[i]->estado);
 				}
 				enemies[i]->frames = 0;
 				//enemies[i]->OnCollision(c2);
+				break;
+			
+			}else if (c1->type == c1->Enemigo && c2->type == c2->plataforma && enemies[i]->estado == state::libre) {
+			
+					enemies[i]->estado = state::recto;
+					break;
+			}
+			if (c1->type == c1->Enemigo && c2->type == c2->plataforma && enemies[i]->estado == state::bajando) {
+			
+				if (enemies[i]->top == false) {
+					enemies[i]->estado = state::recto;
+					enemies[i]->top = true;
+				}
+				enemies[i]->prior = 1;
+				break;
+			}else if (c1->type == c1->Enemigo && c2->type == c2->escalera && enemies[i]->estado == state::bajando&& enemies[i]->prior != 1) {
+				if (enemies[i]->top == true) {
+					enemies[i]->top = false;
+				}
 				break;
 			}
 		}

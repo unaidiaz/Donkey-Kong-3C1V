@@ -8,6 +8,8 @@
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
+	prior = 0;
+	top = true;
 	estado = state::recto;
 	spawnPos = position;
 	srand(time(NULL));
@@ -53,15 +55,17 @@ void Enemy::destr()
 }
 state Enemy::random(state Estado) {
 	if (Estado == state::recto) {
-		numerorand = 1 + rand() % 2;
+		numerorand = 1 + rand() % 4;
+		//numerorand = 1;
 		if (numerorand == 1) {
 			Estado = state::bajando;
 			
 		}
-		else if (numerorand == 2) {
+		else if (numerorand !=1) {
 			
 		}
 	}
+	top = true;
 	frames = 0;
 	return Estado;
 }

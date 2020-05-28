@@ -8,7 +8,7 @@
 struct SDL_Texture;
 struct Collider;
 enum class state {
-	recto, bajando
+	recto, bajando,libre
 };
 class Enemy
 {
@@ -43,12 +43,14 @@ public:
 	iPoint position;
 	bool pendientedeelim = false;
 	// The enemy's texture
+	bool top;
+	int prior;
 	int frames;
 	SDL_Texture* enemigo = nullptr;
 	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-
+	
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
