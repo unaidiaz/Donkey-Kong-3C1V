@@ -25,17 +25,14 @@ public:
 	{
 		frames[totalFrames++] = rect;
 	}
-
 	void Reset()
 	{
 		currentFrame = 0;
 	}
-
 	bool HasFinished()
 	{
 		return !loop && !pingpong && loopCount > 0;
 	}
-
 	void Update()
 	{
 		currentFrame =currentFrame + speed;
@@ -48,7 +45,6 @@ public:
 				pingpongDirection = -pingpongDirection;
 		}
 	}
-
 	const SDL_Rect& GetCurrentFrame() const
 	{
 		int actualFrame = currentFrame;
@@ -56,6 +52,10 @@ public:
 			actualFrame = totalFrames - currentFrame;
 
 		return frames[actualFrame];
+	}
+	int GetFrame() const
+	{
+		return currentFrame;
 	}
 };
 

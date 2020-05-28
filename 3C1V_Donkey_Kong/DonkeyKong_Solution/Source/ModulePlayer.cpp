@@ -113,8 +113,7 @@ bool ModulePlayer::Start()
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
-	//mart = App->collisions->AddCollider({ Posicion.x + 50, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
-	//mart2 = App->collisions->AddCollider({ Posicion.x - 50, Posicion.y, 10, 10 }, Collider::Type::martillo, this);
+	mart = App->collisions->AddCollider({ 0, 0, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	placaSound = App->audio->LoadFx("Assets/6. SFX (Bonus).wav");
@@ -123,9 +122,7 @@ bool ModulePlayer::Start()
 	lastanimation = &topescalera;
 	hammerCont = 0;
 
-	destroyed = false;
-	//collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
-
+	destroyed = false;	
 	return true;
 }
 update_status ModulePlayer::Update()
@@ -133,17 +130,7 @@ update_status ModulePlayer::Update()
 	GamePad& pad = App->input->pads[0];
 
 	cont_muerte++;
-	/*if ((cont_muerte >= 6000) && (lastanimation == &saltariz || lastanimation == &paradoizq || lastanimation == &mart_iz || lastanimation == &parado_izq_mart))
-	{
-		App->audio->PlayFx(muerteMario);
-		currentAnimation = &dead_mario_l;
-		lastanimation = currentAnimation;
-		currentAnimation->Update();
-		canLateralMov = false;
-		_lose = true;
-
-		destroyed = true;
-	}*/
+	
 	if ((cont_muerte == 6000))
 	{
 		App->audio->PlayFx(muerteMario);
@@ -166,6 +153,29 @@ update_status ModulePlayer::Update()
 	{
 		hammerCont++;
 	}
+	if (App->player->currentAnimation->GetFrame() % 2 == 0)
+	{
+		if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
+		{
+			mart->SetPos(Posicion.x + 3, Posicion.y - 55);
+		}
+		else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
+		{
+			mart->SetPos(Posicion.x + 3, Posicion.y - 55);
+		}
+	}
+	else
+	{
+		if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
+		{
+			mart->SetPos(Posicion.x - 30, Posicion.y);
+		}
+		else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
+		{
+			mart->SetPos(Posicion.x + 45, Posicion.y);
+		}
+	}
+
 	if (hammerCont == 600)
 	{
 		if (lastanimation == &parado_der_mart)
@@ -176,7 +186,7 @@ update_status ModulePlayer::Update()
 		{
 			currentAnimation = &paradoizq;
 		}
-
+		mart->SetPos(0, 0);
 		hammerMode = false;
 		hammerCont = 0;
 	}
@@ -292,7 +302,8 @@ update_status ModulePlayer::Update()
 				
 			}
 		}
-		if (plataforma == true) {
+		if (plataforma == true) 
+		{
 			Posicion.y -= 1;
 		}
 	}
@@ -577,5 +588,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		_win = true;
 		//App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
+	}
+	if (c1->type == Collider::PLAYER && c2->type == Collider::martillo)
+	{
+		hammerMode = true;
+		App->audio->PlayFx(placaSound);
+		App->scene4->sum_points_300();
 	}
 }
