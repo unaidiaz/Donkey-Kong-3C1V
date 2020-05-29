@@ -16,6 +16,7 @@ Enemy_Llama::Enemy_Llama(int x, int y,int direccion) : Enemy(x, y)
 	currentAnim = &llama;
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::Enemigo, (Module*)App->enemies);
+	collider1 = App->collisions->AddCollider({ 0, 0, 5, 5 }, Collider::Type::top, (Module*)App->enemies);
 }
 
 void Enemy_Llama::Update()
@@ -28,8 +29,26 @@ void Enemy_Llama::Update()
 		estado = state::libre;
 	}
 	else if (estado == state::bajando) {
-		position.y = position.y + 2;
-		prior = 0;
+		position.y = position.y + 1;
+		prior1 = 0;
+	}
+	else if (estado == state::subiendo) {
+		if (top2 == false) {
+			position.y = position.y - 1;
+		}
+		else {
+			if (contsub < 57) {
+				position.y = position.y - 1;
+				contsub++;
+			}
+			else {
+				estado = state::recto;
+				top2 = true;
+				contsub=0;
+			}
+			
+		}
+		
 	}
 	else if (estado == state::libre) {
 		if (dire == 1) {
@@ -41,7 +60,8 @@ void Enemy_Llama::Update()
 		estado = state::recto;
 	}
 	
-	frames++;
+	frames1++;
+	frames2++;
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
 	Enemy::Update();	

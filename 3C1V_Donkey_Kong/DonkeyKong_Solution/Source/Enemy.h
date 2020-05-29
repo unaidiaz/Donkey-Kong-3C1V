@@ -8,7 +8,7 @@
 struct SDL_Texture;
 struct Collider;
 enum class state {
-	recto, bajando,libre
+	recto, bajando,libre,subiendo
 };
 class Enemy
 {
@@ -36,27 +36,31 @@ public:
 
 public:
 	int numerorand;
-	state random(state Estado);
+	state random(state Estado,Collider* colider);
 	bool pendingToDelete = false;
 	void destr();
 	// Current Position in the world
 	iPoint position;
 	bool pendientedeelim = false;
 	// The enemy's texture
-	bool top;
-	int prior;
-	int frames;
+	bool top1;
+	bool top2;
+	int prior1;
+	int contsub;
+	int frames1;
+	int frames2;
 	SDL_Texture* enemigo = nullptr;
 	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-	
+	Collider* collider1 = nullptr;
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
 	// The enemy's collider
 	Collider* collider = nullptr;
+
 	int dire;
 	// Original spawn position
 	iPoint spawnPos;
