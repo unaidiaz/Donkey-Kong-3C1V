@@ -39,6 +39,9 @@ bool SceneLevel4::Start()
 
 	bool ret = true;
 
+	App->player->Posicion.x = 100;
+	App->player->Posicion.y = 630;
+
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();
@@ -65,24 +68,24 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 83, 219, 483,10 }, Collider::Type::plataforma);
 
 	//primer piso
-	App->collisions->AddCollider({ 18, 580, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 306, 580, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 618, 580, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 18, 580, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 306, 580, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 618, 580, 10,81 }, Collider::Type::escalera);
 
 	//segundo piso
-	App->collisions->AddCollider({ 42, 460, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 210, 460, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 426, 460, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 594, 460, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 42, 460, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 210, 460, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 426, 460, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 594, 460, 10,81 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 66, 340, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 306, 340, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 570, 340, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 66, 340, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 306, 340, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 570, 340, 10,81 }, Collider::Type::escalera);
 
-	App->collisions->AddCollider({ 90, 220, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 186, 220, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 450, 220, 10,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 546, 220, 10,82 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 90, 220, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 186, 220, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 450, 220, 10,81 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 546, 220, 10,81 }, Collider::Type::escalera);
 	//Martillo
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);

@@ -36,6 +36,9 @@ bool SceneLevel3::Start()
 
 	bool ret = true;
 
+	App->player->Posicion.x = 20;
+	App->player->Posicion.y = 620;
+
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();

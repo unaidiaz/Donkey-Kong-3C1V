@@ -55,6 +55,7 @@ public:
 	Animation espalda;
 	bool plataforma = false;
 	Collider* collider = nullptr;
+	Collider* salto1 = nullptr;
 	Collider* mart = nullptr; Collider* mart2 = nullptr;
 	SDL_Texture* mario = nullptr;
 	SDL_Texture* win = nullptr;

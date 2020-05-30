@@ -105,8 +105,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	currentAnimation = &paradoder;
 	lastanimation = currentAnimation;
 
-	Posicion.x = 65;
-	Posicion.y = 680;
 }
 bool ModulePlayer::Start() 
 {
@@ -327,7 +325,7 @@ update_status ModulePlayer::Update()
 			}
 			if (plataforma == true)
 			{
-				Posicion.y -= 1;
+				Posicion.y -= 0;
 			}
 		}
 		else if (hammerMode == true)
@@ -348,7 +346,7 @@ update_status ModulePlayer::Update()
 			}
 			if (plataforma == true)
 			{
-				Posicion.y -= 1;
+				Posicion.y -= 0;
 			}
 		}
 	}
@@ -371,7 +369,7 @@ update_status ModulePlayer::Update()
 			}
 			if (plataforma == true)
 			{
-				Posicion.y -= 1;
+				Posicion.y -= 0;
 			}
 		}
 		else if (hammerMode == true)
@@ -391,7 +389,7 @@ update_status ModulePlayer::Update()
 			}
 			if (plataforma == true)
 			{
-				Posicion.y -= 1;
+				Posicion.y -= 0;
 			}
 		}
 	}
@@ -525,7 +523,7 @@ void ModulePlayer::jump()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::escalera)
+	if (c1 == collider && c2->type == Collider::escalera )
 	{
 		Posicion.y -= 2;
 		escalera = true;

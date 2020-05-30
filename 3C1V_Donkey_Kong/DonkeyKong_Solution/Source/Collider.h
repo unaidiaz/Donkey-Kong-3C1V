@@ -17,7 +17,9 @@ struct Collider
 		martillo,
 		objeto,
 		placa,
-		Victoria,top,
+		Victoria,
+		top,
+		salto,
 		MAX
 	};
 
