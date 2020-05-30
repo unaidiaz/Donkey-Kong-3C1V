@@ -156,10 +156,10 @@ bool SceneLevel1::Start()
 		switch (i)
 		{
 		case 0:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 153, 400, direccion);
+			//App->enemies->AddEnemy(Enemy_Type::LLAMA, 153, 400, direccion);
 			break;
 		case 1:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 420, direccion);
+			//App->enemies->AddEnemy(Enemy_Type::LLAMA, 500, 420, direccion);
 			break;
 		}
 	}
