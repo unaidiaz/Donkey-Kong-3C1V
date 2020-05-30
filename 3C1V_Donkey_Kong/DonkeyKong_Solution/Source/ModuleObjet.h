@@ -11,7 +11,8 @@ enum class Objet_Type
 	placa,
 	tanque,
 	bolso,
-	paraguas
+	paraguas,
+	barril_fuego
 };
 
 struct objet_Spawnpoint
@@ -80,7 +81,7 @@ private:
 	Objet* objetos[MAX_OBJET] = {nullptr};
 	// The enemies sprite sheet
 	SDL_Texture* objetostex = nullptr;
-
+	SDL_Texture* objetosanim = nullptr;
 	// The audio fx for destroying an enemy
 	//int enemyDestroyedFx = 0;
 };

@@ -140,11 +140,14 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 76 * 3 - 15, 85 * 3 + 72, 5, 75 }, Collider::Type::escalera);
 
 
-	App->collisions->AddCollider({ 330, 85, 70, 70 }, Collider::Type::Victoria);
+	App->collisions->AddCollider({ 330, 50, 70, 70 }, Collider::Type::Victoria);
 
+
+	App->objet->AddObjet(Objet_Type::barril_fuego, 50, 645);
 
 
 	int direccion, x;
+	App->enemies->AddEnemy(Enemy_Type::KONG, 50, 158, 0);
 	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;
 		if (direccion == 0) {
@@ -272,11 +275,9 @@ update_status SceneLevel1::PostUpdate()
 	// TODO 10: Blit our test texture to check functionality
 	App->render->Blit(testTexture, 0, 100, nullptr);
 	//Blit(mario, 50, 50, nullptr);
-
-	/*SDL_Rect dkong = { 51,155,40,33 };
-	App->render->Blit(kong, 50, 200, &dkong);
+	
 	SDL_Rect princesa_ = { 0,428,14,23 };
-	App->render->Blit(princesa, 270, 160, &princesa_);
+	App->render->Blit(princesa, 270, 100, &princesa_);
 	SDL_Rect highscore_ = { 63,36,80,8 };
 	App->render->Blit(highscore, 225, 0, &highscore_);
 	SDL_Rect oneup_ = { 16,36,27,8 };
@@ -289,7 +290,7 @@ update_status SceneLevel1::PostUpdate()
 	App->render->Blit(four, 578, 70, &four_);
 	SDL_Rect littlemario_ = { 530,51,8,10 };
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
-	*/
+	
 	if (App->player->_lose == true || App->player->_win == true)
 	{
 		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 90);

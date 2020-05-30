@@ -11,6 +11,7 @@
 #include "paraguas.h"
 #include "tanque.h"
 #include "bolso.h"
+#include "barril_fuego.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 
@@ -34,6 +35,7 @@ bool ModuleObjet::Start()
 {
 
 	objetostex = App->textures->Load("Assets/objetosestaticos.png");
+	objetosanim = App->textures->Load("Assets/objetosanimados.png");
 	//enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
@@ -175,6 +177,10 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 			case Objet_Type::tanque:
 				objetos[i] = new tanque(info.x, info.y);
 				objetos[i]->tanquetext = objetostex;
+				break;
+			case Objet_Type::barril_fuego:
+				objetos[i] = new barril_fuego(info.x, info.y);
+				objetos[i]->tanquetext = objetosanim;
 				break;
 			}
 			break;

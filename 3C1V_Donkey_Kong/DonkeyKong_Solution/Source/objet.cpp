@@ -55,7 +55,9 @@ void Objet::Draw()
 		if (paraguastext != nullptr) {
 			App->render->Blit(paraguastext, position.x+5, position.y+30, &(currentAnim->GetCurrentFrame()));
 		}
-		
+		if (barril_fuegotext != nullptr) {
+			App->render->Blit(barril_fuegotext, position.x + 5, position.y + 30, &(currentAnim->GetCurrentFrame()));
+		}
 		
 	}
 		

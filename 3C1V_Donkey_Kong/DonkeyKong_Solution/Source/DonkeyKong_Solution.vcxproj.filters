@@ -133,6 +133,9 @@
     <ClInclude Include="Enemy_Kong.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="barril_fuego.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -233,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_Kong.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="barril_fuego.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
