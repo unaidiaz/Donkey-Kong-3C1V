@@ -16,6 +16,9 @@
 #include "ModuleFonts.h"
 #include "SDL/include/SDL_scancode.h"
 #include "ModuleFadeToBlack.h"
+#include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL/libx86/SDL2.lib")
+#pragma comment( lib, "SDL/libx86/SDL2main.lib")
 
 SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 {
@@ -31,7 +34,7 @@ SceneLevel4::~SceneLevel4()
 bool SceneLevel4::Start()
 {
 	srand(time(NULL));
-	
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -43,13 +46,16 @@ bool SceneLevel4::Start()
 	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
-	princesa = App->textures->Load("Assets/perso.png");
+	lvl4_2 = App->textures->Load("Assets/ending2.png");
+	princesa = App->textures->Load("Assets/sprites.png");
 	highscore = App->textures->Load("Assets/carteles y mensajes.png");
 	oneup = App->textures->Load("Assets/carteles y mensajes.png");
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
 	lvl = App->textures->Load("Assets/carteles y mensajes.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
 	littlemario = App->textures->Load("Assets/letras.png");
+	hearth = App->textures->Load("Assets/sprites.png");
+	mario_hearth = App->textures->Load("Assets/sprites.png");
 
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
@@ -80,14 +86,16 @@ bool SceneLevel4::Start()
 	//Martillo
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
-	
+
+	int direccion = 0, x;
+	App->enemies->AddEnemy(Enemy_Type::KONG, 280, 153, direccion);
 	//"Power-Up"
 	/*bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
 	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
 	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
 	//MARTILLO ATAQUE
-	int direccion, x;
-	for (int i = 0; i < 5;i++) {
+
+	for (int i = 0; i < 5; i++) {
 		direccion = rand() % 2;
 		if (direccion == 0) {
 			direccion = -1;
@@ -95,19 +103,19 @@ bool SceneLevel4::Start()
 		switch (i)
 		{
 		case 0:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 60, 200,direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 50, 200, direccion);
 			break;
 		case 1:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320,direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320, direccion);
 			break;
 		case 2:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440,direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440, direccion);
 			break;
 		case 3:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560,direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560, direccion);
 			break;
 		case 4:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680,direccion);
+			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680, direccion);
 			break;
 		}
 	}
@@ -180,7 +188,7 @@ void SceneLevel4::DebugDrawGamepadInfo()
 
 	sprintf_s(_scoreText, 150, "   deadzone   %0.2f", pad.r_dz);
 	App->fonts->BlitText(5, 90, blancas, _scoreText);
-} 
+}
 
 update_status SceneLevel4::Update()
 {
@@ -205,16 +213,21 @@ update_status SceneLevel4::Update()
 	{
 		_highscore = _score;
 	}
-	if (_bonus<=0000)
+	if (_bonus <= 0000)
 	{
 		_bonus = 0000;
 	}
-	if (temp==4800)
+	if (temp == 4800)
 	{
 		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
 	}
 	if (App->player->_win == true)
 	{
+		SDL_DestroyTexture(App->player->mario);
+		SDL_Rect _heart = { 56,188,16,14 };
+		App->render->Blit(hearth, 380, 65, &_heart);
+		SDL_Rect _mheart = { 33,194,13,17 };
+		App->render->Blit(mario_hearth, 440, 70, &_mheart);
 		_score += _bonus;
 		_bonus = NULL;
 	}
@@ -227,15 +240,21 @@ update_status SceneLevel4::PostUpdate()
 {
 	if (App->player->_lose == true || App->player->_win == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
+		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 540);
 	}
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality
 	App->render->Blit(testTexture, 0, 130, nullptr);
+	int direccion = 0;
+	if (App->player->_win == true)
+	{
+		SDL_DestroyTexture(martillo);
+		SDL_DestroyTexture(martillo2);
+		App->objet->CleanUp();
+		SDL_DestroyTexture(testTexture);
+		App->render->Blit(lvl4_2, -40, -20, nullptr);
+	}
 	//Blit(mario, 50, 50, nullptr);
-
-	SDL_Rect dkong = { 51,155,40,33 };
-	App->render->Blit(kong, 280, 153, &dkong);
 	SDL_Rect mart = { 0,4,9,11 };
 	App->render->Blit(martillo, 325, 280, &mart);
 	App->render->Blit(martillo2, 10, 400, &mart);
@@ -245,7 +264,7 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(_bolso, 400, 700, &bolso_);
 	SDL_Rect tanque_ = { 30,6,16,9 };
 	App->render->Blit(_tanque, 540, 583, &tanque_);*/
-	SDL_Rect princesa_ = { 0,428,14,23 };
+	SDL_Rect princesa_ = { 8,188,15,23 };
 	App->render->Blit(princesa, 320, 60, &princesa_);
 	SDL_Rect highscore_ = { 63,36,80,8 };
 	App->render->Blit(highscore, 225, 0, &highscore_);
@@ -269,7 +288,7 @@ update_status SceneLevel4::PostUpdate()
 	App->fonts->BlitText(29, 27, blancas, _scoreText);
 	App->fonts->BlitText(270, 27, blancas, _highscoreText);
 	App->fonts->BlitText(527, 134, amarillas, _bonusText);
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -284,13 +303,13 @@ bool SceneLevel4::CleanUp()
 
 	App->player->_lose = false;
 	App->player->_win = false;
-	App->player->canLateralMov = true;	
+	App->player->canLateralMov = true;
 	App->player->contToFade = 0;
 	App->player->Posicion.x = 65;
 	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
-	App->textures->CleanUp();	
+	App->textures->CleanUp();
 	App->collisions->CleanUp();
 
 	return true;

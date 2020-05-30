@@ -45,6 +45,7 @@ void Enemy::Draw()
 {
 	if (currentAnim != nullptr)
 		App->render->Blit(enemigo, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		App->render->Blit(kong, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 }
 
 void Enemy::OnCollision(Collider* collider)

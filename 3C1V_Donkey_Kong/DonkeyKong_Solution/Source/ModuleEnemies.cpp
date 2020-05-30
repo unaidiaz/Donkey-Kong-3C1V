@@ -8,6 +8,7 @@
 #include "SceneLevel4.h"
 #include "Enemy.h"
 #include "Enemy_Llama.h"
+#include "Enemy_Kong.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 #include<time.h>
@@ -31,6 +32,7 @@ bool ModuleEnemies::Start()
 {
 	
 	enemigos = App->textures->Load("Assets/objetosanimados.png");
+	kongs = App->textures->Load("Assets/sprites.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
@@ -147,16 +149,21 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 	{
 		if (enemies[i] == nullptr)
 		{
-			
+
 			switch (info.type)
 			{
-				case Enemy_Type::LLAMA:
-					enemies[i] = new Enemy_Llama(info.x, info.y,info.direccion);
-				
+			case Enemy_Type::LLAMA:
+				enemies[i] = new Enemy_Llama(info.x, info.y, info.direccion);
+				enemies[i]->enemigo = enemigos;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
+				break;
+
+			case Enemy_Type::KONG:
+				enemies[i] = new Enemy_Kong(info.x, info.y, info.direccion);
+				enemies[i]->kong = kongs;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
 				break;
 			}
-			enemies[i]->enemigo = enemigos;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
 	}

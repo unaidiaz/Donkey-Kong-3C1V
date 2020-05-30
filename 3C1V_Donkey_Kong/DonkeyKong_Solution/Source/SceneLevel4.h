@@ -30,7 +30,7 @@ public:
 	void sum_points_100()
 	{
 		_score += 100;
-	}	
+	}
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
 	update_status Update() override;
@@ -60,9 +60,11 @@ private:
 	SDL_Texture* oneup = nullptr;
 	SDL_Texture* bonus = nullptr;
 	SDL_Texture* lvl = nullptr;
+	SDL_Texture* lvl4_2 = nullptr;
 	SDL_Texture* four = nullptr;
 	SDL_Texture* littlemario = nullptr;
-	
+	SDL_Texture* hearth = nullptr;
+	SDL_Texture* mario_hearth = nullptr;
 
 	// Font score index
 	int temp = 0;
@@ -79,6 +81,6 @@ private:
 	int cont_win_lose = 0;
 
 	bool debugGamepadInfo = false;
-	
+
 };
 #endif

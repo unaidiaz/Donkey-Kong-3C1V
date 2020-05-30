@@ -50,6 +50,7 @@ public:
 	int frames1;
 	int frames2;
 	SDL_Texture* enemigo = nullptr;
+	SDL_Texture* kong = nullptr;
 	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;

@@ -96,7 +96,7 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
 
 
-	
+
 	int direccion, x;
 	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;
@@ -209,6 +209,8 @@ update_status SceneLevel3::Update()
 	}
 	if (App->player->_win == true)
 	{
+		App->objet->CleanUp();
+		App->enemies->CleanUp();
 		_score += _bonus;
 		_bonus = NULL;
 	}

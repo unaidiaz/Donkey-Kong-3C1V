@@ -9,6 +9,8 @@ enum class Enemy_Type
 {
 	NO_TYPE,
 	LLAMA,
+	KONG,
+	BARRIL
 };
 
 struct EnemySpawnpoint
@@ -75,7 +77,7 @@ private:
 
 	// The enemies sprite sheet
 	SDL_Texture* enemigos = nullptr;
-
+	SDL_Texture* kongs = nullptr;
 	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;
 };
