@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleEnemies.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
@@ -65,6 +66,19 @@ update_status ModuleInput::PreUpdate()
 	{
 		switch (event.type)
 		{
+		case(SDL_MOUSEBUTTONDOWN):
+		{		
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				int direccion;
+				direccion = rand() % 2;
+				if (direccion == 0)
+				{
+					direccion = -1;
+				}
+				App->enemies->AddEnemy(Enemy_Type::LLAMA, event.button.x, event.button.y, (direccion));
+			}
+		}
 		case(SDL_CONTROLLERDEVICEADDED):
 		{
 			HandleDeviceConnection(event.cdevice.which);
