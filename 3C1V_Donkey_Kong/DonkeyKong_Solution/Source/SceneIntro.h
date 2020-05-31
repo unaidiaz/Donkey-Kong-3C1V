@@ -18,7 +18,7 @@ public:
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
 	bool Start() override;
-
+	bool CleanUp();
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
 	update_status Update() override;

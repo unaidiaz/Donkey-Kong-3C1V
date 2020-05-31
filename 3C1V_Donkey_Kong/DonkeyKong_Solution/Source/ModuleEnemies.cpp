@@ -43,7 +43,7 @@ update_status ModuleEnemies::PreUpdate()
 	// Remove all enemies scheduled for deletion
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (enemies[i] != nullptr && enemies[i]->pendingToDelete == true)
+		if (enemies[i] != nullptr && enemies[i]->pendientedeelim == true)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -88,6 +88,7 @@ bool ModuleEnemies::CleanUp()
 	{
 		if (enemies[i] != nullptr)
 		{
+			
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}

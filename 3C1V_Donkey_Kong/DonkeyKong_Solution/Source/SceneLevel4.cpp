@@ -315,5 +315,22 @@ bool SceneLevel4::CleanUp()
 	App->textures->CleanUp();
 	App->collisions->CleanUp();
 
+	App->textures->Unload(kong);
+	App->textures->Unload(martillo);
+	App->textures->Unload(martillo2);
+	App->textures->Unload(testTexture);
+	//App->audio->CleanUp();
+	App->textures->Unload(lvl4_2);
+	App->textures->Unload(princesa);
+	App->textures->Unload(highscore);
+	App->textures->Unload(oneup);
+	App->textures->Unload(bonus);
+	App->textures->Unload(lvl);
+	App->textures->Unload(four);
+	App->textures->Unload(littlemario);
+	App->textures->Unload(hearth);
+	App->textures->Unload(mario_hearth);
+	
+
 	return true;
 }

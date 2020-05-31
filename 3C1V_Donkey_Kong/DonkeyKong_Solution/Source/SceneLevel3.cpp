@@ -271,7 +271,7 @@ bool SceneLevel3::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->objet->Disable();
-
+	//App->audio->CleanUp();
 	App->player->_lose = false;
 	App->player->_win = false;
 	App->player->canLateralMov = true;
@@ -282,6 +282,24 @@ bool SceneLevel3::CleanUp()
 	_bonus = 5000;
 	App->textures->CleanUp();
 	App->collisions->CleanUp();
+
+
+
+
+	App->textures->Unload(kong);
+	//App->textures->Unload(martillo);
+	//App->textures->Unload(martillo2);
+	App->textures->Unload(testTexture);
+	//App->audio->CleanUp();
+	
+	App->textures->Unload(princesa);
+	App->textures->Unload(highscore);
+	App->textures->Unload(oneup);
+	App->textures->Unload(bonus);
+	App->textures->Unload(lvl);
+	App->textures->Unload(four);
+	App->textures->Unload(littlemario);
+
 
 	return true;
 }

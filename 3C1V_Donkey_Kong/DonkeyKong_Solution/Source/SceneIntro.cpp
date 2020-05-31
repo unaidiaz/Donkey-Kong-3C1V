@@ -48,3 +48,10 @@ update_status SceneIntro::PostUpdate()
 
 	return update_status::UPDATE_CONTINUE;
 }
+bool SceneIntro::CleanUp()
+{
+	
+	App->textures->Unload(IntroTexture);
+	//App->audio->CleanUp();
+	return true;
+}

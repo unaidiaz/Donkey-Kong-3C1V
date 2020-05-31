@@ -21,8 +21,13 @@ Enemy::Enemy(int x, int y) : position(x, y)
 
 Enemy::~Enemy()
 {
-	if (collider != nullptr)
+	if (collider != nullptr){
 		collider->pendingToDelete = true;
+	}
+	if (collider1 != nullptr) {
+		collider1->pendingToDelete = true;
+	}
+	
 }
 
 const Collider* Enemy::GetCollider() const
@@ -43,9 +48,18 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	if (currentAnim != nullptr)
-		App->render->Blit(enemigo, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(kong, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	if (currentAnim != nullptr) {
+		if (enemigo != nullptr){
+			App->render->Blit(enemigo, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		}
+		if (kong != nullptr) {
+			App->render->Blit(kong, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		}
+		
+		
+
+	}
+		
 }
 
 void Enemy::OnCollision(Collider* collider)
