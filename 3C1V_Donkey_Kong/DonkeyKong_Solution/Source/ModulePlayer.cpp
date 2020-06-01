@@ -234,84 +234,90 @@ update_status ModulePlayer::Update()
 	//plataforma == false &&
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (escalera == true)
+		if (hammerMode == false)
 		{
-			if (plataforma == false)
+			if(escalera == true)
 			{
-				canLateralMov = false;
-				Posicion.y -= 1;
-				//arriba.Reset();
-				if (lastanimation == &topescalera)
+				if (plataforma == false)
 				{
-					canLateralMov = true;
-					currentAnimation = &espalda;
-					lastanimation = currentAnimation;
+					canLateralMov = false;
+					Posicion.y -= 1;
+					//arriba.Reset();
+					if (lastanimation == &topescalera)
+					{
+						canLateralMov = true;
+						currentAnimation = &espalda;
+						lastanimation = currentAnimation;
+					}
+					else
+					{
+						currentAnimation = &arriba;
+						lastanimation = currentAnimation;
+						currentAnimation->Update();
+					}
+					escalera = false;
+
 				}
 				else
 				{
-					currentAnimation = &arriba;
+					canLateralMov = true;
+					Posicion.y -= 3;
+					currentAnimation = &topescalera;
 					lastanimation = currentAnimation;
 					currentAnimation->Update();
+					escalera = false;
 				}
 				escalera = false;
-
 			}
-			else
-			{
-				canLateralMov = true;
-				Posicion.y -= 3;
-				currentAnimation = &topescalera;
-				lastanimation = currentAnimation;
-				currentAnimation->Update();
-				escalera = false;
-			}
-			escalera = false;
-		}
-
+		}		
 	}
 
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (escalera == true)
+		if (hammerMode == false)
 		{
-			if (plataforma == true)
+			if (escalera == true)
 			{
-				canLateralMov = true;
-				Posicion.y += 3;
-				//abajo.Reset();
-				if (lastanimation == &topescalera)
+				if (plataforma == true)
 				{
 					canLateralMov = true;
-					currentAnimation = &arriba;
-					currentAnimation->Update();
-					lastanimation = currentAnimation;
+					Posicion.y += 3;
+					//abajo.Reset();
+					if (lastanimation == &topescalera)
+					{
+						canLateralMov = true;
+						currentAnimation = &arriba;
+						currentAnimation->Update();
+						lastanimation = currentAnimation;
+					}
+					else
+					{
+						currentAnimation = &arriba;
+						lastanimation = currentAnimation;
+						currentAnimation->Update();
+
+					}
+
+					escalera = false;
+
 				}
 				else
 				{
-					currentAnimation = &arriba;
+					canLateralMov = false;
+					Posicion.y += 1;
+					currentAnimation = &abajo;
 					lastanimation = currentAnimation;
 					currentAnimation->Update();
 
 				}
-
-				escalera = false;
-				
 			}
-			else
+			if (plataforma == true)
 			{
-				canLateralMov = false;
-				Posicion.y += 1;
-				currentAnimation = &abajo;
-				lastanimation = currentAnimation;
-				currentAnimation->Update();
-				
+				Posicion.y -= 1;
 			}
 		}
-		if (plataforma == true) 
-		{
-			Posicion.y -= 1;
-		}
+		
 	}
 	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
 	{
