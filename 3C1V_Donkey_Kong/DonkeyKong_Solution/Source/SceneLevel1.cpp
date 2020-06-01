@@ -38,11 +38,10 @@ bool SceneLevel1::Start()
 
 	App->player->Posicion.x = 125;
 	App->player->Posicion.y = 690;
-
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();
-	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
+	App->audio->PlayMusic("Assets/2. Stage 1 START.ogg");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl1.png");
 	princesa = App->textures->Load("Assets/perso.png");
@@ -231,6 +230,11 @@ void SceneLevel1::DebugDrawGamepadInfo()
 
 update_status SceneLevel1::Update()
 {
+	cont++;
+	if (cont == 200)
+	{
+		App->audio->PlayMusic("Assets/3. Stage 1 BGM.ogg");
+	}
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
@@ -275,7 +279,7 @@ update_status SceneLevel1::Update()
 update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	// TODO 10: Blit our test texture to check functionality
+	// TODO 10: Blit our test texture to check  functionality
 	App->render->Blit(testTexture, 0, 100, nullptr);
 	//Blit(mario, 50, 50, nullptr);
 	
@@ -294,9 +298,18 @@ update_status SceneLevel1::PostUpdate()
 	SDL_Rect littlemario_ = { 530,51,8,10 };
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
 	
-	if (App->player->_lose == true || App->player->_win == true)
+	if (App->player->_win == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 90);
+		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 180);
+		cont_music++;
+		if (cont_music==1)
+		{
+			App->audio->PlayMusic("Assets/4. Stage 1 CLEAR.ogg");
+		}
+	}
+	if (App->player->_lose == true)
+	{
+		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene1, 180);
 	}
 	sprintf_s(_scoreText, 10, "%6d", _score);
 	sprintf_s(_highscoreText, 10, "%6d", _highscore);
@@ -344,3 +357,4 @@ bool SceneLevel1::CleanUp()
 	
 	return true;
 }
+

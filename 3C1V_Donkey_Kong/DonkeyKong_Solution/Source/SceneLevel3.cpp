@@ -36,9 +36,9 @@ bool SceneLevel3::Start()
 
 	bool ret = true;
 
-	App->player->Posicion.x = 20;
-	App->player->Posicion.y = 620;
-
+	App->player->Posicion.x = 5;
+	App->player->Posicion.y = 660;
+	int cont = 0;
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();
@@ -224,9 +224,13 @@ update_status SceneLevel3::Update()
 // Update: draw background
 update_status SceneLevel3::PostUpdate()
 {
-	if (App->player->_lose == true || App->player->_win == true)
+	if (App->player->_lose == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->scene4, 90);
+		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->scene3, 180);
+	}
+	if (App->player->_win == true)
+	{
+		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->scene4, 180);
 	}
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality

@@ -73,9 +73,9 @@ private:
 	char _scoreText[7] = { "\0" };
 	char _highscoreText[7] = { "\0" };
 	char _bonusText[5] = { "\0" };
-
 	int cont_win_lose = 0;
-
+	int cont_music = 0;
+	int cont = 0;
 	bool debugGamepadInfo = false;
 
 };
