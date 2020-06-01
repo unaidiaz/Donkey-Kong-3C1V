@@ -83,18 +83,18 @@ bool SceneLevel3::Start()
 
 
 
-	App->collisions->AddCollider({ 20, 552, 5,82 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 45, 408, 5,105 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 188, 408, 5,155 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 235, 408, 5,155 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 188, 99, 5,130 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 235, 99, 5,130 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 623, 552, 5, 20 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 547, 438, 5, 50 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 405, 384, 5,65 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 477, 270, 5,65 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 620, 312, 5,85 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 380, 192, 5,35 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 20, 552, 5,84 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 45, 408, 5,107 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188, 408, 5,157 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 235, 408, 5,157 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188, 99, 5,132 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 235, 99, 5,132 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 623, 552, 5, 22 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 547, 438, 5, 52 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 405, 384, 5,67 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 477, 270, 5,67 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 620, 312, 5,87 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 380, 192, 5,37 }, Collider::Type::escalera);
 
 	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
 

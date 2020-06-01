@@ -82,6 +82,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Kong.h" />
     <ClInclude Include="Enemy_Llama.h" />
+    <ClInclude Include="HowHigh.h" />
     <ClInclude Include="martillo.h" />
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
@@ -119,6 +120,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Kong.cpp" />
     <ClCompile Include="Enemy_Llama.cpp" />
+    <ClCompile Include="HowHigh.cpp" />
     <ClCompile Include="martillo.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />

@@ -136,6 +136,9 @@
     <ClInclude Include="martillo.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="HowHigh.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -239,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="martillo.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="HowHigh.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

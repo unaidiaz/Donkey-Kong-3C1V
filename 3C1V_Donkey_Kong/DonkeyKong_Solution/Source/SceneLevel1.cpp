@@ -103,7 +103,6 @@ bool SceneLevel1::Start()
 
 	App->collisions->AddCollider({ 191 * 3 - 12,187 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 175 * 3 - 12,186 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 175 * 3 - 12,186 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 159 * 3 - 12,185 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 143 * 3 - 12,184 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 127 * 3 - 12,183 * 3 + 72, 48, 3 }, Collider::Type::plataforma);
