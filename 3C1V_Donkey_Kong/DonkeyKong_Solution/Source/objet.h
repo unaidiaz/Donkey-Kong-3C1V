@@ -44,6 +44,7 @@ public:
 	SDL_Texture* bolsotext = nullptr;
 	SDL_Texture* paraguastext = nullptr;
 	SDL_Texture* barril_fuegotext = nullptr;
+	SDL_Texture* martillo_text = nullptr;
 	
 	// Sound fx when destroyed
 	//int destroyedFx = 0;

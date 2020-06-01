@@ -58,7 +58,9 @@ void Objet::Draw()
 		if (barril_fuegotext != nullptr) {
 			App->render->Blit(barril_fuegotext, position.x + 5, position.y + 30, &(currentAnim->GetCurrentFrame()));
 		}
-		
+		if (martillo_text != nullptr) {
+			App->render->Blit(martillo_text, position.x + 5, position.y + 30, &(currentAnim->GetCurrentFrame()));
+		}
 	}
 		
 }

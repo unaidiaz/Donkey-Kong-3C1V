@@ -12,7 +12,8 @@ enum class Objet_Type
 	tanque,
 	bolso,
 	paraguas,
-	barril_fuego
+	barril_fuego,
+	martillo
 };
 
 struct objet_Spawnpoint

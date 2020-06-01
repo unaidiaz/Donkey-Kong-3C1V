@@ -150,6 +150,14 @@ update_status ModulePlayer::Update()
 	if (hammerMode == true)
 	{
 		hammerCont++;
+		if (hammerCont==1)
+		{
+			App->audio->PlayMusic("Assets/10. Hammer.ogg");
+		}
+		else if (hammerCont==600)
+		{
+			App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
+		}
 	}
 	if (App->player->currentAnimation->GetFrame() % 2 == 0)
 	{
