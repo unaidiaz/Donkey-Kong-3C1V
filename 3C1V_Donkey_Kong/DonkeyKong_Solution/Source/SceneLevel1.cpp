@@ -35,7 +35,7 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	App->player->canLateralMov = false;
 	App->player->Posicion.x = 125;
 	App->player->Posicion.y = 690;
 	App->enemies->Enable();
@@ -233,6 +233,7 @@ update_status SceneLevel1::Update()
 	if (cont == 200)
 	{
 		App->audio->PlayMusic("Assets/3. Stage 1 BGM.ogg");
+		App->player->canLateralMov = true;
 	}
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
