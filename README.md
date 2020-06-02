@@ -1,6 +1,6 @@
 <h1>Donkey-Kong-3C1V</h1>
 
-<h4>Project Description</h4>
+<h3>Project Description</h3>
 Our project is the recreation of the arcade classic Donkey Kong!
 Climb the ladders in order to rescue the princess! 
 
