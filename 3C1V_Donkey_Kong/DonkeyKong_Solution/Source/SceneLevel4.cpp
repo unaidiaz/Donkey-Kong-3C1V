@@ -122,14 +122,14 @@ bool SceneLevel4::Start()
 			break;
 		}
 	}
-	App->objet->AddObjet(Objet_Type::placa, 168, 500);
-	App->objet->AddObjet(Objet_Type::placa, 480, 500);
-	App->objet->AddObjet(Objet_Type::placa, 170, 377);
-	App->objet->AddObjet(Objet_Type::placa, 480, 377);
-	App->objet->AddObjet(Objet_Type::placa, 170, 257);
-	App->objet->AddObjet(Objet_Type::placa, 480, 257);
-	App->objet->AddObjet(Objet_Type::placa, 167, 137);
-	App->objet->AddObjet(Objet_Type::placa, 480, 137);
+	App->objet->AddObjet(Objet_Type::placa, 165, 500);
+	App->objet->AddObjet(Objet_Type::placa, 477, 500);
+	App->objet->AddObjet(Objet_Type::placa, 165, 380);
+	App->objet->AddObjet(Objet_Type::placa, 477, 380);
+	App->objet->AddObjet(Objet_Type::placa, 165, 260);
+	App->objet->AddObjet(Objet_Type::placa, 477, 260);
+	App->objet->AddObjet(Objet_Type::placa, 167, 140);
+	App->objet->AddObjet(Objet_Type::placa, 477, 140);
 	App->objet->AddObjet(Objet_Type::tanque, 530, 553);
 	App->objet->AddObjet(Objet_Type::bolso, 390, 670);
 	App->objet->AddObjet(Objet_Type::paraguas, 120, 170);
