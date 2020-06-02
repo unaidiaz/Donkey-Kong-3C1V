@@ -10,15 +10,26 @@ plataforma::plataforma(int x, int y) : Objet(x, y)
 
 	currentAnim = &plataforma_anim;
 
-	obcollider = App->collisions->AddCollider({ -10, 0,51,27 }, Collider::Type::plataforma, (Module*)App->objet);
+	p_collider = App->collisions->AddCollider({ -10, 0,51,27 }, Collider::Type::plataforma, (Module*)App->objet);
 }
 
 void plataforma::Update()
 {
-	position.y --;
-	if (position.y<=291)
+	if (position.x==88)
 	{
-		position.y = 699;
+		position.y-=2;
+		if (position.y <= 291)
+		{
+			position.y = 699;
+		}
+	}
+	else
+	{
+		position.y+=2;
+		if (position.y >= 700)
+		{
+			position.y = 292;
+		}
 	}
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

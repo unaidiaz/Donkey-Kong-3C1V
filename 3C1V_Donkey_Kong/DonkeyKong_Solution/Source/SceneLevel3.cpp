@@ -121,7 +121,7 @@ bool SceneLevel3::Start()
 	App->objet->AddObjet(Objet_Type::paraguas, -10, 365);
 
 	App->objet->AddObjet(Objet_Type::plataforma, 88, 292); //292
-	App->objet->AddObjet(Objet_Type::plataforma, 280, 700); //700
+	App->objet->AddObjet(Objet_Type::plataforma, 280, 700); //700g
 
 	App->objet->AddObjet(Objet_Type::plataforma, 88, 700); //292
 	App->objet->AddObjet(Objet_Type::plataforma, 280, 292); //700
