@@ -11,6 +11,7 @@
 #include "paraguas.h"
 #include "tanque.h"
 #include "bolso.h"
+#include "plataforma.h"
 #include "martillo.h"
 #include "barril_fuego.h"
 #include "SDL/include/SDL.h"
@@ -37,6 +38,7 @@ bool ModuleObjet::Start()
 
 	objetostex = App->textures->Load("Assets/objetosestaticos.png");
 	objetosanim = App->textures->Load("Assets/objetosanimados.png");
+	objeto_plataforma = App->textures->Load("Assets/lvl3.png");
 	//enemyDestroyedFx = App->audio->LoadFx("Assets/8. SFX (Kill).wav");
 
 	return true;
@@ -186,6 +188,10 @@ void ModuleObjet::SpawnObjet(const objet_Spawnpoint& info)
 			case Objet_Type::martillo:
 				objetos[i] = new martillo(info.x, info.y);
 				objetos[i]->martillo_text = objetostex;
+				break;
+			case Objet_Type::plataforma:
+				objetos[i] = new plataforma(info.x, info.y);
+				objetos[i]->plataforma_text = objeto_plataforma;
 				break;
 			}
 			break;

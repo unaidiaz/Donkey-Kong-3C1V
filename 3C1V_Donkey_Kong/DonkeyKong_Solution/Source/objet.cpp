@@ -15,13 +15,11 @@ Objet::~Objet()
 {
 	if (obcollider != nullptr)
 		obcollider->pendingToDelete = true;
-	
 }
 
 const Collider* Objet::GetCollider() const
 {
 	return obcollider;
-	
 }
 
 void Objet::Update()
@@ -35,7 +33,10 @@ void Objet::Update()
 		obcollider->SetPos(position.x, position.y);
 
 	}
-		
+	if (p_collider != nullptr) {
+		p_collider->SetPos(position.x, position.y);
+
+	}
 	
 }
 
@@ -60,6 +61,9 @@ void Objet::Draw()
 		}
 		if (martillo_text != nullptr) {
 			App->render->Blit(martillo_text, position.x + 5, position.y + 30, &(currentAnim->GetCurrentFrame()));
+		}
+		if (plataforma_text != nullptr) {
+			App->render->Blit(plataforma_text, position.x + 5, position.y + 30, &(currentAnim->GetCurrentFrame()));
 		}
 	}
 		

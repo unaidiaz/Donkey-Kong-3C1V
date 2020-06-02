@@ -45,6 +45,7 @@ public:
 	SDL_Texture* paraguastext = nullptr;
 	SDL_Texture* barril_fuegotext = nullptr;
 	SDL_Texture* martillo_text = nullptr;
+	SDL_Texture* plataforma_text = nullptr;
 	
 	// Sound fx when destroyed
 	//int destroyedFx = 0;
@@ -56,6 +57,7 @@ protected:
 
 	// The enemy's collider
 	Collider* obcollider = nullptr;
+	Collider* p_collider = nullptr;
 	// Original spawn position
 	iPoint spawnPos;
 };

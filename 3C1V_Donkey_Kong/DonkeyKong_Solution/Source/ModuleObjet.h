@@ -13,7 +13,8 @@ enum class Objet_Type
 	bolso,
 	paraguas,
 	barril_fuego,
-	martillo
+	martillo,
+	plataforma
 };
 
 struct objet_Spawnpoint
@@ -83,6 +84,7 @@ private:
 	// The enemies sprite sheet
 	SDL_Texture* objetostex = nullptr;
 	SDL_Texture* objetosanim = nullptr;
+	SDL_Texture* objeto_plataforma = nullptr;
 	// The audio fx for destroying an enemy
 	//int enemyDestroyedFx = 0;
 };

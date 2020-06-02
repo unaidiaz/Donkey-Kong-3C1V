@@ -43,6 +43,7 @@ public:
 
 	// Disables the player and the enemies
 	bool CleanUp();
+
 private:
 
 	SDL_Texture* testTexture = nullptr;
@@ -60,8 +61,8 @@ private:
 	SDL_Texture* lvl = nullptr;
 	SDL_Texture* four = nullptr;
 	SDL_Texture* littlemario = nullptr;
-
-
+	
+	
 	// Font score index
 	int temp = 0;
 	uint _score = 000000;
