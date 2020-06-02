@@ -35,7 +35,7 @@ bool SceneLevel3::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	App->player->canLateralMov = true;
 	App->player->Posicion.x = 5;
 	App->player->Posicion.y = 660;
 	int cont = 0;

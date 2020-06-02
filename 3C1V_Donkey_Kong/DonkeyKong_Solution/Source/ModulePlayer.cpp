@@ -481,10 +481,12 @@ update_status ModulePlayer::PostUpdate() {
 	if (_win == true)
 	{
 		App->render->Blit(win, 200, 400, &win_lose);
+		canLateralMov = false;
 	}
 	else if (_lose == true)
 	{
 		App->render->Blit(lose, 200, 400, &win_lose);
+		canLateralMov = false;
 	}
 
 	return update_status::UPDATE_CONTINUE;
