@@ -99,6 +99,7 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
 
 
+	App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
 
 	int direccion, x;
 	for (int i = 0; i < 2; i++) {
@@ -125,6 +126,9 @@ bool SceneLevel3::Start()
 
 	App->objet->AddObjet(Objet_Type::plataforma, 88, 700); //292
 	App->objet->AddObjet(Objet_Type::plataforma, 280, 292); //700
+
+	App->objet->AddObjet(Objet_Type::plataforma, 88, 496); //292
+	App->objet->AddObjet(Objet_Type::plataforma, 280, 496); //700
 
 	App->objet->AddObjet(Objet_Type::plataforma, 88, 496); //292
 	App->objet->AddObjet(Objet_Type::plataforma, 280, 496); //700

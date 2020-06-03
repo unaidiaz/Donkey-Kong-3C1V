@@ -67,6 +67,12 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 59, 339, 531,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 83, 219, 483,10 }, Collider::Type::plataforma);
 
+	App->collisions->AddCollider({ -15, 469, 40, 10 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ 625, 469, 40, 10 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ -15, 349, 60, 10 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ 600, 349, 60, 10 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ -15 , 229, 84, 10 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ 575, 229, 84, 10 }, Collider::Type::Enemigo);
 	//primer piso
 	App->collisions->AddCollider({ 18, 580, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 306, 580, 10,81 }, Collider::Type::escalera);

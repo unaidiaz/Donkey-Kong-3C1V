@@ -8,7 +8,7 @@
 struct SDL_Texture;
 struct Collider;
 enum class tipo {
-	barril, llama
+	barril, llama, muelle
 };
 enum class state {
 	recto, bajando,libre,subiendo
@@ -55,6 +55,7 @@ public:
 	SDL_Texture* enemigo = nullptr;
 	SDL_Texture* kong = nullptr;
 	SDL_Texture* barriltext = nullptr;
+	SDL_Texture* muelles = nullptr;
 	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;

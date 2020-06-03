@@ -46,6 +46,11 @@ void Enemy::Update()
 			collider1->SetPos(position.x + 12, position.y - 25);
 		}
 	}
+	else if (typo == tipo::muelle) {
+		if (collider != nullptr) {
+			collider->SetPos(position.x, position.y);
+		}
+	}
 	else {
 
 		if (collider != nullptr && collider1 != nullptr) {
@@ -67,6 +72,9 @@ void Enemy::Draw()
 		}
 		if (barriltext != nullptr) {
 			App->render->Blit(barriltext, position.x, position.y + 10, &(currentAnim->GetCurrentFrame()));
+		}
+		if (muelles != nullptr) {
+			App->render->Blit(muelles, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 		}
 		
 
@@ -174,6 +182,12 @@ void Enemy::destr()
 
 		}
 		
+	}
+	if (typo == tipo::muelle) {
+		if (collider != nullptr) {
+			collider->pendingToDelete = true;
+		}
+
 	}
 	pendientedeelim = true;
 

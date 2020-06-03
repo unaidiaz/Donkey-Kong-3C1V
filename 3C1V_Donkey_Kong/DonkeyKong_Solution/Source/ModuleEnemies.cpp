@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "Enemy_Llama.h"
 #include "Enemy_Kong.h"
+#include "muelle.h"
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 #include<time.h>
@@ -170,7 +171,11 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				enemies[i]->barriltext = enemigos;
 				enemies[i]->destroyedFx = enemyDestroyedFx;
 				break;
-			
+			case Enemy_Type::MUELLE:
+				enemies[i] = new Muelle(info.x, info.y, info.direccion);
+				enemies[i]->muelles = enemigos;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
+				break;
 			}
 			break;
 		}
