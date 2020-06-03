@@ -10,7 +10,7 @@ enum class Enemy_Type
 	NO_TYPE,
 	LLAMA,
 	KONG,
-	BARRIL
+	BARRIL,barril
 };
 
 struct EnemySpawnpoint

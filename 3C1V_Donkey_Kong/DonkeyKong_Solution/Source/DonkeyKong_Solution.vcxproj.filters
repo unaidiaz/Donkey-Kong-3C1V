@@ -142,6 +142,9 @@
     <ClInclude Include="plataforma.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Barril.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -251,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="plataforma.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Barril.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

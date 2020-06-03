@@ -40,9 +40,19 @@ void Enemy::Update()
 	if (currentAnim != nullptr)
 		currentAnim->Update();
 
-	if (collider != nullptr&& collider1!=nullptr) {
-		collider->SetPos(position.x, position.y);
-		collider1->SetPos(position.x+12, position.y-25);
+	if (typo == tipo::llama) {
+		if (collider != nullptr && collider1 != nullptr) {
+			collider->SetPos(position.x, position.y);
+			collider1->SetPos(position.x + 12, position.y - 25);
+		}
+	}
+	else {
+
+		if (collider != nullptr && collider1 != nullptr) {
+			collider->SetPos(position.x, position.y);
+			collider1->SetPos(position.x + 8, position.y + 15);
+		}
+
 	}
 }
 
@@ -55,54 +65,162 @@ void Enemy::Draw()
 		if (kong != nullptr) {
 			App->render->Blit(kong, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 		}
-		
+		if (barriltext != nullptr) {
+			App->render->Blit(barriltext, position.x, position.y + 10, &(currentAnim->GetCurrentFrame()));
+		}
 		
 
 	}
 		
 }
 
-void Enemy::OnCollision(Collider* collider)
+void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 {	
-	//App->audio->PlayFx(destroyedFx);
-}
-void Enemy::destr()
-{
-	if (collider != nullptr) {
-		pendientedeelim = true;
-	}
+	if (typo == tipo::llama) {
+		if (collider == collideri) {
+			if (collideri->type == collideri->Enemigo && collidere->type == collidere->escalera && estado != state::bajando) {
 
-}
-state Enemy::random(state Estado,Collider* colider) {
-	if (Estado == state::recto) {
-		numerorand = 1 + rand() % 3;
-		//numerorand = 1;
-		if (numerorand == 1) {
-			if (colider==collider) {
-			Estado = state::bajando;
-			
+				if (frames1 > 1) {
+					if (estado != state::subiendo) {
+						estado = random(estado, collideri, typo);
+					}
+				}
+				frames1 = 0;
+				//enemies[i]->OnCollision(c2);
+
+
 			}
-			else {
-				Estado = state::subiendo;
-				top2 = false;
+			else if (collideri->type == collideri->Enemigo && collidere->type == collidere->plataforma && estado == state::libre) {
+
+				estado = state::recto;
+
+			}
+			if (collideri->type == collideri->Enemigo && collidere->type == collidere->plataforma && estado == state::bajando) {
+
+				if (top1 == false) {
+					estado = state::recto;
+					top1 = true;
+				}
+				prior1 = 1;
+
+			}
+			else if (collideri->type == collideri->Enemigo && collidere->type == collidere->escalera && estado == state::bajando && prior1 != 1) {
+
+				if (top1 == true) {
+					top1 = false;
+				}
+
+			}
+		}
+
+		if (collider1 == collideri) {
+
+			if (collideri->type == collideri->top && collidere->type == collidere->escalera && estado != state::subiendo) {
+
+				if (frames2 > 1) {
+					if (estado != state::bajando) {
+						estado = random(estado, collideri, typo);
+					}
+
+				}
+				frames2 = 0;
+				//enemies[i]->OnCollision(c2);
+
+			}
+
+			if (collideri->type == collideri->top && collidere->type == collidere->plataforma && estado == state::subiendo) {
+				if (top2 == false) {
+					top2 = true;
+				}
+
+
+			}
+		}
+
+	}
+	else {
+		if (collider == collideri) {
+			if (collideri->type == collideri->Enemigo && collidere->type == collidere->plataforma && estado == state::libre && top1 == true) {
+				estado = state::recto;
+				contsub = 0;
+
 			}
 
 		}
-		else if(numerorand == 2){
-			if (colider == collider) {
-				Estado = state::bajando;
+		else if (collider1 == collideri) {
 
+			if (collideri->type == collideri->top && collidere->type == collidere->escalera && (estado == state::recto || estado == state::libre)) {
+				if (top1 == true) {
+					if (frames1 > 1) {
+						estado = random(estado, collideri, typo);
+					}
+				}
+				if (estado == state::bajando && top1 == false) {
+					top1 = true;
+				}
+				//frames1 = 0;
+			}
+
+		}
+
+	}
+}
+void Enemy::destr()
+{
+	if (typo == tipo::llama || typo == tipo::barril) {
+		if (collider != nullptr && collider1 != nullptr) {
+			collider->pendingToDelete = true;
+			collider1->pendingToDelete = true;
+
+		}
+		
+	}
+	pendientedeelim = true;
+
+}
+state Enemy::random(state Estado, Collider* colider, tipo tip) {
+	if (typo == tipo::llama) {
+		if (Estado == state::recto) {
+			numerorand = 1 + rand() % 3;
+			//numerorand = 1;
+			if (numerorand == 1) {
+				if (colider == collider) {
+					Estado = state::bajando;
+
+				}
+				else {
+					Estado = state::subiendo;
+					top2 = false;
+				}
+
+			}
+			else if (numerorand == 2) {
+				if (colider == collider) {
+					Estado = state::bajando;
+
+				}
 			}
 		}
 		else {
 
 		}
-		
-		
+		top1 = true;
+
+		frames1 = 0;
+		frames2 = 0;
+		return Estado;
 	}
-	top1 = true;
-	
-	frames1 = 0;
-	frames2 = 0;
-	return Estado;
+	else {
+		numerorand = 1 + rand() % 2;
+		if (numerorand == 1) {
+			Estado = state::bajando;
+			//position.y = position.y + 1;
+			top1 = false;
+		}
+		else {
+
+		}
+		frames1 = 0;
+		return Estado;
+	}
 }

@@ -12,7 +12,16 @@ Enemy_Llama::Enemy_Llama(int x, int y,int direccion) : Enemy(x, y)
 	llama.loop = true;
 	llama.speed = 0.1f;
 	dire = direccion;
-	
+	typo = tipo::llama;
+	currentAnim = &llama;
+	estado = state::recto;
+	//////
+	prior1 = 0;
+	contsub = 0;
+	top1 = true;
+	top2 = true;
+	frames1 = 2;
+	frames2 = 2;
 	currentAnim = &llama;
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::Enemigo, (Module*)App->enemies);

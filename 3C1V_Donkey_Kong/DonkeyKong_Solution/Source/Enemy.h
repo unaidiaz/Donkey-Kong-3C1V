@@ -7,6 +7,9 @@
 #include <time.h>
 struct SDL_Texture;
 struct Collider;
+enum class tipo {
+	barril, llama
+};
 enum class state {
 	recto, bajando,libre,subiendo
 };
@@ -16,7 +19,7 @@ public:
 	// Constructor
 	// Saves the spawn position for later movement calculations
 	Enemy(int x, int y);
-
+	tipo typo;
 	// Destructor
 	virtual ~Enemy();
 
@@ -32,11 +35,11 @@ public:
 
 	// Collision response
 	// Triggers an animation and a sound fx
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* collideri, Collider* collidere);
 
 public:
 	int numerorand;
-	state random(state Estado,Collider* colider);
+	state random(state Estado, Collider* colider, tipo tip);
 	bool pendingToDelete = false;
 	void destr();
 	// Current Position in the world
@@ -51,6 +54,7 @@ public:
 	int frames2;
 	SDL_Texture* enemigo = nullptr;
 	SDL_Texture* kong = nullptr;
+	SDL_Texture* barriltext = nullptr;
 	state estado;
 	// Sound fx when destroyed
 	int destroyedFx = 0;

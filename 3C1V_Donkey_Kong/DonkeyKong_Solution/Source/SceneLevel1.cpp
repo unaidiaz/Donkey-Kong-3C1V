@@ -148,6 +148,7 @@ bool SceneLevel1::Start()
 
 
 	int direccion, x;
+	App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
 	App->enemies->AddEnemy(Enemy_Type::KONG, 50, 158, 0);
 	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;

@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "SceneLevel4.h"
+#include"Enemy_Barril.h"
 #include "Enemy.h"
 #include "Enemy_Llama.h"
 #include "Enemy_Kong.h"
@@ -164,6 +165,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				enemies[i]->kong = kongs;
 				enemies[i]->destroyedFx = enemyDestroyedFx;
 				break;
+			case Enemy_Type::barril:
+				enemies[i] = new Enemybarril(info.x, info.y, info.direccion);
+				enemies[i]->barriltext = enemigos;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
+				break;
+			
 			}
 			break;
 		}
@@ -174,75 +181,24 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-			if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-			{
-				if (c1->type==c1->Enemigo&&c2->type == c2->martillo) {
-					enemies[i]->OnCollision(c2);
-					App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
-					enemies[i]->destr();
-					break;
-				}else if (c1->type == c1->Enemigo && c2->type == c2->escalera&& enemies[i]->estado != state::bajando) {
-			
-					if (enemies[i]->frames1 >1) {
-						if (enemies[i]->estado != state::subiendo) {
-							enemies[i]->estado = enemies[i]->random(enemies[i]->estado, c1);
-						}
-					}
-					enemies[i]->frames1 = 0;
-				//enemies[i]->OnCollision(c2);
-					break;
-			
-				}else if (c1->type == c1->Enemigo && c2->type == c2->plataforma && enemies[i]->estado == state::libre) {
-			
-						enemies[i]->estado = state::recto;
-						break;
-				}
-				if (c1->type == c1->Enemigo && c2->type == c2->plataforma && enemies[i]->estado == state::bajando) {
-			
-					if (enemies[i]->top1 == false) {
-						enemies[i]->estado = state::recto;
-						enemies[i]->top1 = true;
-					}
-					enemies[i]->prior1 = 1;
-					break;
-				}else if (c1->type == c1->Enemigo && c2->type == c2->escalera && enemies[i]->estado == state::bajando&& enemies[i]->prior1 != 1) {
-					if (enemies[i]->top1 == true) {
-						enemies[i]->top1 = false;
-					}
-					break;
-				}
-			
+		if (enemies[i] != nullptr)
+		{
+			if (c1->type == c1->Enemigo && c2->type == c2->martillo) {
+				//
+				App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
+				enemies[i]->destr();
+				break;
 			}
-		
-	
-			if (enemies[i] != nullptr && enemies[i]->collider1 == c1) {
-			
-				if (c1->type == c1->top && c2->type == c2->escalera && enemies[i]->estado != state::subiendo) {
-
-					if (enemies[i]->frames2 > 1) {
-						if (enemies[i]->estado != state::bajando) {
-							enemies[i]->estado = enemies[i]->random(enemies[i]->estado,c1);
-						}
-						
-					}
-					enemies[i]->frames2 = 0;
-					//enemies[i]->OnCollision(c2);
-					break;
-				}
-				
-				if (c1->type == c1->top && c2->type == c2->plataforma && enemies[i]->estado == state::subiendo ) {
-					if (enemies[i]->top2 == false) {
-						enemies[i]->top2 = true;
-					}
-					
-					break;
-				}
+			else {
+				enemies[i]->OnCollision(c1, c2);
 
 			}
-		
 
-		
-		
+		}
+
+
+
+
 	}
 }
 bool ModuleEnemies::compene()

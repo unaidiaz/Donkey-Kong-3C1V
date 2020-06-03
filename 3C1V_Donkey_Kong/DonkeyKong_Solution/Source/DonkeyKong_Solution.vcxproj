@@ -80,6 +80,7 @@
     <ClInclude Include="bolso.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Barril.h" />
     <ClInclude Include="Enemy_Kong.h" />
     <ClInclude Include="Enemy_Llama.h" />
     <ClInclude Include="HowHigh.h" />
@@ -119,6 +120,7 @@
     <ClCompile Include="bolso.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Barril.cpp" />
     <ClCompile Include="Enemy_Kong.cpp" />
     <ClCompile Include="Enemy_Llama.cpp" />
     <ClCompile Include="HowHigh.cpp" />
