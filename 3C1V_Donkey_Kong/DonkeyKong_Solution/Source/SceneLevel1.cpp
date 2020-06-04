@@ -145,7 +145,8 @@ bool SceneLevel1::Start()
 
 
 	App->objet->AddObjet(Objet_Type::barril_fuego, 50, 645);
-
+	App->objet->AddObjet(Objet_Type::martillo, 500, 550);
+	App->objet->AddObjet(Objet_Type::martillo, 50, 260);
 
 	int direccion, x;
 	App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
