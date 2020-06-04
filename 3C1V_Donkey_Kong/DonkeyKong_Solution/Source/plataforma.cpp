@@ -15,7 +15,7 @@ plataforma::plataforma(int x, int y) : Objet(x, y)
 
 void plataforma::Update()
 {
-	if (position.x==88)
+	if (position.x==89)
 	{
 		position.y-=2;
 		if (position.y <= 291)
