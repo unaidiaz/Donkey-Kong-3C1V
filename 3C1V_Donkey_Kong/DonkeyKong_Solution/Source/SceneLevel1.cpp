@@ -235,7 +235,7 @@ update_status SceneLevel1::Update()
 	cont++;
 	if (cont % 120 == 0)
 	{
-		App->enemies->AddEnemy(Enemy_Type::barril, 130, 217, 1);
+		App->enemies->AddEnemy(Enemy_Type::barril, 178, 217, 1);
 
 	}
 	if (cont == 200)

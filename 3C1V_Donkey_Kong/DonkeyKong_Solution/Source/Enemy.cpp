@@ -173,7 +173,9 @@ void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 		}
 
 	}
+
 }
+
 void Enemy::destr()
 {
 	if (typo == tipo::llama || typo == tipo::barril) {

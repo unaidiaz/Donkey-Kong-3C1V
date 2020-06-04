@@ -29,9 +29,9 @@ Enemy_Kong::Enemy_Kong(int x, int y, int direccion) : Enemy(x, y)
 
 	kong_barril.PushBack({ 263,179,307 - 263,212 - 179 });
 	kong_barril.PushBack({ 309,179,350 - 309,212 - 179 });
-	kong_barril.PushBack({ 353,178,397 - 353,211 - 178 });
+	kong_barril.PushBack({ 353,178,397 - 340,211 - 178 });
 	kong_barril.loop = true;
-	kong_barril.speed = 0.02f;
+	kong_barril.speed = 0.025f;
 
 	currentAnim = &kong_alive;
 }
