@@ -67,6 +67,7 @@ private:
 	SDL_Texture* mario_hearth = nullptr;
 
 	// Font score index
+	int cont = 0;
 	int temp = 0;
 	uint _score = 000000;
 	uint _highscore = 000000;

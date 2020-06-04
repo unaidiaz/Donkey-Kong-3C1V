@@ -104,30 +104,7 @@ bool SceneLevel4::Start()
 	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
 	//MARTILLO ATAQUE
 
-	for (int i = 0; i < 5; i++) {
-		direccion = rand() % 2;
-		if (direccion == 0) {
-			direccion = -1;
-		}
-		switch (i)
-		{
-		case 0:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 70, 200, direccion);
-			break;
-		case 1:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320, direccion);
-			break;
-		case 2:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440, direccion);
-			break;
-		case 3:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560, direccion);
-			break;
-		case 4:
-			App->enemies->AddEnemy(Enemy_Type::LLAMA, 600, 680, direccion);
-			break;
-		}
-	}
+
 	App->objet->AddObjet(Objet_Type::placa, 165, 500);
 	App->objet->AddObjet(Objet_Type::placa, 477, 500);
 	App->objet->AddObjet(Objet_Type::placa, 165, 380);
@@ -203,6 +180,30 @@ void SceneLevel4::DebugDrawGamepadInfo()
 
 update_status SceneLevel4::Update()
 {
+	cont++;
+	int direccion = -1;
+	if (cont == 300)
+	{
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 70, 200, direccion);
+	}
+	if (cont == 600)
+	{
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 250, 320, direccion);
+	}
+	if (cont == 900)
+	{
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 350, 440, direccion);
+	}
+	if (cont == 1200)
+	{
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 150, 560, direccion);
+	}
+	if (cont == 1500)
+	{
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 70, 200, direccion);
+	}
+
+
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
