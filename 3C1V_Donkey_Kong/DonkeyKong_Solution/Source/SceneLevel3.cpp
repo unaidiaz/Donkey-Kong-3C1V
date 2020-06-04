@@ -38,7 +38,7 @@ bool SceneLevel3::Start()
 	App->player->canLateralMov = true;
 	App->player->Posicion.x = 5;
 	App->player->Posicion.y = 660;
-	int cont = 0;
+	cont = 0;
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();
@@ -194,6 +194,11 @@ void SceneLevel3::DebugDrawGamepadInfo()
 
 update_status SceneLevel3::Update()
 {
+	cont++;
+	if (cont%235==0)
+	{
+		App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
+	}
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);

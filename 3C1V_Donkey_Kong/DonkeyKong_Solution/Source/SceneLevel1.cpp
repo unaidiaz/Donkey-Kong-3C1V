@@ -51,7 +51,7 @@ bool SceneLevel1::Start()
 	lvl = App->textures->Load("Assets/carteles y mensajes.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
 	littlemario = App->textures->Load("Assets/letras.png");
-
+	cont = 0;
 	//547
 	App->collisions->AddCollider({ 87 * 3 - 15, 23 * 3 + 72,49 * 3 ,3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ -15, 153 + 72, 432,3 }, Collider::Type::plataforma);
@@ -231,6 +231,10 @@ void SceneLevel1::DebugDrawGamepadInfo()
 update_status SceneLevel1::Update()
 {
 	cont++;
+	if (cont%300==0)
+	{
+		App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
+	}
 	if (cont == 200)
 	{
 		App->audio->PlayMusic("Assets/3. Stage 1 BGM.ogg");

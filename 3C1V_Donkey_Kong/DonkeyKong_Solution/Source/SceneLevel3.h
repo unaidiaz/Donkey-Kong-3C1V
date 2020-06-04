@@ -65,6 +65,7 @@ private:
 	
 	// Font score index
 	int temp = 0;
+	int cont = 0;
 	uint _score = 000000;
 	uint _highscore = 000000;
 	uint _bonus = 5000;
