@@ -35,6 +35,7 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	App->player->lvl = 1;
 	App->player->canLateralMov = false;
 	App->player->Posicion.x = 125;
 	App->player->Posicion.y = 690;
@@ -150,7 +151,6 @@ bool SceneLevel1::Start()
 	App->objet->AddObjet(Objet_Type::martillo, 50, 260);
 
 	int direccion, x;
-	App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
 	App->enemies->AddEnemy(Enemy_Type::KONG, 50, 158, 0);
 	for (int i = 0; i < 2; i++) {
 		direccion = rand() % 2;
@@ -233,9 +233,10 @@ void SceneLevel1::DebugDrawGamepadInfo()
 update_status SceneLevel1::Update()
 {
 	cont++;
-	if (cont%400==0)
+	if (cont % 120 == 0)
 	{
-		App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
+		App->enemies->AddEnemy(Enemy_Type::barril, 130, 217, 1);
+
 	}
 	if (cont == 200)
 	{

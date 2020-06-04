@@ -38,7 +38,7 @@ bool SceneLevel4::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	App->player->lvl = 4;
 	App->player->Posicion.x = 100;
 	App->player->Posicion.y = 630;
 	App->player->canLateralMov = true;
@@ -46,8 +46,6 @@ bool SceneLevel4::Start()
 	App->player->Enable();
 	App->objet->Enable();
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
-	martillo = App->textures->Load("Assets/objetosestaticos.png"); martillo2 = App->textures->Load("Assets/objetosestaticos.png");
-	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl4.png");
 	lvl4_2 = App->textures->Load("Assets/ending2.png");
 	princesa = App->textures->Load("Assets/sprites.png");

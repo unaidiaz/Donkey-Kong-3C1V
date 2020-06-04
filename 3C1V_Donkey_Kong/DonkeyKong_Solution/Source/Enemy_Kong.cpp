@@ -27,34 +27,52 @@ Enemy_Kong::Enemy_Kong(int x, int y, int direccion) : Enemy(x, y)
 	kong_dead_2.loop = true;
 	kong_dead_2.speed = 0.07f;
 
+	kong_barril.PushBack({ 263,179,307 - 263,212 - 179 });
+	kong_barril.PushBack({ 309,179,350 - 309,212 - 179 });
+	kong_barril.PushBack({ 353,178,397 - 353,211 - 178 });
+	kong_barril.loop = true;
+	kong_barril.speed = 0.02f;
+
 	currentAnim = &kong_alive;
 }
 
 void Enemy_Kong::Update()
 {
-	if (App->player->_win == true)
+	if (App->player->lvl == 4)
 	{
-		cont++;
-		currentAnim = &kong_dead_1;
-		currentAnim->Update();
-		if (cont > 120 && cont < 250)
+		if (App->player->_win == true)
 		{
-			currentAnim = &kong_falling;
-		}
-		if (cont > 250)
-		{
-			currentAnim = &kong_dead_2;
-		}
-		if (currentAnim == &kong_falling)
-		{
-			position.y += 3;
-		}
-		if (position.y >= 535)
-		{
-			position.y = 535;
+			cont++;
+			currentAnim = &kong_dead_1;
+			currentAnim->Update();
+			if (cont > 120 && cont < 250)
+			{
+				currentAnim = &kong_falling;
+			}
+			if (cont > 250)
+			{
+				currentAnim = &kong_dead_2;
+			}
+			if (currentAnim == &kong_falling)
+			{
+				position.y += 3;
+			}
+			if (position.y >= 535)
+			{
+				position.y = 535;
+			}
 		}
 	}
 
+	if (App->player->lvl == 1)
+	{
+		currentAnim = &kong_barril;
+	}
+
+	if (App->player->lvl == 3)
+	{
+		currentAnim = &kong_alive;
+	}
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

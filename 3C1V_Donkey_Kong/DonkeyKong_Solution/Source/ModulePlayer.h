@@ -80,6 +80,7 @@ public:
 	int vidas=3;
 	bool debugGamepadInfo = false;
 	int contvidas = 0;
+	int lvl = 1;
 private:
 	SDL_Texture* marioo = nullptr;
 	// Debugdraw for gamepad data
