@@ -5,7 +5,7 @@
 
 plataforma::plataforma(int x, int y) : Objet(x, y)
 {
-	plataforma_anim.PushBack({ 31,63,17,9 });
+	plataforma_anim.PushBack({ 32,63,16,9 });
 
 
 	currentAnim = &plataforma_anim;

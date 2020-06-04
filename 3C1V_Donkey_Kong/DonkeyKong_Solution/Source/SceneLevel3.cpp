@@ -121,17 +121,17 @@ bool SceneLevel3::Start()
 	App->objet->AddObjet(Objet_Type::bolso, 610, 287);
 	App->objet->AddObjet(Objet_Type::paraguas, -10, 365);
 
-	App->objet->AddObjet(Objet_Type::plataforma, 88, 292); //292
-	App->objet->AddObjet(Objet_Type::plataforma, 280, 700); //700g
+	App->objet->AddObjet(Objet_Type::plataforma, 89, 292); //292
+	App->objet->AddObjet(Objet_Type::plataforma, 281, 700); //700g
 
-	App->objet->AddObjet(Objet_Type::plataforma, 88, 700); //292
-	App->objet->AddObjet(Objet_Type::plataforma, 280, 292); //700
+	App->objet->AddObjet(Objet_Type::plataforma, 89, 700); //292
+	App->objet->AddObjet(Objet_Type::plataforma, 281, 292); //700
 
-	App->objet->AddObjet(Objet_Type::plataforma, 88, 496); //292
-	App->objet->AddObjet(Objet_Type::plataforma, 280, 496); //700
+	App->objet->AddObjet(Objet_Type::plataforma, 89, 496); //292
+	App->objet->AddObjet(Objet_Type::plataforma, 281, 496); //700
 
-	App->objet->AddObjet(Objet_Type::plataforma, 88, 496); //292
-	App->objet->AddObjet(Objet_Type::plataforma, 280, 496); //700
+	App->objet->AddObjet(Objet_Type::plataforma, 89, 496); //292
+	App->objet->AddObjet(Objet_Type::plataforma, 281, 496); //700
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
