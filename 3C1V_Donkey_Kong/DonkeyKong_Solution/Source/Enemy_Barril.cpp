@@ -12,7 +12,8 @@ Enemybarril::Enemybarril(int x, int y, int direccion) : Enemy(x, y)
 	barrilrodando.PushBack({ 50,50,13,12 });
 	barrilrodando.loop = true;
 	barrilrodando.speed = 0.1f;
-	frames1 = 2;
+	frames1 = 0;
+	frames2 = 0;
 	barrilcallendo.PushBack({ 0,35,16,11 });
 	barrilcallendo.PushBack({ 20,35,16,11 });
 	barrilcallendo.loop = true;
@@ -35,25 +36,42 @@ void Enemybarril::Update()
 {
 	if (estado == state::recto) {
 		position.x = (position.x + (2 * dire));
-		currentAnim = &barrilrodando;
+		if (currentAnim != &barrilrodando) {
+			currentAnim = &barrilrodando;
+		}
+
 		estado = state::libre;
+
 	}
 	else if (estado == state::libre) {
 
 		position.y = position.y + 3;
-		if (contsub == 3) {
-			if (dire == 1) {
-				dire = -1;
+		//position.x = (position.x + (1 * dire));
+		if (contsub == 5) {
+			estado = Enemy::random(state::libre, collider, tipo::barril);
+			if (frames2 >= 4) {
+				estado = state::saliendo;
 			}
-			else {
-				dire = 1;
+			if (estado == state::libre) {
+				if (dire == 1) {
+					dire = -1;
+				}
+				else {
+					dire = 1;
+				}
+				frames2++;
 			}
+
 		}
+		//frames1++;
 		contsub++;
 		//estado == state::recto;
 	}
 	else if (estado == state::bajando) {
-		currentAnim = &barrilcallendo;
+		if (currentAnim != &barrilcallendo) {
+			currentAnim = &barrilcallendo;
+		}
+
 		position.y = position.y + 2;
 		if (top1 == true) {
 			top1 = false;
@@ -61,9 +79,20 @@ void Enemybarril::Update()
 		else {
 
 			top1 = true;
-			estado = state::libre;
+			estado = state::recto;
+			if (dire == 1) {
+				dire = -1;
+			}
+			else {
+				dire = 1;
+			}
+			frames2++;
 		}
 
+	}
+	else if (estado == state::saliendo) {
+		position.x = (position.x + (2 * dire));
+		position.y = position.y + 2;
 	}
 	if (position.x < -5 || position.x > 672) {
 		destr();

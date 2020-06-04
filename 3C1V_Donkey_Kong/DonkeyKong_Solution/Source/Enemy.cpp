@@ -21,13 +21,13 @@ Enemy::Enemy(int x, int y) : position(x, y)
 
 Enemy::~Enemy()
 {
-	if (collider != nullptr){
+	if (collider != nullptr) {
 		collider->pendingToDelete = true;
 	}
 	if (collider1 != nullptr) {
 		collider1->pendingToDelete = true;
 	}
-	
+
 }
 
 const Collider* Enemy::GetCollider() const
@@ -64,7 +64,7 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	if (currentAnim != nullptr) {
-		if (enemigo != nullptr){
+		if (enemigo != nullptr) {
 			App->render->Blit(enemigo, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 		}
 		if (kong != nullptr) {
@@ -76,14 +76,14 @@ void Enemy::Draw()
 		if (muelles != nullptr) {
 			App->render->Blit(muelles, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 		}
-		
+
 
 	}
-		
+
 }
 
 void Enemy::OnCollision(Collider* collideri, Collider* collidere)
-{	
+{
 	if (typo == tipo::llama) {
 		if (collider == collideri) {
 			if (collideri->type == collideri->Enemigo && collidere->type == collidere->escalera && estado != state::bajando) {
@@ -159,14 +159,15 @@ void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 
 			if (collideri->type == collideri->top && collidere->type == collidere->escalera && (estado == state::recto || estado == state::libre)) {
 				if (top1 == true) {
-					if (frames1 > 1) {
+					if (frames1 > 30) {
 						estado = random(estado, collideri, typo);
 					}
 				}
-				if (estado == state::bajando && top1 == false) {
-					top1 = true;
-				}
+
 				//frames1 = 0;
+			}
+			if (estado == state::bajando && top1 == false) {
+				top1 = true;
 			}
 
 		}
@@ -181,7 +182,7 @@ void Enemy::destr()
 			collider1->pendingToDelete = true;
 
 		}
-		
+
 	}
 	if (typo == tipo::muelle) {
 		if (collider != nullptr) {
@@ -226,15 +227,36 @@ state Enemy::random(state Estado, Collider* colider, tipo tip) {
 	}
 	else {
 		numerorand = 1 + rand() % 2;
-		if (numerorand == 1) {
-			Estado = state::bajando;
-			//position.y = position.y + 1;
-			top1 = false;
+		if (Estado == state::libre && colider == collider) {
+			if (numerorand == 1) {
+				Estado = state::saliendo;
+			}
+			else {
+
+			}
+			return Estado;
 		}
 		else {
 
+			if (frames2 >= 4) {
+
+			}
+			else {
+				if (numerorand == 1) {
+					Estado = state::bajando;
+
+					//position.y = position.y + 1;
+					top1 = false;
+				}
+				else {
+
+				}
+				frames1 = 0;
+			}
+			return Estado;
+
 		}
-		frames1 = 0;
-		return Estado;
+
+
 	}
 }

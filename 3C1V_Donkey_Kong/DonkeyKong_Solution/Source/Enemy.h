@@ -11,7 +11,7 @@ enum class tipo {
 	barril, llama, muelle
 };
 enum class state {
-	recto, bajando,libre,subiendo
+	recto, bajando,libre,subiendo, saliendo
 };
 class Enemy
 {
