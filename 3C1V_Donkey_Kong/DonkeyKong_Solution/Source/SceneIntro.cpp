@@ -33,7 +33,7 @@ update_status SceneIntro::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->howhigh, 90);
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -49,7 +49,7 @@ update_status SceneIntro::PostUpdate()
 }
 bool SceneIntro::CleanUp()
 {
-	
+
 	App->textures->Unload(IntroTexture);
 	//App->audio->CleanUp();
 	return true;

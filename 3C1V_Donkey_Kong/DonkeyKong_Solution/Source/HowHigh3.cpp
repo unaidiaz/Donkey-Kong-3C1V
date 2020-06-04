@@ -1,4 +1,4 @@
-#include "HowHigh.h"
+#include "HowHigh3.h"
 #include "ModuleObjet.h"
 #include "stdio.h"
 #include <time.h>
@@ -17,18 +17,18 @@
 #include "SDL/include/SDL_scancode.h"
 #include "ModuleFadeToBlack.h"
 
-HowHigh::HowHigh(bool startEnabled) : Module(startEnabled)
+HowHigh3::HowHigh3(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-HowHigh::~HowHigh()
+HowHigh3::~HowHigh3()
 {
 
 }
 
 // Load assets
-bool HowHigh::Start()
+bool HowHigh3::Start()
 {
 	srand(time(NULL));
 
@@ -37,7 +37,7 @@ bool HowHigh::Start()
 	bool ret = true;
 
 	App->audio->PlayMusic("Assets/5. How High Can You Get.ogg");
-	background = App->textures->Load("Assets/howhigh1.png");
+	background = App->textures->Load("Assets/howhigh3.png");
 
 
 
@@ -46,7 +46,7 @@ bool HowHigh::Start()
 }
 
 
-void HowHigh::DebugDrawGamepadInfo()
+void HowHigh3::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];
 
@@ -94,7 +94,7 @@ void HowHigh::DebugDrawGamepadInfo()
 	App->fonts->BlitText(5, 90, blancas, _scoreText);
 }
 
-update_status HowHigh::Update()
+update_status HowHigh3::Update()
 {
 	App->render->Blit(background, 0, 0, nullptr);
 	return update_status::UPDATE_CONTINUE;
@@ -102,13 +102,13 @@ update_status HowHigh::Update()
 
 
 // Update: draw background
-update_status HowHigh::PostUpdate()
+update_status HowHigh3::PostUpdate()
 {
-	App->fade->FadeToBlack((Module*)App->howhigh, (Module*)App->scene1, 90);
+	App->fade->FadeToBlack((Module*)App->howhigh3, (Module*)App->scene4, 90);
 	return update_status::UPDATE_CONTINUE;
 }
 
-bool HowHigh::CleanUp()
+bool HowHigh3::CleanUp()
 {
 	App->textures->CleanUp();
 	return true;

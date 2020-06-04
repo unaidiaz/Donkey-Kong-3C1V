@@ -196,7 +196,7 @@ void SceneLevel3::DebugDrawGamepadInfo()
 update_status SceneLevel3::Update()
 {
 	cont++;
-	if (cont%235==0)
+	if (cont % 235 == 0)
 	{
 		App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
 	}
@@ -245,11 +245,11 @@ update_status SceneLevel3::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->scene3, 180);
+		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->howhigh2, 180);
 	}
 	if (App->player->_win == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->scene4, 180);
+		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->howhigh3, 180);
 	}
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality
@@ -314,7 +314,7 @@ bool SceneLevel3::CleanUp()
 	//App->textures->Unload(martillo2);
 	App->textures->Unload(testTexture);
 	//App->audio->CleanUp();
-	
+
 	App->textures->Unload(princesa);
 	App->textures->Unload(highscore);
 	App->textures->Unload(oneup);

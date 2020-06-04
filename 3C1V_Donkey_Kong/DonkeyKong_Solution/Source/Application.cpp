@@ -8,6 +8,8 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "HowHigh.h"
+#include "HowHigh2.h"
+#include "HowHigh3.h"
 #include "SceneLevel1.h"
 #include "SceneLevel3.h"
 #include "SceneLevel4.h"
@@ -27,19 +29,20 @@ Application::Application()
 	modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-
 	modules[4] = sceneIntro = new SceneIntro(true);
-	modules[5] = howhigh = new HowHigh(true);
+	modules[5] = howhigh = new HowHigh(false);
 	modules[6] = scene1 = new SceneLevel1(false);
-	modules[7] = scene3 = new SceneLevel3(false);
-	modules[8] = scene4 = new SceneLevel4(false);
-	modules[9] = player = new ModulePlayer(false);
-	modules[10] = enemies = new ModuleEnemies(false);
-	modules[11] = objet = new ModuleObjet(false);
-	modules[12] = collisions = new ModuleCollisions(true);
-	modules[13] = fade = new ModuleFadeToBlack(true);
-	modules[14] = fonts = new ModuleFonts(true);
-	modules[15] = render = new ModuleRender(true);
+	modules[7] = howhigh2 = new HowHigh2(false);
+	modules[8] = scene3 = new SceneLevel3(false);
+	modules[9] = howhigh3 = new HowHigh3(false);
+	modules[10] = scene4 = new SceneLevel4(false);
+	modules[11] = player = new ModulePlayer(false);
+	modules[12] = enemies = new ModuleEnemies(false);
+	modules[13] = objet = new ModuleObjet(false);
+	modules[14] = collisions = new ModuleCollisions(true);
+	modules[15] = fade = new ModuleFadeToBlack(true);
+	modules[16] = fonts = new ModuleFonts(true);
+	modules[17] = render = new ModuleRender(true);
 
 }
 

@@ -248,7 +248,11 @@ update_status SceneLevel4::Update()
 // Update: draw background
 update_status SceneLevel4::PostUpdate()
 {
-	if (App->player->_lose == true || App->player->_win == true)
+	if (App->player->_lose == true)
+	{
+		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->howhigh3, 180);
+	}
+	if (App->player->_win == true)
 	{
 		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 540);
 	}
@@ -327,7 +331,7 @@ bool SceneLevel4::CleanUp()
 	App->textures->Unload(littlemario);
 	App->textures->Unload(hearth);
 	App->textures->Unload(mario_hearth);
-	
+
 
 	return true;
 }

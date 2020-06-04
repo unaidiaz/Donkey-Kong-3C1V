@@ -310,16 +310,16 @@ update_status SceneLevel1::PostUpdate()
 
 	if (App->player->_win == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 180);
+		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->howhigh2, 180);
 		cont_music++;
-		if (cont_music==1)
+		if (cont_music == 1)
 		{
 			App->audio->PlayMusic("Assets/4. Stage 1 CLEAR.ogg");
 		}
 	}
 	if (App->player->_lose == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene1, 180);
+		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->howhigh, 180);
 	}
 	sprintf_s(_scoreText, 10, "%6d", _score);
 	sprintf_s(_highscoreText, 10, "%6d", _highscore);

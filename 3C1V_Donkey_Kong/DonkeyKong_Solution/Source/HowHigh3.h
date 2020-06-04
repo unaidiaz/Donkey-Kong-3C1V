@@ -1,19 +1,20 @@
-#ifndef __HOWHIGH__H
-#define __HOWHIGH__H
+#pragma once
+#ifndef __HOWHIGH3__H
+#define __HOWHIGH3__H
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class HowHigh : public Module
+class HowHigh3 : public Module
 {
 public:
 	//Constructor
-	HowHigh(bool startEnabled);
+	HowHigh3(bool startEnabled);
 
 	//Destructor
-	~HowHigh();
+	~HowHigh3();
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
 	bool Start() override;
