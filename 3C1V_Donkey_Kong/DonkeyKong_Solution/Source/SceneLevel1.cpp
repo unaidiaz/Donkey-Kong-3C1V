@@ -50,6 +50,7 @@ bool SceneLevel1::Start()
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
 	lvl = App->textures->Load("Assets/carteles y mensajes.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
+	barriles_4 = App->textures->Load("Assets/objetosestaticos.png");
 	littlemario = App->textures->Load("Assets/letras.png");
 	cont = 0;
 	//547
@@ -232,7 +233,7 @@ void SceneLevel1::DebugDrawGamepadInfo()
 update_status SceneLevel1::Update()
 {
 	cont++;
-	if (cont%300==0)
+	if (cont%400==0)
 	{
 		App->enemies->AddEnemy(Enemy_Type::barril, 50, 217, 1);
 	}
@@ -303,7 +304,9 @@ update_status SceneLevel1::PostUpdate()
 	App->render->Blit(four, 578, 70, &four_);
 	SDL_Rect littlemario_ = { 530,51,8,10 };
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
-	
+	SDL_Rect barriles__4 = { 0,18,20,(51 - 18) };
+	App->render->Blit(barriles_4, 0, 155, &barriles__4);
+
 	if (App->player->_win == true)
 	{
 		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->scene3, 180);

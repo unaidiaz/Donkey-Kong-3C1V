@@ -119,7 +119,7 @@ bool ModulePlayer::Start()
 	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
 	lastanimation = &topescalera;
 	hammerCont = 0;
-
+	contvidas = 0;
 	destroyed = false;	
 	return true;
 }
@@ -485,10 +485,19 @@ update_status ModulePlayer::PostUpdate() {
 	}
 	else if (_lose == true)
 	{
+		/*if (contvidas=0)
+		{
+			vidas--;
+			contvidas = 1;
+		}*/
 		App->render->Blit(lose, 200, 400, &win_lose);
 		canLateralMov = false;
 	}
-
+	/*if (vidas==0)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene1, 90);
+		vidas = 3;
+	}*/
 	return update_status::UPDATE_CONTINUE;
 }
 

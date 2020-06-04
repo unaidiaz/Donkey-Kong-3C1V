@@ -32,6 +32,8 @@ private:
 	Animation kong_alive;
 	Animation kong_falling;
 	Animation kong_dead_1;
+	Animation kong_barril;
+	Animation kong_barril_azul;
 	int cont = 0;
 };
 
