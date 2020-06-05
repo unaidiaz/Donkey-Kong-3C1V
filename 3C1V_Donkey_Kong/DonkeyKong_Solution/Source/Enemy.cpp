@@ -153,7 +153,7 @@ void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 				contsub = 0;
 
 			}
-
+			
 		}
 		else if (collider1 == collideri) {
 
@@ -178,13 +178,14 @@ void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 
 void Enemy::destr()
 {
-	if (typo == tipo::llama || typo == tipo::barril) {
-		if (collider != nullptr && collider1 != nullptr) {
+	if (typo == tipo::llama || typo == tipo::barril|| typo == tipo::barrilazul) {
+		if (collider != nullptr) {
 			collider->pendingToDelete = true;
-			collider1->pendingToDelete = true;
-
 		}
-
+		if (collider1 != nullptr) {
+			collider1->pendingToDelete = true;
+		}
+	
 	}
 	if (typo == tipo::muelle) {
 		if (collider != nullptr) {

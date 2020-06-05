@@ -235,7 +235,14 @@ update_status SceneLevel1::Update()
 	cont++;
 	if (cont % 120 == 0)
 	{
-		App->enemies->AddEnemy(Enemy_Type::barril, 178, 217, 1);
+		
+		if (cont % 1200 == 0) {
+			App->enemies->AddEnemy(Enemy_Type::barrilazul, 178, 217, 1);
+		}
+		else {
+			App->enemies->AddEnemy(Enemy_Type::barril, 178, 217, 1);
+		}
+		
 
 	}
 	if (cont == 200)
@@ -352,7 +359,7 @@ bool SceneLevel1::CleanUp()
 	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
-	App->textures->CleanUp();
+	
 	App->collisions->CleanUp();
 	//App->audio->CleanUp();
 	App->textures->Unload(kong);
@@ -364,7 +371,7 @@ bool SceneLevel1::CleanUp()
 	App->textures->Unload(lvl);
 	App->textures->Unload(four);
 	App->textures->Unload(littlemario);
-	
+	App->textures->CleanUp();
 	return true;
 }
 

@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "SceneLevel4.h"
 #include"Enemy_Barril.h"
+#include"Enemy_Barrilazul.h"
 #include "Enemy.h"
 #include "Enemy_Llama.h"
 #include "Enemy_Kong.h"
@@ -168,6 +169,11 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				break;
 			case Enemy_Type::barril:
 				enemies[i] = new Enemybarril(info.x, info.y, info.direccion);
+				enemies[i]->barriltext = enemigos;
+				enemies[i]->destroyedFx = enemyDestroyedFx;
+				break;
+			case Enemy_Type::barrilazul:
+				enemies[i] = new Enemybarrilazul(info.x, info.y, info.direccion);
 				enemies[i]->barriltext = enemigos;
 				enemies[i]->destroyedFx = enemyDestroyedFx;
 				break;

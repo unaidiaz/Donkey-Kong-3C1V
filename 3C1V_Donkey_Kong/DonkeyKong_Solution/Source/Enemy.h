@@ -8,7 +8,7 @@
 struct SDL_Texture;
 struct Collider;
 enum class tipo {
-	barril, llama, muelle
+	barril, llama, muelle,barrilazul
 };
 enum class state {
 	recto, bajando,libre,subiendo, saliendo
