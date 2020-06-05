@@ -69,7 +69,7 @@ private:
 	uint _bonus = 5000;
 	int rojas = -1;
 	int blancas = -1;
-	int amarillas = -1;
+	int azules = -1;
 	char _scoreText[7] = { "\0" };
 	char _highscoreText[7] = { "\0" };
 	char _bonusText[5] = { "\0" };

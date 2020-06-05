@@ -50,7 +50,7 @@ bool SceneLevel3::Start()
 	highscore = App->textures->Load("Assets/carteles y mensajes.png");
 	oneup = App->textures->Load("Assets/carteles y mensajes.png");
 	bonus = App->textures->Load("Assets/carteles y mensajes.png");
-	lvl = App->textures->Load("Assets/carteles y mensajes.png");
+	lvl = App->textures->Load("Assets/lvl3_.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
 	littlemario = App->textures->Load("Assets/letras.png");
 
@@ -136,10 +136,10 @@ bool SceneLevel3::Start()
 
 	char lookupTable_r[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.-" };
 	char lookupTable_b[] = { "0123456789" };
-	char lookupTable_a[] = { "0123456789" };
+	char lookupTable_az[] = { "0123456789" };
 	rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
 	blancas = App->fonts->Load("Assets/letras_blancas.png", lookupTable_b, 1);
-	amarillas = App->fonts->Load("Assets/letras_amarillas.png", lookupTable_a, 1);
+	azules = App->fonts->Load("Assets/letras_azules.png", lookupTable_az, 1);
 
 	return ret;
 }
@@ -264,12 +264,10 @@ update_status SceneLevel3::PostUpdate()
 	App->render->Blit(highscore, 225, 0, &highscore_);
 	SDL_Rect oneup_ = { 16,36,27,8 };
 	App->render->Blit(oneup, 70, 0, &oneup_);
-	SDL_Rect bonus_ = { 146,64,45,30 };
-	App->render->Blit(bonus, 510, 80, &bonus_);
-	SDL_Rect lvl_ = { 0,58,22,8 };
-	App->render->Blit(bonus, 510, 70, &lvl_);
-	SDL_Rect four_ = { 63,23,8,8 };
-	App->render->Blit(four, 578, 70, &four_);
+	SDL_Rect bonus_ = { 0,74,44,20 };
+	App->render->Blit(bonus, 510, 110, &bonus_);
+	SDL_Rect lvl_ = { 0,0,31,8 };
+	App->render->Blit(lvl, 510, 70, &lvl_);
 	SDL_Rect littlemario_ = { 530,51,8,10 };
 	App->render->Blit(littlemario, 10, 70, &littlemario_);
 
@@ -281,7 +279,7 @@ update_status SceneLevel3::PostUpdate()
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(29, 27, blancas, _scoreText);
 	App->fonts->BlitText(270, 27, blancas, _highscoreText);
-	App->fonts->BlitText(527, 134, amarillas, _bonusText);
+	App->fonts->BlitText(527, 134, azules, _bonusText);
 
 	return update_status::UPDATE_CONTINUE;
 }
