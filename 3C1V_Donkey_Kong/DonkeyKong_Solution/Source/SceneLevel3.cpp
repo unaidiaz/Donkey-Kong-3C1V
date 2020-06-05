@@ -43,7 +43,6 @@ bool SceneLevel3::Start()
 	App->enemies->Enable();
 	App->player->Enable();
 	App->objet->Enable();
-	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
 	kong = App->textures->Load("Assets/perso.png");
 	testTexture = App->textures->Load("Assets/lvl3.png");
 	princesa = App->textures->Load("Assets/perso.png");
@@ -199,6 +198,7 @@ update_status SceneLevel3::Update()
 	if (cont % 235 == 0)
 	{
 		App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
+
 	}
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{

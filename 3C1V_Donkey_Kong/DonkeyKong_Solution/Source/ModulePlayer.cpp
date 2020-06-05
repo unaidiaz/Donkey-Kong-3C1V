@@ -116,7 +116,8 @@ bool ModulePlayer::Start()
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	placaSound = App->audio->LoadFx("Assets/6. SFX (Bonus).wav");
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
-	muerteMario = App->audio->LoadFx("Assets/5. SFX (Fall).wav");
+	muerteMario = App->audio->LoadFx("Assets/7. SFX (Miss).wav");
+	contmusicamuerte = 0;
 	lastanimation = &topescalera;
 	hammerCont = 0;
 	contvidas = 0;
@@ -485,6 +486,11 @@ update_status ModulePlayer::PostUpdate() {
 	}
 	else if (_lose == true)
 	{
+		if (contmusicamuerte==0)
+		{
+			App->audio->PlayMusic("Assets/7. SFX (Miss).wav");
+			contmusicamuerte++;
+		}
 		/*if (contvidas=0)
 		{
 			vidas--;
