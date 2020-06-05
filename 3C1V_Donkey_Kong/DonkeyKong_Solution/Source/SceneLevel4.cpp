@@ -40,7 +40,7 @@ bool SceneLevel4::Start()
 	bool ret = true;
 	App->player->lvl = 4;
 	App->player->Posicion.x = 100;
-	App->player->Posicion.y = 630;
+	App->player->Posicion.y = 679;
 	App->player->canLateralMov = true;
 	App->enemies->Enable();
 	App->player->Enable();
@@ -59,11 +59,11 @@ bool SceneLevel4::Start()
 	mario_hearth = App->textures->Load("Assets/sprites.png");
 
 	//547
-	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 11, 579, 627,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 35, 459, 579,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 59, 339, 531,10 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 83, 219, 483,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 699, 672,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 11, 580, 627,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 35, 460, 579,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 59, 340, 531,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 83, 220, 483,3 }, Collider::Type::plataforma);
 
 	App->collisions->AddCollider({ -15, 469, 40, 10 }, Collider::Type::Enemigo);
 	App->collisions->AddCollider({ 625, 469, 40, 10 }, Collider::Type::Enemigo);
@@ -76,20 +76,38 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 306, 580, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 618, 580, 10,81 }, Collider::Type::escalera);
 
+	App->collisions->AddCollider({ 18, 699, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 306, 699, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 618, 699, 10,3 }, Collider::Type::plataforma);
+
 	//segundo piso
 	App->collisions->AddCollider({ 42, 460, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 210, 460, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 426, 460, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 594, 460, 10,81 }, Collider::Type::escalera);
 
+	App->collisions->AddCollider({ 42, 580, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 210, 580, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 426, 580, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 594, 580, 10,3 }, Collider::Type::plataforma);
+
 	App->collisions->AddCollider({ 66, 340, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 306, 340, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 570, 340, 10,81 }, Collider::Type::escalera);
+
+	App->collisions->AddCollider({ 66, 460, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 306, 460, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 570, 460, 10,3 }, Collider::Type::plataforma);
 
 	App->collisions->AddCollider({ 90, 220, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 186, 220, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 450, 220, 10,81 }, Collider::Type::escalera);
 	App->collisions->AddCollider({ 546, 220, 10,81 }, Collider::Type::escalera);
+
+	App->collisions->AddCollider({ 90, 340, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 186, 340, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 450, 340, 10,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 546, 340, 10,3 }, Collider::Type::plataforma);
 	//Martillo
 	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
 	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
