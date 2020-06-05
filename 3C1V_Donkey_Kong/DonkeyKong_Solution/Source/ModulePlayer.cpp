@@ -491,19 +491,14 @@ update_status ModulePlayer::PostUpdate() {
 			App->audio->PlayMusic("Assets/7. SFX (Miss).wav");
 			contmusicamuerte++;
 		}
-		/*if (contvidas=0)
+		if (contvidas == 0)
 		{
 			vidas--;
 			contvidas = 1;
-		}*/
+		}
 		App->render->Blit(lose, 200, 400, &win_lose);
 		canLateralMov = false;
 	}
-	/*if (vidas==0)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->scene1, 90);
-		vidas = 3;
-	}*/
 	return update_status::UPDATE_CONTINUE;
 }
 

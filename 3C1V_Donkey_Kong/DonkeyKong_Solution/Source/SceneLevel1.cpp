@@ -52,7 +52,8 @@ bool SceneLevel1::Start()
 	lvl = App->textures->Load("Assets/lvl1_.png");
 	four = App->textures->Load("Assets/carteles y mensajes.png");
 	barriles_4 = App->textures->Load("Assets/objetosestaticos.png");
-	littlemario = App->textures->Load("Assets/letras.png");
+	littlemario = App->textures->Load("Assets/letras.png");	
+	vida3 = App->textures->Load("Assets/3vidas.png");
 	cont = 0;
 	//547
 	App->collisions->AddCollider({ 87 * 3 - 15, 23 * 3 + 72,49 * 3 ,3 }, Collider::Type::plataforma);
@@ -177,6 +178,8 @@ bool SceneLevel1::Start()
 	rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
 	blancas = App->fonts->Load("Assets/letras_blancas.png", lookupTable_b, 1);
 	azules = App->fonts->Load("Assets/letras_azules.png", lookupTable_az, 1);
+
+
 
 	return ret;
 }
@@ -313,6 +316,22 @@ update_status SceneLevel1::PostUpdate()
 	SDL_Rect barriles__4 = { 0,18,20,(51 - 18) };
 	App->render->Blit(barriles_4, 0, 155, &barriles__4);
 
+	SDL_Rect rect_1vida = { 2, -1, 8, 9 };
+	SDL_Rect rect_2vidas = { 2, -1, 17, 9 };
+	SDL_Rect rect_3vidas = { 2, -1, 27, 9 };
+	if (App->player->vidas == 3)
+	{
+		App->render->Blit(vida3, 30, 60, &rect_3vidas);
+	}
+	if (App->player->vidas == 2)
+	{
+		App->render->Blit(vida3, 40, 60, &rect_2vidas);
+	}
+	if (App->player->vidas == 1)
+	{
+		App->render->Blit(vida3, 40, 60, &rect_1vida);
+	}
+
 	if (App->player->_win == true)
 	{
 		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->howhigh2, 180);
@@ -324,7 +343,14 @@ update_status SceneLevel1::PostUpdate()
 	}
 	if (App->player->_lose == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->howhigh, 180);
+		if (App->player->vidas == 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->sceneIntro, 90);
+		}
+		else if (App->player->vidas != 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene1, (Module*)App->howhigh, 180);
+		}
 	}
 	sprintf_s(_scoreText, 10, "%6d", _score);
 	sprintf_s(_highscoreText, 10, "%6d", _highscore);

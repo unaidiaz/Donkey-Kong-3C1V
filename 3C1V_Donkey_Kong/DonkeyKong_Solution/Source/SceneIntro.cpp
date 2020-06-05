@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
@@ -24,6 +25,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
+	App->player->vidas = 3;
 	IntroTexture = App->textures->Load("Assets/sceneIntro.png");
 	App->audio->PlayMusic("Assets/4. Start Up 2.wav", 1.0f);
 	return ret;

@@ -250,7 +250,14 @@ update_status SceneLevel4::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->howhigh3, 180);
+		if (App->player->vidas == 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 180);
+		}
+		else if (App->player->vidas != 0)
+		{
+			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->howhigh3, 180);
+		}
 	}
 	if (App->player->_win == true)
 	{
