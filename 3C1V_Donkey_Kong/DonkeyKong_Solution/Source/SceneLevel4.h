@@ -66,7 +66,7 @@ private:
 	SDL_Texture* hearth = nullptr;
 	SDL_Texture* mario_hearth = nullptr;
 	SDL_Texture* vida3 = nullptr;
-
+	int contmusic = 0;
 	// Font score index
 	int cont = 0;
 	int temp = 0;

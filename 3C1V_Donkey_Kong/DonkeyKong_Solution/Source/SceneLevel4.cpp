@@ -58,6 +58,7 @@ bool SceneLevel4::Start()
 	hearth = App->textures->Load("Assets/sprites.png");
 	mario_hearth = App->textures->Load("Assets/sprites.png");
 	vida3 = App->textures->Load("Assets/3vidas.png");
+	contmusic = 0;
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 11, 580, 627,3 }, Collider::Type::plataforma);
@@ -281,8 +282,11 @@ update_status SceneLevel4::PostUpdate()
 	int direccion = 0;
 	if (App->player->_win == true)
 	{
-		SDL_DestroyTexture(martillo);
-		SDL_DestroyTexture(martillo2);
+		if (contmusic==0)
+		{
+			App->audio->PlayMusic("Assets/14. Ending lvl4.wav");
+			contmusic = 1;
+		}
 		App->objet->CleanUp();
 		SDL_DestroyTexture(testTexture);
 		App->render->Blit(lvl4_2, -40, -20, nullptr);

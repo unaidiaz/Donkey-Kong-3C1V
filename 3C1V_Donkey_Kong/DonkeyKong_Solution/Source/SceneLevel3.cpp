@@ -54,6 +54,7 @@ bool SceneLevel3::Start()
 	littlemario = App->textures->Load("Assets/letras.png");
 	vida3 = App->textures->Load("Assets/3vidas.png");
 	App->audio->PlayMusic("Assets/13. Muelle.wav");
+	contmusic = 0;
 	//547
 	App->collisions->AddCollider({ -13, 722, 96, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 128, 722, 147, 3 }, Collider::Type::plataforma);
@@ -243,6 +244,11 @@ update_status SceneLevel3::Update()
 	}
 	if (App->player->_win == true)
 	{
+		if (contmusic == 0)
+		{
+			App->audio->PlayMusic("Assets/4. Stage 1 CLEAR.ogg");
+			contmusic = 1;
+		}
 		App->objet->CleanUp();
 		App->enemies->CleanUp();
 		_score += _bonus;

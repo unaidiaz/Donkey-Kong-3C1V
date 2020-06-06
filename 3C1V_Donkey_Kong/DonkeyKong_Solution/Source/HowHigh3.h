@@ -51,6 +51,5 @@ private:
 	int cont_music = 0;
 	int cont = 0;
 	bool debugGamepadInfo = false;
-
 };
 #endif

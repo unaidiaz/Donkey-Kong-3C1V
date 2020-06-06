@@ -55,7 +55,7 @@ void Enemy_Kong::Update()
 			}
 			if (currentAnim == &kong_falling)
 			{
-				position.y += 3;
+				position.y += 4;
 			}
 			if (position.y >= 535)
 			{
