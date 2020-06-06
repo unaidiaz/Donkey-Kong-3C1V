@@ -17,6 +17,7 @@ public:
 private:
 
 	Animation llama;
+	Animation llama_azul;
 };
 
 #endif // __ENEMY_REDBIRD_H__

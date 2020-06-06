@@ -10,6 +10,12 @@ Enemy_Llama::Enemy_Llama(int x, int y,int direccion) : Enemy(x, y)
 	llama.PushBack({ 17, 64, 14, 16 });
 	llama.loop = true;
 	llama.speed = 0.1f;
+
+	llama_azul.PushBack({ 0,81,15,17 });
+	llama_azul.PushBack({ 17, 82, 14, 16 });
+	llama_azul.loop = true;
+	llama_azul.speed = 0.1f;
+
 	dire = direccion;
 	typo = tipo::llama;
 	currentAnim = &llama;
@@ -29,7 +35,14 @@ Enemy_Llama::Enemy_Llama(int x, int y,int direccion) : Enemy(x, y)
 
 void Enemy_Llama::Update()
 {
-
+	if (App->player->hammerMode == true)
+	{
+		currentAnim = &llama_azul;
+	}
+	else
+	{
+		currentAnim = &llama;
+	}
 
 	if (estado == state::recto) {
 		position.x = position.x + (dire);
