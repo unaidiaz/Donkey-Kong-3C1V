@@ -57,7 +57,7 @@ bool SceneLevel4::Start()
 	littlemario = App->textures->Load("Assets/letras.png");
 	hearth = App->textures->Load("Assets/sprites.png");
 	mario_hearth = App->textures->Load("Assets/sprites.png");
-
+	vida3 = App->textures->Load("Assets/3vidas.png");
 	//547
 	App->collisions->AddCollider({ 0, 699, 672,3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 11, 580, 627,3 }, Collider::Type::plataforma);
@@ -268,7 +268,7 @@ update_status SceneLevel4::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		if (App->player->vidas == 0)
+		if (App->player->vidas == 1)
 		{
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 180);
 		}
@@ -305,9 +305,23 @@ update_status SceneLevel4::PostUpdate()
 	App->render->Blit(bonus, 510, 70, &lvl_);
 	SDL_Rect four_ = { 63,23,8,8 };
 	App->render->Blit(four, 578, 70, &four_);
-	SDL_Rect littlemario_ = { 530,51,8,10 };
-	App->render->Blit(littlemario, 10, 70, &littlemario_);
-
+//	SDL_Rect littlemario_ = { 530,51,8,10 };
+	//App->render->Blit(littlemario, 10, 70, &littlemario_);
+	SDL_Rect rect_1vida = { 2, -1, 8, 9 };
+	SDL_Rect rect_2vidas = { 2, -1, 17, 9 };
+	SDL_Rect rect_3vidas = { 2, -1, 27, 9 };
+	if (App->player->vidas == 3)
+	{
+		App->render->Blit(vida3, 30, 60, &rect_3vidas);
+	}
+	if (App->player->vidas == 2)
+	{
+		App->render->Blit(vida3, 40, 60, &rect_2vidas);
+	}
+	if (App->player->vidas == 1)
+	{
+		App->render->Blit(vida3, 40, 60, &rect_1vida);
+	}
 
 	sprintf_s(_scoreText, 10, "%6d", _score);
 	sprintf_s(_highscoreText, 10, "%6d", _highscore);

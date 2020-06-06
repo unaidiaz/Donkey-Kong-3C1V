@@ -61,7 +61,7 @@ private:
 	SDL_Texture* lvl = nullptr;
 	SDL_Texture* four = nullptr;
 	SDL_Texture* littlemario = nullptr;
-	
+	SDL_Texture* vida3 = nullptr;
 	
 	// Font score index
 	int temp = 0;
