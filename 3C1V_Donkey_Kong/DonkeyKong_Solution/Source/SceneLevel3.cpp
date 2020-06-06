@@ -53,6 +53,7 @@ bool SceneLevel3::Start()
 	four = App->textures->Load("Assets/carteles y mensajes.png");
 	littlemario = App->textures->Load("Assets/letras.png");
 	vida3 = App->textures->Load("Assets/3vidas.png");
+	App->audio->PlayMusic("Assets/13. Muelle.wav");
 	//547
 	App->collisions->AddCollider({ -13, 722, 96, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 128, 722, 147, 3 }, Collider::Type::plataforma);
@@ -206,7 +207,7 @@ void SceneLevel3::DebugDrawGamepadInfo()
 update_status SceneLevel3::Update()
 {
 	cont++;
-	if (cont % 235 == 0)
+	if (cont % 145 == 0)
 	{
 		App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
 
