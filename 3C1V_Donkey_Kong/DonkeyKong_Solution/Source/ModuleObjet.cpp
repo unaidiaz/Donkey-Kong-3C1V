@@ -92,7 +92,9 @@ update_status ModuleObjet::PostUpdate()
 bool ModuleObjet::CleanUp()
 {
 	LOG("Freeing all objects");
-
+	App->textures->Unload(objetostex);
+	App->textures->Unload(objetosanim);
+	App->textures->Unload(objeto_plataforma);
 	for (uint i = 0; i < MAX_OBJET; ++i)
 	{
 		if (objetos[i] != nullptr)
@@ -209,11 +211,9 @@ void ModuleObjet::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == c2->PLAYER)
 			{
 				objetos[i]->OnCollision(c2);
+				break;
 			}
-			/*else if (c2->type == c2->placa)
-			{
-				objetos[i]->OnCollision(c2);
-			}*/
+			
 		}
 	}
 }

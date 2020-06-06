@@ -23,6 +23,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 	update_status Update();
 	update_status PostUpdate();
+	bool CleanUp();
 	posicion Posicion;
 	Animation* lastanimation = nullptr;
 	Animation* currentAnimation = nullptr;

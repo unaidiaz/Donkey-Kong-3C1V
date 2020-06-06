@@ -86,7 +86,8 @@ update_status ModuleEnemies::PostUpdate()
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
-
+	App->textures->Unload(kongs);
+	App->textures->Unload(enemigos);
 	for (int i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
@@ -195,20 +196,17 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr)
 		{
 			if (c1->type == c1->Enemigo && c2->type == c2->martillo) {
-				//
-				App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
-				enemies[i]->destr();
-				break;
+				if (c1 == enemies[i]->GetCollider()) {
+					App->audio->PlayFx(App->enemies->enemyDestroyedFx);//Notify the enemy of a collision
+					enemies[i]->destr();
+					break;
+				}	
 			}
 			else {
 				enemies[i]->OnCollision(c1, c2);
-
 			}
 
 		}
-
-
-
 
 	}
 }

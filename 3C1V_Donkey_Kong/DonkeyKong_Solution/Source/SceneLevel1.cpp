@@ -374,15 +374,26 @@ update_status SceneLevel1::PostUpdate()
 
 bool SceneLevel1::CleanUp()
 {
-	temp = 0;
+	temp = 0;	
+	App->fonts->UnLoad(rojas);
+	App->fonts->UnLoad(blancas);
+	App->fonts->UnLoad(azules);
+	App->textures->Unload(kong);
+	App->textures->Unload(testTexture);
+	App->textures->Unload(princesa);
+	App->textures->Unload(highscore);
+	App->textures->Unload(oneup);
+	App->textures->Unload(bonus);
+	App->textures->Unload(lvl);
+	App->textures->Unload(four);
+	App->textures->Unload(littlemario);
+	App->textures->CleanUp();
 	App->player->cont_muerte = 0;
 	App->player->cont_win = 0;
 	App->player->Disable();
 	App->enemies->Disable();
 	App->objet->Disable();
-	App->fonts->UnLoad(rojas);
-	App->fonts->UnLoad(blancas);
-	App->fonts->UnLoad(azules);
+
 	App->player->_lose = false;
 	App->player->_win = false;
 	App->player->canLateralMov = true;
@@ -394,16 +405,7 @@ bool SceneLevel1::CleanUp()
 	
 	App->collisions->CleanUp();
 	//App->audio->CleanUp();
-	App->textures->Unload(kong);
-	App->textures->Unload(testTexture);
-	App->textures->Unload(princesa);
-	App->textures->Unload(highscore);
-	App->textures->Unload(oneup);
-	App->textures->Unload(bonus);
-	App->textures->Unload(lvl);
-	App->textures->Unload(four);
-	App->textures->Unload(littlemario);
-	App->textures->CleanUp();
+	
 	return true;
 }
 

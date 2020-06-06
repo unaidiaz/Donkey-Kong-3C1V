@@ -569,20 +569,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			plataforma = false;
 		}
 	}
-
-	if (c1->type == Collider::martillo && c2->type == Collider::Enemigo)
-	{
-		/*
-		if (App->enemies->compene() == true) 
-		{
-			_win = true;
-			canLateralMov = false;
-		}*/
+	if (c1== mart && c2->type == Collider::Enemigo){
+		
 		App->scene4->sum_points_300();
-	}
-
-	if (c1->type == Collider::PLAYER && c2->type == Collider::placa)
-	{		
+	}else if (c1->type == Collider::PLAYER && c2->type == Collider::placa){
+			
 		cont_win++;
 		if (cont_win == 8)
 		{
@@ -591,32 +582,31 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_100();
-	}
-	if (c1->type == Collider::PLAYER && c2->type == Collider::objeto)
-	{
+	}else if (c1->type == Collider::PLAYER && c2->type == Collider::objeto){
 		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_300();
-	}
-	if (c1->type == Collider::PLAYER && c2->type == Collider::martillo)
-	{
+	}else if (c1->type == Collider::PLAYER && c2->type == Collider::martillo){
 		hammerMode = true;
 		App->audio->PlayFx(placaSound);
 		App->scene4->sum_points_300();
-	}
+
+	}else
 	if (c1->type == Collider::PLAYER && c2->type == Collider::Enemigo)
 	{
 		_lose = true;
 		currentAnimation = &dead_mario_r;
-	}
+	}else
 	if (c1->type == Collider::PLAYER && c2->type == Collider::Victoria)
 	{
 		_win = true;
 		//App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
 	}
-	if (c1->type == Collider::PLAYER && c2->type == Collider::martillo)
-	{
-		hammerMode = true;
-		App->audio->PlayFx(placaSound);
-		App->scene4->sum_points_300();
-	}
+
+}
+bool ModulePlayer::CleanUp() {
+	
+	App->textures->Unload(win);
+	App->textures->Unload(lose);
+	App->textures->Unload(mario);
+	return true;
 }

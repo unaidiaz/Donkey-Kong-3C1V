@@ -82,18 +82,18 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 248, 195, 147, 3 }, Collider::Type::plataforma);
 
 
-	App->collisions->AddCollider({ 20, 555, 5,104 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 45, 411, 5,127 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 188, 411, 5,177 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 235, 411, 5,177 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 188, 102, 5,152 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 235, 102, 5,152 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 620, 555, 5, 42 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 547, 435, 5, 72 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 405, 387, 5, 87 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 477, 267, 5, 87 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 620, 315, 5, 107 }, Collider::Type::escalera);
-	App->collisions->AddCollider({ 380, 195, 5, 57 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 20, 555, 5,84 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 45, 411, 5,107 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188, 411, 5,157 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 235, 411, 5,157 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 188, 102, 5,132 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 235, 102, 5,132 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 620, 555, 5, 22 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 547, 435, 5, 52 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 405, 387, 5, 67 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 477, 267, 5, 67 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 620, 315, 5, 87 }, Collider::Type::escalera);
+	App->collisions->AddCollider({ 380, 195, 5, 37 }, Collider::Type::escalera);
 
 	App->collisions->AddCollider({ 20, 675, 5, 3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 45, 555, 5, 3 }, Collider::Type::plataforma);
@@ -333,10 +333,6 @@ bool SceneLevel3::CleanUp()
 	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
-	App->textures->CleanUp();
-	App->collisions->CleanUp();
-
-
 
 
 	App->textures->Unload(kong);
@@ -352,6 +348,16 @@ bool SceneLevel3::CleanUp()
 	App->textures->Unload(lvl);
 	App->textures->Unload(four);
 	App->textures->Unload(littlemario);
+	App->fonts->UnLoad(rojas);
+	App->fonts->UnLoad(blancas);
+	App->fonts->UnLoad(azules);
+	App->textures->CleanUp();
+	App->collisions->CleanUp();
+
+
+
+
+	
 
 
 	return true;
