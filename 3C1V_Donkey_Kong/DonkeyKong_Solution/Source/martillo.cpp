@@ -10,7 +10,7 @@ martillo::martillo(int x, int y) : Objet(x, y)
 
 	currentAnim = &martillo_anim;
 
-	obcollider = App->collisions->AddCollider({ 20, 20,9,11 }, Collider::Type::objeto, (Module*)App->objet);
+	obcollider = App->collisions->AddCollider({ 20, 20,9,11 }, Collider::Type::martillo, (Module*)App->objet);
 }
 
 void martillo::Update()

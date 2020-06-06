@@ -45,7 +45,7 @@ void Enemy_Llama::Update()
 			position.y = position.y - 1;
 		}
 		else {
-			if (contsub < 57) {
+			if (contsub < 50) {
 				position.y = position.y - 1;
 				contsub++;
 			}

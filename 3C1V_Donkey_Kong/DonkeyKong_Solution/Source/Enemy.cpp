@@ -178,23 +178,16 @@ void Enemy::OnCollision(Collider* collideri, Collider* collidere)
 
 void Enemy::destr()
 {
-	if (typo == tipo::llama || typo == tipo::barril|| typo == tipo::barrilazul) {
-		if (collider != nullptr) {
-			collider->pendingToDelete = true;
-		}
-		if (collider1 != nullptr) {
-			collider1->pendingToDelete = true;
-		}
+
+	if (collider != nullptr) {
+		collider->pendingToDelete = true;
+	}
+	if (collider1 != nullptr) {
+		collider1->pendingToDelete = true;
 	
 	}
-	if (typo == tipo::muelle) {
-		if (collider != nullptr) {
-			collider->pendingToDelete = true;
-		}
-
-	}
 	pendientedeelim = true;
-
+	
 }
 state Enemy::random(state Estado, Collider* colider, tipo tip) {
 	if (typo == tipo::llama) {

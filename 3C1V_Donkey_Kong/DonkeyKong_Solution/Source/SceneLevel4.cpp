@@ -109,16 +109,9 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 450, 340, 10,3 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 546, 340, 10,3 }, Collider::Type::plataforma);
 	//Martillo
-	App->collisions->AddCollider({ 315, 250, 23,33 }, Collider::Type::martillo);
-	App->collisions->AddCollider({ -2, 370, 23,33 }, Collider::Type::martillo);
-
 	int direccion = 0, x;
 	App->enemies->AddEnemy(Enemy_Type::KONG, 280, 153, direccion);
-	//"Power-Up"
-	/*bolso_col = App->collisions->AddCollider({ 390, 670,25,35 }, Collider::Type::bolso);
-	paraguas_col = App->collisions->AddCollider({ 120, 170,40,40 }, Collider::Type::paraguas);
-	tanque_col = App->collisions->AddCollider({ 530, 553,40,20 }, Collider::Type::tanque);*/
-	//MARTILLO ATAQUE
+	
 
 
 	App->objet->AddObjet(Objet_Type::placa, 165, 500);
@@ -217,6 +210,7 @@ update_status SceneLevel4::Update()
 	if (cont == 1500)
 	{
 		App->enemies->AddEnemy(Enemy_Type::LLAMA, 70, 200, direccion);
+		cont = 0;
 	}
 
 
@@ -338,9 +332,6 @@ bool SceneLevel4::CleanUp()
 	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
-	App->textures->CleanUp();
-	App->collisions->CleanUp();
-
 	App->textures->Unload(kong);
 	App->textures->Unload(martillo);
 	App->textures->Unload(martillo2);
@@ -356,6 +347,14 @@ bool SceneLevel4::CleanUp()
 	App->textures->Unload(littlemario);
 	App->textures->Unload(hearth);
 	App->textures->Unload(mario_hearth);
+	App->fonts->UnLoad(rojas);
+	App->fonts->UnLoad(blancas);
+	
+	App->textures->Disable();
+	App->player->Disable();
+	App->collisions->CleanUp();
+
+	
 
 
 	return true;
