@@ -504,6 +504,7 @@ update_status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::jump()
 {
+	
 	jumpact = true;
 
 	if (cont < 20)
@@ -523,9 +524,11 @@ void ModulePlayer::jump()
 
 	}
 
+
 	cont++;
 	if (currentAnimation != &saltarder || currentAnimation != &saltariz)
 	{
+	
 		if (tecla == 0) {
 			if (currentAnimation != &saltarder) 
 			{
@@ -553,6 +556,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		Posicion.y -= 2;
 		escalera = true;
+
 	}
 	else
 	{

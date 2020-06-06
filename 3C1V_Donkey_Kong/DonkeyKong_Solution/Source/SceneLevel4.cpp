@@ -40,7 +40,8 @@ bool SceneLevel4::Start()
 	bool ret = true;
 	App->player->lvl = 4;
 	App->player->Posicion.x = 100;
-	App->player->Posicion.y = 679;
+	App->player->Posicion.y = 665;
+
 	App->player->canLateralMov = true;
 	App->enemies->Enable();
 	App->player->Enable();
@@ -135,6 +136,7 @@ bool SceneLevel4::Start()
 	//rojas = App->fonts->Load("Assets/letras_rojas.png", lookupTable_r, 1);
 	blancas = App->fonts->Load("Assets/letras_blancas.png", lookupTable_b, 1);
 	amarillas = App->fonts->Load("Assets/letras_amarillas.png", lookupTable_a, 1);
+
 
 	return ret;
 }

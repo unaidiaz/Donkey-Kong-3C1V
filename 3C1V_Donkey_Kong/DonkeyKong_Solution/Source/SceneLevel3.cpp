@@ -111,6 +111,9 @@ bool SceneLevel3::Start()
 
 	App->collisions->AddCollider({ 330, 120, 70, 70 }, Collider::Type::Victoria);
 
+	App->collisions->AddCollider({ -13, 720, 600, 3 }, Collider::Type::Enemigo);
+	App->collisions->AddCollider({ 60, 267, 75, 3 }, Collider::Type::Enemigo);
+
 
 	App->enemies->AddEnemy(Enemy_Type::MUELLE, -15, 250, 0);
 
@@ -207,6 +210,7 @@ void SceneLevel3::DebugDrawGamepadInfo()
 
 update_status SceneLevel3::Update()
 {
+
 	cont++;
 	if (cont % 145 == 0)
 	{
@@ -242,19 +246,6 @@ update_status SceneLevel3::Update()
 	{
 		App->audio->PlayMusic("Assets/11. Hurry Up!.ogg", 0.4f);
 	}
-	if (App->player->_win == true)
-	{
-		if (contmusic == 0)
-		{
-			App->audio->PlayMusic("Assets/4. Stage 1 CLEAR.ogg");
-			contmusic = 1;
-		}
-		App->objet->CleanUp();
-		App->enemies->CleanUp();
-		_score += _bonus;
-		_bonus = NULL;
-	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -274,7 +265,17 @@ update_status SceneLevel3::PostUpdate()
 	}
 	if (App->player->_win == true)
 	{
+		if (contmusic == 0)
+		{
+			App->audio->PlayMusic("Assets/4. Stage 1 CLEAR.ogg");
+			contmusic = 1;
+		}
+		App->objet->CleanUp();
+		App->enemies->CleanUp();
+		_score += _bonus;
+		_bonus = NULL;
 		App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->howhigh3, 180);
+
 	}
 	// Draw everything --------------------------------------
 	// TODO 10: Blit our test texture to check functionality
