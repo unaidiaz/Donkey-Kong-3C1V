@@ -111,6 +111,7 @@ bool ModulePlayer::Start()
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
+	collider2 = App->collisions->AddCollider({ Posicion.x, Posicion.y + 33, 16, 2 }, Collider::Type::player2, this);
 	mart = App->collisions->AddCollider({ 0, 0, 10, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
@@ -457,6 +458,7 @@ update_status ModulePlayer::Update()
 	}
 	plataforma = false;
 	collider->SetPos(Posicion.x + 4, Posicion.y - 20);
+	collider2->SetPos(Posicion.x + 4, Posicion.y + 18);
 	//mart->SetPos(Posicion.x + 45, Posicion.y);
 	//mart2->SetPos(Posicion.x - 30, Posicion.y);
 	return update_status::UPDATE_CONTINUE;
@@ -567,10 +569,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1 == collider && c2->type == Collider::plataforma)
 		{
-
-			Posicion.y -= 2;
 			plataforma = true;
 
+		}
+		if (c1 == collider2 && c2->type == Collider::plataforma)
+		{
+			Posicion.y -= 2;
+			plataforma = true;
 		}
 		else
 		{

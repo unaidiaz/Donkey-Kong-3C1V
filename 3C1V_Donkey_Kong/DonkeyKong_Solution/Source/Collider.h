@@ -20,6 +20,7 @@ struct Collider
 		Victoria,
 		top,
 		salto,
+		player2,
 		MAX
 	};
 

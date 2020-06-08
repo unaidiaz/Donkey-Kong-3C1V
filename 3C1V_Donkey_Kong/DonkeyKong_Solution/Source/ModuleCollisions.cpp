@@ -21,8 +21,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::plataforma][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::plataforma][Collider::Type::top] = true;
 	matrix[Collider::Type::plataforma][Collider::Type::salto] = true;
-	
-	
+	matrix[Collider::Type::plataforma][Collider::Type::player2] = true;
+
 	matrix[Collider::Type::PLAYER][Collider::Type::plataforma] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::Enemigo] = true;
@@ -33,8 +33,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::Victoria] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::top] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::salto] = false;
-	
-	
+	matrix[Collider::Type::PLAYER][Collider::Type::player2] = false;
+
 	matrix[Collider::Type::Enemigo][Collider::Type::plataforma] = true;
 	matrix[Collider::Type::Enemigo][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::Enemigo][Collider::Type::Enemigo] = false;
@@ -45,8 +45,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::Enemigo][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::Enemigo][Collider::Type::top] = false;
 	matrix[Collider::Type::Enemigo][Collider::Type::salto] = false;
-	
-	
+	matrix[Collider::Type::Enemigo][Collider::Type::player2] = false;
+
 	matrix[Collider::Type::escalera][Collider::Type::plataforma] = false;
 	matrix[Collider::Type::escalera][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::escalera][Collider::Type::Enemigo] = true;
@@ -57,8 +57,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::escalera][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::escalera][Collider::Type::top] = true;
 	matrix[Collider::Type::escalera][Collider::Type::salto] = true;
+	matrix[Collider::Type::escalera][Collider::Type::player2] = false;
 
-	
 	matrix[Collider::Type::martillo][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::martillo][Collider::Type::martillo] = false;
 	matrix[Collider::Type::martillo][Collider::Type::escalera] = false;
@@ -69,8 +69,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::martillo][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::martillo][Collider::Type::top] = false;
 	matrix[Collider::Type::martillo][Collider::Type::salto] = false;
+	matrix[Collider::Type::martillo][Collider::Type::player2] = false;
 
-	
 	matrix[Collider::Type::objeto][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::objeto][Collider::Type::martillo] = false;
 	matrix[Collider::Type::objeto][Collider::Type::escalera] = false;
@@ -81,8 +81,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::objeto][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::objeto][Collider::Type::top] = false;
 	matrix[Collider::Type::objeto][Collider::Type::salto] = false;
-	
-	
+	matrix[Collider::Type::objeto][Collider::Type::player2] = false;
+
 	matrix[Collider::Type::placa][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::placa][Collider::Type::martillo] = false;
 	matrix[Collider::Type::placa][Collider::Type::escalera] = false;
@@ -93,8 +93,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::placa][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::placa][Collider::Type::top] = false;
 	matrix[Collider::Type::placa][Collider::Type::salto] = false;
+	matrix[Collider::Type::placa][Collider::Type::player2] = false;
 
-	
 	matrix[Collider::Type::Victoria][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::Victoria][Collider::Type::martillo] = false;
 	matrix[Collider::Type::Victoria][Collider::Type::escalera] = false;
@@ -105,8 +105,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::Victoria][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::Victoria][Collider::Type::top] = false;
 	matrix[Collider::Type::Victoria][Collider::Type::salto] = false;
+	matrix[Collider::Type::Victoria][Collider::Type::player2] = false;
 
-	
 	matrix[Collider::Type::top][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::top][Collider::Type::martillo] = false;
 	matrix[Collider::Type::top][Collider::Type::escalera] = true;
@@ -117,6 +117,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::top][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::top][Collider::Type::top] = false;
 	matrix[Collider::Type::top][Collider::Type::salto] = false;
+	matrix[Collider::Type::top][Collider::Type::player2] = false;
 
 	matrix[Collider::Type::salto][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::salto][Collider::Type::martillo] = false;
@@ -128,6 +129,19 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::salto][Collider::Type::Victoria] = false;
 	matrix[Collider::Type::salto][Collider::Type::top] = false;
 	matrix[Collider::Type::salto][Collider::Type::salto] = false;
+	matrix[Collider::Type::salto][Collider::Type::player2] = false;
+
+	matrix[Collider::Type::player2][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::player2][Collider::Type::martillo] = false;
+	matrix[Collider::Type::player2][Collider::Type::escalera] = false;
+	matrix[Collider::Type::player2][Collider::Type::Enemigo] = true;
+	matrix[Collider::Type::player2][Collider::Type::plataforma] = true;
+	matrix[Collider::Type::player2][Collider::Type::objeto] = false;
+	matrix[Collider::Type::player2][Collider::Type::placa] = false;
+	matrix[Collider::Type::player2][Collider::Type::Victoria] = false;
+	matrix[Collider::Type::player2][Collider::Type::top] = false;
+	matrix[Collider::Type::player2][Collider::Type::salto] = false;
+	matrix[Collider::Type::player2][Collider::Type::player2] = false;
 }
 
 // Destructor
@@ -271,6 +285,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 		case Collider::Type::salto:
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+		case Collider::Type::player2:
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, 255);
 			break;
 		}
 	}
