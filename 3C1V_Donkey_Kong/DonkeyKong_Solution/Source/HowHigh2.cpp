@@ -97,6 +97,10 @@ void HowHigh2::DebugDrawGamepadInfo()
 update_status HowHigh2::Update()
 {
 	App->render->Blit(background, 0, 0, nullptr);
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+	{
+		exit(0);
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

@@ -27,7 +27,7 @@ bool SceneIntro::Start()
 
 	App->player->vidas = 3;
 	IntroTexture = App->textures->Load("Assets/sceneIntro.png");
-	App->audio->PlayMusic("Assets/4. Start Up 2.wav", 1.0f);
+	App->audio->PlayMusic("Assets/0. Main Music.wav", 1.0f);
 	return ret;
 }
 
@@ -35,9 +35,12 @@ update_status SceneIntro::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
+		App->fade->FadeToBlack(this, (Module*)App->howhigh, 90);
 	}
-
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+	{
+		exit(0);
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

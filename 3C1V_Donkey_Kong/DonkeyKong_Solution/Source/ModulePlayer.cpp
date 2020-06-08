@@ -496,7 +496,11 @@ update_status ModulePlayer::PostUpdate() {
 			vidas--;
 			contvidas = 1;
 		}
-		App->render->Blit(lose, 200, 400, &win_lose);
+		if (vidas==0)
+		{
+			App->render->Blit(lose, 200, 400, &win_lose);
+		}
+		
 		canLateralMov = false;
 	}
 	return update_status::UPDATE_CONTINUE;

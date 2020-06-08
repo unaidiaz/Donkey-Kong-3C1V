@@ -265,7 +265,7 @@ update_status SceneLevel4::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		if (App->player->vidas == 1)
+		if (App->player->vidas == 0)
 		{
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 180);
 		}
