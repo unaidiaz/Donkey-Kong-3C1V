@@ -82,10 +82,10 @@ void Enemybarrilazul::Update()
 		}
 
 	}
-	if ( position.x <67&& position.y>645 ) {
+	if (position.x < 67 && position.y>645) {
 		Enemy::destr();
-		App->enemies->AddEnemy(Enemy_Type::LLAMA,0,100,0);
-	
+		App->enemies->AddEnemy(Enemy_Type::LLAMA, 80, 703, 1);
+
 	}
 	frames1++;
 

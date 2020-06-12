@@ -13,9 +13,13 @@ public:
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
-
+	int cont;
+	int cont2;
+	int comp;
 private:
-
+	state rando(Collider* collider);
+	void subir_o_bajar(Collider* collider);
+	int num;
 	Animation llama;
 	Animation llama_azul;
 };
