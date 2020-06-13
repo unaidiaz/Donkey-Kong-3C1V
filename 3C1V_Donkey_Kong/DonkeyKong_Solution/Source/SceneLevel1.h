@@ -23,7 +23,7 @@ public:
 	// Loads the necessary textures for the map background
 	bool Start() override;
 
-	void sum_points_300()
+	void sum_point_300()
 	{
 		_score += 300;
 	}

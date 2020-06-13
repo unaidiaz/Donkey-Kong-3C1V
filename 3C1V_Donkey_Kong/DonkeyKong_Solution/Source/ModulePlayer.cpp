@@ -12,6 +12,8 @@
 #include"Animation.h"
 #include "ModuleAudio.h"
 #include "SceneLevel4.h"
+#include "SceneLevel3.h"
+#include "SceneLevel1.h"
 #include "SDL/include/SDL_scancode.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
@@ -584,7 +586,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1== mart && c2->type == Collider::Enemigo){
 		
-		App->scene4->sum_points_300();
+		if (lvl == 4) {
+			App->scene4->sum_points_300();
+		}
+		else if (lvl == 1) {
+			App->scene1->sum_point_300();
+		}
+		else {
+			App->scene3->sum_points_300();
+		}
 	}else if (c1->type == Collider::PLAYER && c2->type == Collider::placa){
 			
 		cont_win++;
@@ -597,11 +607,29 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->scene4->sum_points_100();
 	}else if (c1->type == Collider::PLAYER && c2->type == Collider::objeto){
 		App->audio->PlayFx(placaSound);
-		App->scene4->sum_points_300();
+		if (lvl == 4) {
+			App->scene4->sum_points_300();
+		}
+		else if (lvl == 1) {
+			App->scene1->sum_point_300();
+		}
+		else {
+			App->scene3->sum_points_300();
+		}
+		
 	}else if (c1->type == Collider::PLAYER && c2->type == Collider::martillo){
 		hammerMode = true;
 		App->audio->PlayFx(placaSound);
-		App->scene4->sum_points_300();
+		if (lvl == 4) {
+			App->scene4->sum_points_300();
+		}
+		else if (lvl == 1) {
+			App->scene1->sum_point_300();
+		}
+		else {
+			App->scene3->sum_points_300();
+		}
+		
 
 	}else
 	if (c1->type == Collider::PLAYER && c2->type == Collider::Enemigo)
