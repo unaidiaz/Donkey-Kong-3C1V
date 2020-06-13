@@ -84,6 +84,7 @@ public:
 	int contvidas = 0;
 	int lvl = 1;
 	int contmusicamuerte = 0;
+	int dirM = 1;
 private:
 	SDL_Texture* marioo = nullptr;
 	// Debugdraw for gamepad data

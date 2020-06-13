@@ -200,20 +200,20 @@ update_status ModulePlayer::Update()
 		hammerMode = false;
 		hammerCont = 0;
 	}
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar)
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar )
 	{
 		if (hammerMode == false)
 		{
 			currentAnimation = &paradoder;
 			lastanimation = currentAnimation;
-		}
+		} 
 		else if (hammerMode == true)
 		{
 			currentAnimation = &parado_der_mart;
 			lastanimation = currentAnimation;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz)
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz )
 	{
 		if (hammerMode == false)
 		{
@@ -236,7 +236,7 @@ update_status ModulePlayer::Update()
 		Posicion.y += 2;
 	}
 	//plataforma == false &&
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == true)
 	{
 		if (hammerMode == false)
 		{
@@ -275,9 +275,7 @@ update_status ModulePlayer::Update()
 			}
 		}		
 	}
-
-
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == true)
 	{
 		if (hammerMode == false)
 		{
@@ -321,10 +319,10 @@ update_status ModulePlayer::Update()
 				Posicion.y -= 1;
 			}
 		}
-		
 	}
-	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
+	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x > 0)
 	{
+		dirM = 1;
 		if (hammerMode == false)
 		{
 			lastanimation = &derecha;
@@ -368,10 +366,11 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true)
+	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x < 0)
 	{
+		dirM = 0;
 		if (hammerMode == false)
-		{
+		{			
 			lastanimation = &izquierda;
 			tecla = 1;
 			Posicion.x -= 2;
@@ -411,7 +410,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 	{
 		if (escalera == true && plataforma == true || plataforma == true)
 		{
@@ -427,6 +426,32 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
+	// If no up/down movement detected, set the current animation back to idle
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && pad.l_x == 0)
+	{
+		if (dirM == 0)
+		{
+			if (escalera == true && plataforma == false || escalera == true && plataforma == true)
+			{
+
+			}
+			else
+			{
+				currentAnimation = &paradoizq;
+			}			
+		}
+		else if (dirM == 1)
+		{
+			if (escalera == true && plataforma == false || escalera == true && plataforma == true)
+			{
+
+			}
+			else
+			{
+				currentAnimation = &paradoder;
+			}			
+		}		
+	}		
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
 	{
 		exit(0);
@@ -438,7 +463,8 @@ update_status ModulePlayer::Update()
 	if (contador == 30 || contador == 60 || contador == 15 || contador == 45) {
 		App->audio->PlayFx(paso);
 	}
-	if (contador > 60) {
+	if (contador > 60) 
+	{
 		contador = 0;
 	}
 
