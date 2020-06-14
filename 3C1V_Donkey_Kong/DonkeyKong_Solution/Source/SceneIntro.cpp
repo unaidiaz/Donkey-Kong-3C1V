@@ -27,7 +27,7 @@ bool SceneIntro::Start()
 
 	App->player->vidas = 3;
 	IntroTexture = App->textures->Load("Assets/sceneIntro.png");
-	App->audio->PlayMusic("Assets/0. Main Music.wav", 1.0f);
+	App->audio->PlayMusic("Assets/5. How High Can You Get.ogg", 1.0f);
 	return ret;
 }
 
