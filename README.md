@@ -13,7 +13,7 @@ David Lira, Adrián Aroca, Albert Pou, Unai Díaz de Garayo.
 ![3C1V Team](https://i.ibb.co/G9Mzzv9/IMG-20200227-120316.jpg=500x375)
 
 <h3>Gameplay Showcase</h3>
-https://drive.google.com/file/d/11Rujl1GRUIvAUCdM48AHlzGhDbSyMClg/view?usp=sharing
+[3C1V - Donkey Kong Gameplay](https://drive.google.com/file/d/11Rujl1GRUIvAUCdM48AHlzGhDbSyMClg/view?usp=sharing)
 
 <h3>Last Release</h3>
 [3C1V - Donkey Kong v0.6](https://github.com/unaidiaz/Donkey-Kong-3C1V/releases/tag/v0.6)
