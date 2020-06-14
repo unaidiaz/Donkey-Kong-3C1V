@@ -230,6 +230,16 @@ update_status SceneLevel4::Update()
 	{
 		App->player->_lose = true;
 	}
+	if (App->input->keys[SDL_SCANCODE_F9] == KEY_STATE::KEY_DOWN) {
+		if (App->player->godmode == false) {
+			App->player->godmode = true;
+			App->collisions->debug = true;
+		}
+		else {
+			App->player->godmode = false;
+			App->collisions->debug = false;
+		}
+	}
 	temp++;
 	if (temp % 120 == 0 && App->player->_win == false)
 	{

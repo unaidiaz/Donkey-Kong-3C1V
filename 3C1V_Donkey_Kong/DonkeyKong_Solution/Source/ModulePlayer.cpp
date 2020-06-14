@@ -127,6 +127,7 @@ bool ModulePlayer::Start()
 	hammerCont = 0;
 	contvidas = 0;
 	destroyed = false;	
+	godmode = false;
 	return true;
 }
 update_status ModulePlayer::Update()
@@ -238,6 +239,7 @@ update_status ModulePlayer::Update()
 		{
 			Posicion.y += 2;
 		}
+		
 		//plataforma == false &&
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == true)
 		{
@@ -679,8 +681,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else
 			if (c1->type == Collider::PLAYER && c2->type == Collider::Enemigo)
 			{
-				_lose = true;
-				currentAnimation = &dead_mario_r;
+				if (godmode == false) {
+					_lose = true;
+					currentAnimation = &dead_mario_r;
+				}
+				
 			}
 			else
 				if (c1->type == Collider::PLAYER && c2->type == Collider::Victoria)

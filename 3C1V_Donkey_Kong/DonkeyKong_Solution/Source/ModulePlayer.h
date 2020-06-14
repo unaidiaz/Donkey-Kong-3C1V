@@ -17,6 +17,7 @@ public:
 class ModulePlayer : public Module 
 {
 public:
+	bool godmode;
 	ModulePlayer(bool startEnabled);
 	bool Start();
 	void jump();
