@@ -38,6 +38,7 @@ bool SceneLevel4::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	_highscore = App->player->highscore;
 	App->player->lvl = 4;
 	App->player->Posicion.x = 100;
 	App->player->Posicion.y = 645;
@@ -337,6 +338,7 @@ update_status SceneLevel4::PostUpdate()
 
 bool SceneLevel4::CleanUp()
 {
+	App->player->highscore = _highscore;
 	temp = 0;
 	App->player->cont_muerte = 0;
 	App->player->cont_win = 0;

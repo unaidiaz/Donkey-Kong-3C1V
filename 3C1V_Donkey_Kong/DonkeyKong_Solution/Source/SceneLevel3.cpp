@@ -30,6 +30,7 @@ SceneLevel3::~SceneLevel3()
 // Load assets
 bool SceneLevel3::Start()
 {
+	_highscore = App->player->highscore;
 	srand(time(NULL));
 
 	LOG("Loading background assets");
@@ -326,6 +327,7 @@ update_status SceneLevel3::PostUpdate()
 
 bool SceneLevel3::CleanUp()
 {
+	App->player->highscore = _highscore;
 	temp = 0;
 	App->player->cont_muerte = 0;
 	App->player->cont_win = 0;

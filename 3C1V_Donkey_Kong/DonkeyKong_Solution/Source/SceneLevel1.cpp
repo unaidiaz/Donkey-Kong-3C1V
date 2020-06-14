@@ -374,6 +374,7 @@ update_status SceneLevel1::PostUpdate()
 
 bool SceneLevel1::CleanUp()
 {
+	App->player->highscore = _highscore;
 	temp = 0;	
 	App->fonts->UnLoad(rojas);
 	App->fonts->UnLoad(blancas);
