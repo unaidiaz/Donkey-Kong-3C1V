@@ -17,4 +17,4 @@ David Lira, Adrián Aroca, Albert Pou, Unai Díaz de Garayo.
 <iframe src="https://drive.google.com/file/d/11Rujl1GRUIvAUCdM48AHlzGhDbSyMClg/preview" width="640" height="480"></iframe>
 
 <h3>Last Release</h3>
-[3C1V - Donkey Kong v0.6](https://github.com/unaidiaz/Donkey-Kong-3C1V/releases/tag/v0.6)
+[3C1V - Donkey Kong v0.6](https://github.com/unaidiaz/Donkey-Kong-3C1V/releases/tag/v0.7)
