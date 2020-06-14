@@ -38,14 +38,15 @@ bool SceneLevel4::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	App->player->Enable();
 	_highscore = App->player->highscore;
 	App->player->lvl = 4;
-	App->player->Posicion.x = 100;
-	App->player->Posicion.y = 645;
+	App->player->Posicion.x = 120;
+	App->player->Posicion.y = 656;
 	App->player->hammerMode = false;
 	App->player->canLateralMov = true;
 	App->enemies->Enable();
-	App->player->Enable();
+
 	App->objet->Enable();
 	App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
 	testTexture = App->textures->Load("Assets/lvl4.png");
@@ -62,7 +63,9 @@ bool SceneLevel4::Start()
 	vida3 = App->textures->Load("Assets/3vidas.png");
 	contmusic = 0;
 	//547
-	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 698, 672, 10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 699, 672, 10 }, Collider::Type::plataforma);
+
 	App->collisions->AddCollider({ 11, 580, 627,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 35, 460, 579,10 }, Collider::Type::plataforma);
 	App->collisions->AddCollider({ 59, 340, 531,10 }, Collider::Type::plataforma);
@@ -276,11 +279,11 @@ update_status SceneLevel4::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		if (App->player->vidas == 0)
+		if (App->player->vidas <= 0)
 		{
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 180);
 		}
-		else if (App->player->vidas != 0)
+		else if (App->player->vidas > 0)
 		{
 			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->howhigh3, 180);
 		}
@@ -360,8 +363,8 @@ bool SceneLevel4::CleanUp()
 	App->player->_win = false;
 	App->player->canLateralMov = true;
 	App->player->contToFade = 0;
-	App->player->Posicion.x = 65;
-	App->player->Posicion.y = 675;
+	App->player->Posicion.x = 120;
+	App->player->Posicion.y = 656;
 	_score = 000000;
 	_bonus = 5000;
 	App->textures->Unload(kong);

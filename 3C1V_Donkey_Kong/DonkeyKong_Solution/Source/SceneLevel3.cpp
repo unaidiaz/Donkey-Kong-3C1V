@@ -266,11 +266,11 @@ update_status SceneLevel3::PostUpdate()
 {
 	if (App->player->_lose == true)
 	{
-		if (App->player->vidas == 0)
+		if (App->player->vidas <= 0)
 		{
 			App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->sceneIntro, 90);
 		}
-		else if (App->player->vidas != 0)
+		else if (App->player->vidas > 0)
 		{
 			App->fade->FadeToBlack((Module*)App->scene3, (Module*)App->howhigh2, 180);
 		}
@@ -340,6 +340,8 @@ bool SceneLevel3::CleanUp()
 {
 	App->player->highscore = _highscore;
 	temp = 0;
+	App->player->Posicion.x = -8;
+	App->player->Posicion.y = 655;
 	App->player->cont_muerte = 0;
 	App->player->cont_win = 0;
 	App->player->Disable();
@@ -350,8 +352,6 @@ bool SceneLevel3::CleanUp()
 	App->player->_win = false;
 	App->player->canLateralMov = true;
 	App->player->contToFade = 0;
-	App->player->Posicion.x = 65;
-	App->player->Posicion.y = 675;
 	_score = 000000;
 	_bonus = 5000;
 
