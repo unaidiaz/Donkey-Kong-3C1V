@@ -9,27 +9,43 @@ Climb the ladders in order to rescue the princess!
 <h3>Controls</h3>
 
 - Keyboard:
+
 Use SPACEBAR to start the game.
+
 Move Mario by pressing WASD and jump with SPACEBAR.
+
 Display collisions F5.
+
 Return to main screen F6.
+
 Direct win F7.
+
 Direct lose F8.
+
 GodMode F9.
+
 Spawn enemies MOUSE LEFT CLICK.
 
+
 - Controller:
+
 Use A to start the game.
+
 Move Mario by using the PAD and jump with A.
+
 
 Our team members contributions are the same for everyone. We had our backs covered all the time.
 While someone was doing a task, another member was there to help him, so if we say that all the members contributed in every section that makes the game: Programming, Game Design, UI, Bug Fixing, QA Testing...
 
 <h3>Created By</h3>
 David Lira (davidlira19)
+
 Adrián Aroca (adrianam4)
+
 Albert Pou (Hydeon-git)
+
 Unai Díaz de Garayo (unaidiaz)
+
 
 ![3C1V Team](https://i.ibb.co/G9Mzzv9/IMG-20200227-120316.jpg=500x375)
 
