@@ -110,6 +110,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 }
 bool ModulePlayer::Start() 
 {
+	currentAnimation = &paradoder;
 	win = App->textures->Load("Assets/YOU_WIN.png");
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
