@@ -114,10 +114,11 @@ bool ModulePlayer::Start()
 	lose = App->textures->Load("Assets/GAME_OVER.png");
 	collider = App->collisions->AddCollider({ Posicion.x, Posicion.y, 16, 40 }, Collider::Type::PLAYER, this);
 	collider2 = App->collisions->AddCollider({ Posicion.x, Posicion.y + 33, 16, 2 }, Collider::Type::player2, this);
-	mart = App->collisions->AddCollider({ 0, 0, 10, 10 }, Collider::Type::martillo, this);
+	mart = App->collisions->AddCollider({ 0, 0, 20, 10 }, Collider::Type::martillo, this);
 	mario = App->textures->Load("Assets/perso.png");
 	paso = App->audio->LoadFx("Assets/2. SFX (Walking).wav");
 	placaSound = App->audio->LoadFx("Assets/6. SFX (Bonus).wav");
+	currentAnimation = &paradoder;
 	salto = App->audio->LoadFx("Assets/3. SFX (Jump).wav");
 	muerteMario = App->audio->LoadFx("Assets/7. SFX (Miss).wav");
 	contmusicamuerte = 0;
@@ -129,364 +130,367 @@ bool ModulePlayer::Start()
 }
 update_status ModulePlayer::Update()
 {
-	GamePad& pad = App->input->pads[0];
+	if (_win == false && _lose == false) {
+		GamePad& pad = App->input->pads[0];
 
-	cont_muerte++;
-	
-	if ((cont_muerte == 6000))
-	{
-		App->audio->PlayFx(muerteMario);
-		currentAnimation = &dead_mario_r;
-		lastanimation = currentAnimation;
-		currentAnimation->Update();
-		canLateralMov = false;
-		_lose = true;
-	}
-	/*if (_lose == true || _win == true)
-	{
-		contToFade += 3;
-		if (contToFade >= 600)
-		{
-			App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
+		cont_muerte++;
 
-		}
-	}*/
-	if (hammerMode == true)
-	{
-		hammerCont++;
-		if (hammerCont==1)
+		if ((cont_muerte == 6000))
 		{
-			App->audio->PlayMusic("Assets/10. Hammer.ogg");
-		}
-		else if (hammerCont==600)
-		{
-			App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
-		}
-	}
-	if (App->player->currentAnimation->GetFrame() % 2 == 0)
-	{
-		if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
-		{
-			mart->SetPos(Posicion.x + 3, Posicion.y - 55);
-		}
-		else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
-		{
-			mart->SetPos(Posicion.x + 3, Posicion.y - 55);
-		}
-	}
-	else
-	{
-		if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
-		{
-			mart->SetPos(Posicion.x - 30, Posicion.y);
-		}
-		else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
-		{
-			mart->SetPos(Posicion.x + 45, Posicion.y);
-		}
-	}
-
-	if (hammerCont == 600)
-	{
-		if (lastanimation == &parado_der_mart)
-		{
-			currentAnimation = &paradoder;
-		}
-		else if (lastanimation == &parado_izq_mart)
-		{
-			currentAnimation = &paradoizq;
-		}
-		mart->SetPos(0, 0);
-		hammerMode = false;
-		hammerCont = 0;
-	}
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar )
-	{
-		if (hammerMode == false)
-		{
-			currentAnimation = &paradoder;
-			lastanimation = currentAnimation;
-		} 
-		else if (hammerMode == true)
-		{
-			currentAnimation = &parado_der_mart;
-			lastanimation = currentAnimation;
-		}
-	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz )
-	{
-		if (hammerMode == false)
-		{
-			currentAnimation = &paradoizq;
-			lastanimation = currentAnimation;
-		}
-		else if (hammerMode == true)
-		{
-			currentAnimation = &parado_izq_mart;
-			lastanimation = currentAnimation;
-		}
-	}
-	currentAnimation->Update();
-	if (jumpact == false)
-	{
-		Posicion.y += 2;
-	}
-	if (plataforma == true && escalera == true)
-	{
-		Posicion.y += 2;
-	}
-	//plataforma == false &&
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == true)
-	{
-		if (hammerMode == false)
-		{
-			if(escalera == true)
-			{
-				if (plataforma == false)
-				{
-					canLateralMov = false;
-					Posicion.y -= 1;
-					//arriba.Reset();
-					if (lastanimation == &topescalera)
-					{
-						canLateralMov = true;
-						currentAnimation = &espalda;
-						lastanimation = currentAnimation;
-					}
-					else
-					{
-						currentAnimation = &arriba;
-						lastanimation = currentAnimation;
-						currentAnimation->Update();
-					}
-					escalera = false;
-
-				}
-				else
-				{
-					canLateralMov = true;
-					Posicion.y -= 3;
-					currentAnimation = &topescalera;
-					lastanimation = currentAnimation;
-					currentAnimation->Update();
-					escalera = false;
-				}
-				escalera = false;
-			}
-		}		
-	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == true)
-	{
-		if (hammerMode == false)
-		{
-			if (escalera == true)
-			{
-				if (plataforma == true)
-				{
-					canLateralMov = true;
-					Posicion.y += 3;
-					//abajo.Reset();
-					if (lastanimation == &topescalera)
-					{
-						canLateralMov = true;
-						currentAnimation = &arriba;
-						currentAnimation->Update();
-						lastanimation = currentAnimation;
-					}
-					else
-					{
-						currentAnimation = &arriba;
-						lastanimation = currentAnimation;
-						currentAnimation->Update();
-
-					}
-
-					escalera = false;
-
-				}
-				else
-				{
-					canLateralMov = false;
-					Posicion.y += 1;
-					currentAnimation = &abajo;
-					lastanimation = currentAnimation;
-					currentAnimation->Update();
-
-				}
-			}
-			if (plataforma == true)
-			{
-				Posicion.y -= 1;
-			}
-		}
-	}
-	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x > 0)
-	{
-		dirM = 1;
-		if (hammerMode == false)
-		{
-			lastanimation = &derecha;
-			tecla = 0;
-			Posicion.x += 2;
-			if (jumpact == false)
-			{
-				contador++;
-			}
-			currentAnimation = &derecha;
+			App->audio->PlayFx(muerteMario);
+			currentAnimation = &dead_mario_r;
 			lastanimation = currentAnimation;
 			currentAnimation->Update();
-			if (escalera == true)
-			{
-				escalera = false;
-			}
-			if (plataforma == true)
-			{
-				Posicion.y -= 0;
-			}
+			canLateralMov = false;
+			_lose = true;
 		}
-		else if (hammerMode == true)
+		/*if (_lose == true || _win == true)
 		{
-			lastanimation = &mart_der;
-			tecla = 0;
-			Posicion.x += 2;
-			if (jumpact == false)
+			contToFade += 3;
+			if (contToFade >= 600)
 			{
-				contador++;
-			}
-			currentAnimation = &mart_der;
-			lastanimation = currentAnimation;
-			currentAnimation->Update();
-			if (escalera == true)
-			{
-				escalera = false;
-			}
-			if (plataforma == true)
-			{
-				Posicion.y -= 0;
-			}
-		}
-	}
-	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x < 0)
-	{
-		dirM = 0;
-		if (hammerMode == false)
-		{			
-			lastanimation = &izquierda;
-			tecla = 1;
-			Posicion.x -= 2;
-			if (jumpact == false) {
-				contador++;
-			}
-			currentAnimation = &izquierda;
-			lastanimation = currentAnimation;
-			currentAnimation->Update();
-			if (escalera == true)
-			{
-				escalera = false;
-			}
-			if (plataforma == true)
-			{
-				Posicion.y -= 0;
-			}
-		}
-		else if (hammerMode == true)
-		{
-			lastanimation = &mart_iz;
-			tecla = 1;
-			Posicion.x -= 2;
-			if (jumpact == false) {
-				contador++;
-			}
-			currentAnimation = &mart_iz;
-			lastanimation = currentAnimation;
-			currentAnimation->Update();
-			if (escalera == true)
-			{
-				escalera = false;
-			}
-			if (plataforma == true)
-			{
-				Posicion.y -= 0;
-			}
-		}
-	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
-	{
-		if (escalera == true && plataforma == true || plataforma == true)
-		{
-			plataforma = false;
-			if (jumpact == false)
-			{
-				if (canAudioJump)
-				{
-					App->audio->PlayFx(salto);
-					canAudioJump = false;
-				}
-				jump();
-			}
-		}
-	}
-	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && pad.l_x == 0)
-	{
-		if (dirM == 0)
-		{
-			if (escalera == true && plataforma == false || escalera == true && plataforma == true)
-			{
+				App->fade->FadeToBlack((Module*)App->scene4, (Module*)App->sceneIntro, 90);
 
 			}
-			else
-			{
-				currentAnimation = &paradoizq;
-			}			
-		}
-		else if (dirM == 1)
+		}*/
+		if (hammerMode == true)
 		{
-			if (escalera == true && plataforma == false || escalera == true && plataforma == true)
+			hammerCont++;
+			if (hammerCont == 1)
 			{
-
+				App->audio->PlayMusic("Assets/10. Hammer.ogg");
 			}
-			else
+			else if (hammerCont == 600)
+			{
+				App->audio->PlayMusic("Assets/8. Stage 4 BGM.ogg");
+			}
+		}
+		if (App->player->currentAnimation->GetFrame() % 2 == 0)
+		{
+			if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
+			{
+				mart->SetPos(Posicion.x + 3, Posicion.y - 55);
+			}
+			else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
+			{
+				mart->SetPos(Posicion.x + 3, Posicion.y - 55);
+			}
+		}
+		else
+		{
+			if ((currentAnimation == &mart_iz) || (currentAnimation == &parado_izq_mart))
+			{
+				mart->SetPos(Posicion.x - 30, Posicion.y);
+			}
+			else if ((currentAnimation == &parado_der_mart) || (currentAnimation == &mart_der))
+			{
+				mart->SetPos(Posicion.x + 45, Posicion.y);
+			}
+		}
+
+		if (hammerCont == 600)
+		{
+			if (lastanimation == &parado_der_mart)
 			{
 				currentAnimation = &paradoder;
-			}			
-		}		
-	}		
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
-	{
-		exit(0);
-	}
-	if (jumpact == true)
-	{
-		jump();
-	}
-	if (contador == 30 || contador == 60 || contador == 15 || contador == 45) {
-		App->audio->PlayFx(paso);
-	}
-	if (contador > 60) 
-	{
-		contador = 0;
-	}
+			}
+			else if (lastanimation == &parado_izq_mart)
+			{
+				currentAnimation = &paradoizq;
+			}
+			mart->SetPos(0, 0);
+			hammerMode = false;
+			hammerCont = 0;
+		}
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar)
+		{
+			if (hammerMode == false)
+			{
+				currentAnimation = &paradoder;
+				lastanimation = currentAnimation;
+			}
+			else if (hammerMode == true)
+			{
+				currentAnimation = &parado_der_mart;
+				lastanimation = currentAnimation;
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz)
+		{
+			if (hammerMode == false)
+			{
+				currentAnimation = &paradoizq;
+				lastanimation = currentAnimation;
+			}
+			else if (hammerMode == true)
+			{
+				currentAnimation = &parado_izq_mart;
+				lastanimation = currentAnimation;
+			}
+		}
+		currentAnimation->Update();
+		if (jumpact == false)
+		{
+			Posicion.y += 2;
+		}
+		if (plataforma == true && escalera == true)
+		{
+			Posicion.y += 2;
+		}
+		//plataforma == false &&
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == true)
+		{
+			if (hammerMode == false)
+			{
+				if (escalera == true)
+				{
+					if (plataforma == false)
+					{
+						canLateralMov = false;
+						Posicion.y -= 1;
+						//arriba.Reset();
+						if (lastanimation == &topescalera)
+						{
+							canLateralMov = true;
+							currentAnimation = &espalda;
+							lastanimation = currentAnimation;
+						}
+						else
+						{
+							currentAnimation = &abajo;
+							lastanimation = currentAnimation;
+							//currentAnimation->Update();
+						}
+						escalera = false;
+
+					}
+					else
+					{
+						canLateralMov = true;
+						Posicion.y -= 3;
+						currentAnimation = &abajo;
+						lastanimation = currentAnimation;
+						//currentAnimation->Update();
+						escalera = false;
+					}
+					escalera = false;
+				}
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == true)
+		{
+			if (hammerMode == false)
+			{
+				if (escalera == true)
+				{
+					if (plataforma == true)
+					{
+						canLateralMov = true;
+						Posicion.y += 3;
+						//abajo.Reset();
+						if (lastanimation == &topescalera)
+						{
+							canLateralMov = true;
+							currentAnimation = &arriba;
+							//currentAnimation->Update();
+							lastanimation = currentAnimation;
+						}
+						else
+						{
+							currentAnimation = &arriba;
+							lastanimation = currentAnimation;
+							//currentAnimation->Update();
+
+						}
+
+						escalera = false;
+
+					}
+					else
+					{
+						canLateralMov = false;
+						Posicion.y += 1;
+						currentAnimation = &abajo;
+						lastanimation = currentAnimation;
+						//currentAnimation->Update();
+
+					}
+				}
+				if (plataforma == true)
+				{
+					Posicion.y -= 1;
+				}
+			}
+		}
+		if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x > 0)
+		{
+			dirM = 1;
+			if (hammerMode == false)
+			{
+				lastanimation = &derecha;
+				tecla = 0;
+				Posicion.x += 2;
+				if (jumpact == false)
+				{
+					contador++;
+				}
+				currentAnimation = &derecha;
+				lastanimation = currentAnimation;
+				currentAnimation->Update();
+				if (escalera == true)
+				{
+					escalera = false;
+				}
+				if (plataforma == true)
+				{
+					Posicion.y -= 0;
+				}
+			}
+			else if (hammerMode == true)
+			{
+				lastanimation = &mart_der;
+				tecla = 0;
+				Posicion.x += 2;
+				if (jumpact == false)
+				{
+					contador++;
+				}
+				currentAnimation = &mart_der;
+				lastanimation = currentAnimation;
+				currentAnimation->Update();
+				if (escalera == true)
+				{
+					escalera = false;
+				}
+				if (plataforma == true)
+				{
+					Posicion.y -= 0;
+				}
+			}
+		}
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x < 0)
+		{
+			dirM = 0;
+			if (hammerMode == false)
+			{
+				lastanimation = &izquierda;
+				tecla = 1;
+				Posicion.x -= 2;
+				if (jumpact == false) {
+					contador++;
+				}
+				currentAnimation = &izquierda;
+				lastanimation = currentAnimation;
+				currentAnimation->Update();
+				if (escalera == true)
+				{
+					escalera = false;
+				}
+				if (plataforma == true)
+				{
+					Posicion.y -= 0;
+				}
+			}
+			else if (hammerMode == true)
+			{
+				lastanimation = &mart_iz;
+				tecla = 1;
+				Posicion.x -= 2;
+				if (jumpact == false) {
+					contador++;
+				}
+				currentAnimation = &mart_iz;
+				lastanimation = currentAnimation;
+				currentAnimation->Update();
+				if (escalera == true)
+				{
+					escalera = false;
+				}
+				if (plataforma == true)
+				{
+					Posicion.y -= 0;
+				}
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
+		{
+			if (escalera == true && plataforma == true || plataforma == true)
+			{
+				plataforma = false;
+				if (jumpact == false)
+				{
+					if (canAudioJump)
+					{
+						App->audio->PlayFx(salto);
+						canAudioJump = false;
+					}
+					jump();
+				}
+			}
+		}
+		// If no up/down movement detected, set the current animation back to idle
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && pad.l_x == 0)
+		{
+			if (dirM == 0)
+			{
+				if (escalera == true && plataforma == false || escalera == true && plataforma == true || currentAnimation == &abajo || currentAnimation == &mart_iz || currentAnimation == &parado_izq_mart)
+				{
+
+				}
+				else
+				{
+					currentAnimation = &paradoizq;
+				}
+			}
+			else if (dirM == 1)
+			{
+				if (escalera == true && plataforma == false || escalera == true && plataforma == true || currentAnimation == &abajo || currentAnimation == &mart_der || currentAnimation == &parado_der_mart)
+				{
+
+				}
+				else
+				{
+					currentAnimation = &paradoder;
+				}
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+		{
+			exit(0);
+		}
+		if (jumpact == true)
+		{
+			jump();
+		}
+		if (contador == 30 || contador == 60 || contador == 15 || contador == 45) {
+			App->audio->PlayFx(paso);
+		}
+		if (contador > 60)
+		{
+			contador = 0;
+		}
 
 
 
-	//LIMITES LATERALES
-	if (Posicion.x < 0)
-	{
-		Posicion.x = 0;
+		//LIMITES LATERALES
+		if (Posicion.x < 0)
+		{
+			Posicion.x = 0;
+		}
+		if (Posicion.x > 624)
+		{
+			Posicion.x = 624;
+		}
+		//LIMITES VERTICALES
+		if (Posicion.y > 700)
+		{
+			Posicion.y = 700;
+		}
+		
+		plataforma = false;
+		collider->SetPos(Posicion.x + 4, Posicion.y - 20);
+		collider2->SetPos(Posicion.x + 4, Posicion.y + 18);
 	}
-	if (Posicion.x > 624)
-	{
-		Posicion.x = 624;
-	}
-	//LIMITES VERTICALES
-	if (Posicion.y > 700)
-	{
-		Posicion.y = 700;
-	}
-	plataforma = false;
-	collider->SetPos(Posicion.x + 4, Posicion.y - 20);
-	collider2->SetPos(Posicion.x + 4, Posicion.y + 18);
 	//mart->SetPos(Posicion.x + 45, Posicion.y);
 	//mart2->SetPos(Posicion.x - 30, Posicion.y);
 	return update_status::UPDATE_CONTINUE;
@@ -532,6 +536,15 @@ update_status ModulePlayer::PostUpdate() {
 		}
 		
 		canLateralMov = false;
+		if (currentAnimation == &izquierda || currentAnimation == &paradoizq || currentAnimation == &saltariz) {
+			currentAnimation = &dead_mario_l;
+		}
+		else if (currentAnimation == &derecha || currentAnimation == &paradoder || currentAnimation == &saltarder) {
+			currentAnimation = &dead_mario_r;
+			//Posicion.y += 4;
+		}
+		currentAnimation->Update();
+		
 	}
 	return update_status::UPDATE_CONTINUE;
 }
@@ -586,89 +599,95 @@ void ModulePlayer::jump()
 }
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::escalera )
-	{
-		Posicion.y -= 2;
-		escalera = true;
-
-	}
-	else
-	{
-
-		if (c1 == collider && c2->type == Collider::plataforma)
-		{
-			plataforma = true;
-
-		}
-		if (c1 == collider2 && c2->type == Collider::plataforma)
+	if (_win == false && _lose == false) {
+		if (c1 == collider && c2->type == Collider::escalera)
 		{
 			Posicion.y -= 2;
-			plataforma = true;
+			escalera = true;
+
 		}
 		else
 		{
-			plataforma = false;
-		}
-	}
-	if (c1== mart && c2->type == Collider::Enemigo){
-		
-		if (lvl == 4) {
-			App->scene4->sum_points_300();
-		}
-		else if (lvl == 1) {
-			App->scene1->sum_point_300();
-		}
-		else {
-			App->scene3->sum_points_300();
-		}
-	}else if (c1->type == Collider::PLAYER && c2->type == Collider::placa){
-			
-		cont_win++;
-		if (cont_win == 8)
-		{
-			_win = true;
-			canLateralMov = false;
-		}
-		App->audio->PlayFx(placaSound);
-		App->scene4->sum_points_100();
-	}else if (c1->type == Collider::PLAYER && c2->type == Collider::objeto){
-		App->audio->PlayFx(placaSound);
-		if (lvl == 4) {
-			App->scene4->sum_points_300();
-		}
-		else if (lvl == 1) {
-			App->scene1->sum_point_300();
-		}
-		else {
-			App->scene3->sum_points_300();
-		}
-		
-	}else if (c1->type == Collider::PLAYER && c2->type == Collider::martillo){
-		hammerMode = true;
-		App->audio->PlayFx(placaSound);
-		if (lvl == 4) {
-			App->scene4->sum_points_300();
-		}
-		else if (lvl == 1) {
-			App->scene1->sum_point_300();
-		}
-		else {
-			App->scene3->sum_points_300();
-		}
-		
 
-	}else
-	if (c1->type == Collider::PLAYER && c2->type == Collider::Enemigo)
-	{
-		_lose = true;
-		currentAnimation = &dead_mario_r;
-	}else
-	if (c1->type == Collider::PLAYER && c2->type == Collider::Victoria)
-	{
-		_win = true;
-		//App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
-	}
+			if (c1 == collider && c2->type == Collider::plataforma)
+			{
+				plataforma = true;
 
+			}
+			if (c1 == collider2 && c2->type == Collider::plataforma)
+			{
+				Posicion.y -= 2;
+				plataforma = true;
+			}
+			else
+			{
+				plataforma = false;
+			}
+		}
+		if (c1 == mart && c2->type == Collider::Enemigo) {
+
+			if (lvl == 4) {
+				App->scene4->sum_points_300();
+			}
+			else if (lvl == 1) {
+				App->scene1->sum_point_300();
+			}
+			else {
+				App->scene3->sum_points_300();
+			}
+		}
+		else if (c1->type == Collider::PLAYER && c2->type == Collider::placa) {
+
+			cont_win++;
+			if (cont_win == 8)
+			{
+				_win = true;
+				canLateralMov = false;
+			}
+			App->audio->PlayFx(placaSound);
+			App->scene4->sum_points_100();
+		}
+		else if (c1->type == Collider::PLAYER && c2->type == Collider::objeto) {
+			App->audio->PlayFx(placaSound);
+			if (lvl == 4) {
+				App->scene4->sum_points_300();
+			}
+			else if (lvl == 1) {
+				App->scene1->sum_point_300();
+			}
+			else {
+				App->scene3->sum_points_300();
+			}
+
+		}
+		else if (c1->type == Collider::PLAYER && c2->type == Collider::martillo) {
+			hammerMode = true;
+			App->audio->PlayFx(placaSound);
+			if (lvl == 4) {
+				App->scene4->sum_points_300();
+			}
+			else if (lvl == 1) {
+				App->scene1->sum_point_300();
+			}
+			else {
+				App->scene3->sum_points_300();
+			}
+
+
+		}
+		else
+			if (c1->type == Collider::PLAYER && c2->type == Collider::Enemigo)
+			{
+				_lose = true;
+				currentAnimation = &dead_mario_r;
+			}
+			else
+				if (c1->type == Collider::PLAYER && c2->type == Collider::Victoria)
+				{
+					_win = true;
+					//App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
+				}
+	}
 }
 bool ModulePlayer::CleanUp() {
 	
