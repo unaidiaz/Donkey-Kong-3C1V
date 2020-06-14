@@ -33,7 +33,7 @@ bool SceneLevel1::Start()
 	srand(time(NULL));
 
 	LOG("Loading background assets");
-
+	App->player->hammerMode = false;
 	bool ret = true;
 	App->player->lvl = 1;
 	App->player->canLateralMov = false;

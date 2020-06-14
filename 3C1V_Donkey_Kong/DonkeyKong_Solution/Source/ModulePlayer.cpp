@@ -204,7 +204,7 @@ update_status ModulePlayer::Update()
 			hammerMode = false;
 			hammerCont = 0;
 		}
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || lastanimation == &saltarder || lastanimation == &saltar)
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || pad.right == true || lastanimation == &saltarder || lastanimation == &saltar)
 		{
 			if (hammerMode == false)
 			{
@@ -217,7 +217,7 @@ update_status ModulePlayer::Update()
 				lastanimation = currentAnimation;
 			}
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || lastanimation == &saltariz)
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || pad.left == true || lastanimation == &saltariz)
 		{
 			if (hammerMode == false)
 			{
@@ -325,7 +325,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-		if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x > 0)
+		if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.right == true)
 		{
 			dirM = 1;
 			if (hammerMode == false)
@@ -371,7 +371,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-		if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.l_x < 0)
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && canLateralMov == true || pad.left == true)
 		{
 			dirM = 0;
 			if (hammerMode == false)
@@ -432,7 +432,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		// If no up/down movement detected, set the current animation back to idle
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && pad.l_x == 0)
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE||pad.left==true) && (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE || pad.right == true))
 		{
 			if (dirM == 0)
 			{
@@ -457,7 +457,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN || pad.start == true);
 		{
 			exit(0);
 		}

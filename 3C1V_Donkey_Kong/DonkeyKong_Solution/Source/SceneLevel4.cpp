@@ -42,7 +42,7 @@ bool SceneLevel4::Start()
 	App->player->lvl = 4;
 	App->player->Posicion.x = 100;
 	App->player->Posicion.y = 645;
-
+	App->player->hammerMode = false;
 	App->player->canLateralMov = true;
 	App->enemies->Enable();
 	App->player->Enable();

@@ -38,7 +38,7 @@ update_status SceneIntro::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->howhigh, 90);
 	}
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN || pad.start == true)
 	{
 		exit(0);
 	}
