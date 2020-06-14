@@ -1,5 +1,7 @@
 <h1>Donkey-Kong-3C1V</h1>
 
+<a href="https://ibb.co/C5PQmL9"><img src="https://i.ibb.co/QFDMp0H/6-67455-donkey-kong-donkey-kong-arcade-art.jpg" alt="6-67455-donkey-kong-donkey-kong-arcade-art" border="0"></a>
+
 <h3>Project Description</h3>
 Our project is the recreation of the arcade classic Donkey Kong!
 Climb the ladders in order to rescue the princess! 
