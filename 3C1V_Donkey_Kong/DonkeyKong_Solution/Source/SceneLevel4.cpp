@@ -62,11 +62,11 @@ bool SceneLevel4::Start()
 	vida3 = App->textures->Load("Assets/3vidas.png");
 	contmusic = 0;
 	//547
-	App->collisions->AddCollider({ 0, 699, 672,3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 11, 580, 627,3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 35, 460, 579,3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 59, 340, 531,3 }, Collider::Type::plataforma);
-	App->collisions->AddCollider({ 83, 220, 483,3 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 0, 699, 672,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 11, 580, 627,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 35, 460, 579,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 59, 340, 531,10 }, Collider::Type::plataforma);
+	App->collisions->AddCollider({ 83, 220, 483,10 }, Collider::Type::plataforma);
 
 	App->collisions->AddCollider({ -15, 469, 40, 10 }, Collider::Type::Enemigo);
 	App->collisions->AddCollider({ 625, 469, 40, 10 }, Collider::Type::Enemigo);
