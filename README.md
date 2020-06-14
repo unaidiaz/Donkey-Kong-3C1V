@@ -5,7 +5,7 @@ Our project is the recreation of the arcade classic Donkey Kong!
 Climb the ladders in order to rescue the princess! 
 
 Our team members contributions are the same for everyone. We had our backs covered all the time.
-While someone was doing a task, another memer was there to help him, so if we say that all the members contributed in every section that makes the game: Programming, Game Design, UI, Bug Fixing, QA Testing...
+While someone was doing a task, another member was there to help him, so if we say that all the members contributed in every section that makes the game: Programming, Game Design, UI, Bug Fixing, QA Testing...
 
 <h3>Created By</h3>
 David Lira, Adrián Aroca, Albert Pou, Unai Díaz de Garayo.
