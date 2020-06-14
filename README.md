@@ -6,7 +6,9 @@
 Our project is the recreation of the arcade classic Donkey Kong!
 Climb the ladders in order to rescue the princess! 
 
+
 <h3>Controls</h3>
+
 
 - Keyboard:
 
@@ -37,7 +39,9 @@ Move Mario by using the PAD and jump with A.
 Our team members contributions are the same for everyone. We had our backs covered all the time.
 While someone was doing a task, another member was there to help him, so if we say that all the members contributed in every section that makes the game: Programming, Game Design, UI, Bug Fixing, QA Testing...
 
+
 <h3>Created By</h3>
+
 David Lira (davidlira19)
 
 Adrián Aroca (adrianam4)
@@ -46,8 +50,8 @@ Albert Pou (Hydeon-git)
 
 Unai Díaz de Garayo (unaidiaz)
 
-
 ![3C1V Team](https://i.ibb.co/G9Mzzv9/IMG-20200227-120316.jpg=500x375)
+
 
 <h3>Gameplay Showcase</h3>
 
