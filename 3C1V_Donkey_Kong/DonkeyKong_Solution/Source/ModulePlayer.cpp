@@ -457,7 +457,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN || pad.start == true);
+		if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN == true);
 		{
 			exit(0);
 		}
