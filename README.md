@@ -52,6 +52,39 @@ Unai Díaz de Garayo (unaidiaz)
 
 ![3C1V Team](https://i.ibb.co/G9Mzzv9/IMG-20200227-120316.jpg=500x375)
 
+<h3>Contributions</h3>
+
+-QA: EVERYONE
+
+-ANIMATIONS: ADRIAN / ALBERT
+
+-PHYSICS: UNAI / DAVID
+
+-COLLIDERS: DAVID
+
+-AUDIO: ADRIAN / ALBERT
+
+-OBJECTS: UNAI / ALBERT
+
+-ENEMIES: UNAI / ADRIAN
+
+-TEXTURES: UNAI / DAVID
+
+-CONTROLS: ADRIAN / ALBERT
+
+-WIN/LOSE MECHANICS: ADRIAN
+
+-MEMORY LEAKS: EVERYONE
+
+-RELEASES: DAVID
+
+
+At least, all of us have touched all the different aspects of the game, the aspects
+where are names and not “everyone” doesn’t mean that if a name doesn’t
+appear that person hasn’t contributed on that. All the aspects should be
+“everyone”, but the aspects where someone have had more charge of work
+than the others members of the group, have his name.
+
 
 <h3>Gameplay Showcase</h3>
 
